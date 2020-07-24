@@ -10,6 +10,10 @@ const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
+const locationsRouter = require('./routes/locations.router');
+const onboardingRouter = require('./routes/Onboarding.router');
+const storeRouter = require('./routes/store.router');
+const supportRouter = require('./routes/support.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -23,7 +27,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 /* Routes */
+
 app.use('/api/user', userRouter);
+app.use('/api/location', locationsRouter);
+app.use('/api/onboarding', onboardingRouter);
+app.use('/api/store', storeRouter);
+app.use('/api/support', supportRouter);
 
 // Serve static files
 app.use(express.static('build'));
