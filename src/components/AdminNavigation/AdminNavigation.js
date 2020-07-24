@@ -6,8 +6,7 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 
 const AdminNavigation = (props) => (
   <div className="nav">
-    <Link to="/home">
-      <h2 className="nav-title">Admin Nav Bar</h2>
+    <Link to="/home"><h2 className="nav-title">Admin Nav Bar</h2>
     </Link>
     <div className="nav-right">
       <Link className="nav-link" to="/home">

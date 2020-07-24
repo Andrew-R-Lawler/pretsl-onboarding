@@ -28,15 +28,7 @@ CREATE TABLE "user" (
     "password" VARCHAR (1000) NOT NULL,
     "administrator" BOOL DEFAULT FALSE 
 );
-
-INSERT INTO "user" (id, username, password, administrator)
-VALUES (1, 'admin', 'admin', true);
-
-INSERT INTO "user" (id, username, password, administrator)
-VALUES (2, 'customer', 'customer', false);
 ```
-
-If you would like to name your database something else, you will need to change `prime_app` to the name of your new database name in `server/modules/pool.js`
 
 ## Development Setup Instructions
 
