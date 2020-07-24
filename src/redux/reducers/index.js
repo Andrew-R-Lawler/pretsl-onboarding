@@ -5,6 +5,7 @@ import user from './userReducer';
 import storeReducer from './storeReducer';
 import locationsReducer from './locationsReducer';
 import supportReducer from './supportReducer';
+import clientStoreReducer from './clientStoreReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   storeReducer, // will hold new customer data/selected customer data
   locationsReducer, // will store customer location data
   supportReducer, // will handle support ticket interaction
+  clientStoreReducer, // will handle a single client store
 });
 
 export default rootReducer;
