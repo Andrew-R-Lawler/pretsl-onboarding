@@ -1,44 +1,50 @@
-import React, {Component} from 'react';
-import {
-  HashRouter as Router,
-  Route,
-  Redirect,
-  Switch,
-} from 'react-router-dom';
-
-import {connect} from 'react-redux';
-
-import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
+import React, { Component } from 'react';
+import { HashRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
+import './App.css';
 
+// REMOVE ?
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
+import Nav from '../Nav/Nav';
+import Footer from '../Footer/Footer';
 
 // ADMIN imports
 import AdminDashboard from '../AdminDashboard/AdminDashboard';
 import AdminIndividualStore from '../AdminIndividualStore/AdminIndividualStore';
+import AdminNavigation from '../AdminNavigation/AdminNavigation';
 import AdminSupport from '../AdminSupport/AdminSupport';
 
 // CUSTOMER imports
 import CustomerDashboard from '../CustomerDashboard/CustomerDashboard';
+import CustomerNavigation from '../CustomerNavigation/CustomerNavigation';
 import CustomerOnboarding from '../CustomerOnboarding/CustomerOnboarding';
 import CustomerPostOnboarding from '../CustomerPostOnboarding/CustomerPostOnboarding';
 import CustomerSupport from '../CustomerSupport/CustomerSupport';
 
-import './App.css';
+
 
 class App extends Component {
   componentDidMount () {
     this.props.dispatch({type: 'FETCH_USER'})
+    // console.log('this.props.reduxStore', this.props.reduxStore);
+    
   }
 
   render() {
+    console.log('this.props.reduxStore', this.props.reduxStore.user.administrator);
+    const isAdmin = this.props.reduxStore.user.administrator
+    console.log('isAdmin', isAdmin);
+    
     return (
       <Router>
         <div>
-          <Nav />
+          
+          {/* Navigation toggles between Admin or Customer view */}
+          {isAdmin ? <AdminNavigation/> : <CustomerNavigation/>}
+
           <Switch>
 
             <Redirect exact from="/" to="/home" />
@@ -66,4 +72,13 @@ class App extends Component {
   )}
 }
 
-export default connect()(App);
+// export default connect()(App);
+
+// const store = reduxState => ({
+//   reduxState
+// })
+
+// export default connect(store)(App);
+
+const mapStateToProps = (reduxStore) => ({ reduxStore });
+export default connect(mapStateToProps)(App);
