@@ -1,6 +1,6 @@
-const storeReducer = ( state = {}, action ) => {
+const storeReducer = ( state = [], action ) => {
     switch (action.type) {
-        case 'CREATE_NEW_STORE':
+        case 'SET_STORES':
             return action.payload;
         default:
             return state;
