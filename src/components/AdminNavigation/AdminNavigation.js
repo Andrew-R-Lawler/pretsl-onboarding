@@ -24,7 +24,7 @@ const AdminNavigation = (props) => (
       {/* Always show this link since the about page is not protected */}
       
       <Link className="nav-link" to="/AdminDashboard">Dashboard</Link>
-      <Link className="nav-link" to="/Onboarding">Onboarding</Link>
+      <Link className="nav-link" to="/AdminCustomerOnboarding">Onboarding</Link>
       <Link className="nav-link" to="/AdminSupport">Support</Link>
       {/* <Link className="nav-link" to="/about">About</Link> */}
       <LogOutButton className="nav-link"/>
