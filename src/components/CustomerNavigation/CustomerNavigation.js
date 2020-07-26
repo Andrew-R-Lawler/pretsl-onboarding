@@ -26,7 +26,7 @@ const CustomerNavigation = (props) => (
       {/* Always show this link since the about page is not protected */}
       <Link className="nav-link" to="/CustomerDashboard">Dashboard</Link>
       <Link className="nav-link" to="/CustomerSupport">Support</Link>
-      <Link className="nav-link" to="/Locations">Locations</Link>
+      <Link className="nav-link" to="/CustomerLocations">Locations</Link>
       {/* <Link className="nav-link" to="/about">About</Link> */}
       <LogOutButton className="nav-link"/>
     </div>

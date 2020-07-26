@@ -23,6 +23,7 @@ import CustomerDashboard from '../CustomerDashboard/CustomerDashboard';
 import CustomerNavigation from '../CustomerNavigation/CustomerNavigation';
 //import CustomerPostOnboarding from '../CustomerPostOnboarding/CustomerPostOnboarding';
 import CustomerSupport from '../CustomerSupport/CustomerSupport';
+import Locations from '../Locations/Locations';
 
 
 
@@ -57,7 +58,7 @@ class App extends Component {
             <ProtectedRoute exact path="/CustomerDashboard" component={CustomerDashboard}/>
             {/* <ProtectedRoute exact path="/CustomerPostOnboarding" component={CustomerPostOnboarding}/> */}
             <ProtectedRoute exact path="/CustomerSupport" component={CustomerSupport}/>
-
+            <ProtectedRoute exact path="/CustomerLocations" component={Locations}/>
         {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
 
