@@ -45,6 +45,7 @@ class AdminDashboard extends Component {
                         </tbody>
                     </table>
                 </div>
+
             </div>
         )
     }
