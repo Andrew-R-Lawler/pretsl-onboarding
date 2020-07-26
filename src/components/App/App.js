@@ -34,19 +34,15 @@ class App extends Component {
   }
 
   render() {
-    console.log('this.props.reduxStore', this.props.reduxStore.user.administrator);
     const isAdmin = this.props.reduxStore.user.administrator
-    console.log('isAdmin', isAdmin);
-    
     return (
       <Router>
         <div>
           
-          {/* Navigation toggles between Admin or Customer view */}
+        {/* Navigation toggles between Admin or Customer view */}
           {isAdmin ? <AdminNavigation/> : <CustomerNavigation/>}
 
           <Switch>
-
             <Redirect exact from="/" to="/home" />
             <Route exact path="/about" component={AboutPage}/>
             <ProtectedRoute exact path="/home" component={UserPage}/>

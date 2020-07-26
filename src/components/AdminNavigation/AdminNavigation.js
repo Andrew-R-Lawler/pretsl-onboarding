@@ -18,8 +18,7 @@ const AdminNavigation = (props) => (
       {/* Show the link to the info page and the logout button if the user is logged in */}
       {props.user.id && (
         <>
-          <Link className="nav-link" to="/info">Info Page</Link>
-          <LogOutButton className="nav-link"/>
+          {/* <Link className="nav-link" to="/info">Info Page</Link> */}
         </>
       )}
       {/* Always show this link since the about page is not protected */}
@@ -27,7 +26,8 @@ const AdminNavigation = (props) => (
       <Link className="nav-link" to="/AdminDashboard">Dashboard</Link>
       <Link className="nav-link" to="/Onboarding">Onboarding</Link>
       <Link className="nav-link" to="/AdminSupport">Support</Link>
-      <Link className="nav-link" to="/about">About</Link>
+      {/* <Link className="nav-link" to="/about">About</Link> */}
+      <LogOutButton className="nav-link"/>
     </div>
   </div>
 );
