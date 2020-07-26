@@ -27,6 +27,22 @@ class AdminDashboard extends Component {
                                 <th>Customer Status</th>
                             </tr>
                         </thead>
+                        <tbody>
+                            {this.props.reduxState.storeReducer.map(store => {
+                                return(
+                                    <tr>
+                                        <td><button>View Profile</button></td>
+                                        <td>{store.store_name}</td>
+                                        <td>{store.customer_email}</td>
+                                        <td>{store.store_status}</td>
+                                        <td>{store.date_joined}</td>
+                                        <td>{store.notes}</td>
+                                        <td>{store.contract}</td>
+                                        <td>{store.business_type}</td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
                     </table>
                 </div>
             </div>
