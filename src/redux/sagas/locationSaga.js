@@ -3,8 +3,8 @@ import axios from 'axios';
 
 function* getLocations() {
     try{
-    const locationResponse = yield axios.get('/api/locations')
-    yield put({ type: 'SET_LOCATIONS', locationResponse })
+    const locationResponse = yield axios.get('/api/location')
+    yield put({ type: 'SET_LOCATIONS', payload: locationResponse.data })
     } catch (error) {
         console.log('Error with locations GET:', error);
     }

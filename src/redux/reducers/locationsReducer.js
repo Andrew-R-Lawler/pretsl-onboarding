@@ -1,6 +1,6 @@
-const locationsReducer = (state = {}, action) => {
+const locationsReducer = (state = [], action) => {
     switch (action.type) {
-        case 'GET_LOCATIONS':
+        case 'SET_LOCATIONS':
             return action.payload;
         default:
             return state;

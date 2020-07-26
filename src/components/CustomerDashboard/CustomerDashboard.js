@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class CustomerDashboard extends Component {
+
+    componentDidMount(){
+        this.props.dispatch({ type: 'GET_LOCATIONS' })
+    }
+
     render(){
         return(
             <div>
