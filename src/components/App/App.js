@@ -16,11 +16,11 @@ import AdminDashboard from '../AdminDashboard/AdminDashboard';
 import AdminIndividualStore from '../AdminIndividualStore/AdminIndividualStore';
 import AdminNavigation from '../AdminNavigation/AdminNavigation';
 import AdminSupport from '../AdminSupport/AdminSupport';
+import AdminCustomerOnboarding from '../AdminCustomerOnboarding/AdminCustomerOnboarding';
 
 // CUSTOMER imports
 import CustomerDashboard from '../CustomerDashboard/CustomerDashboard';
 import CustomerNavigation from '../CustomerNavigation/CustomerNavigation';
-import CustomerOnboarding from '../CustomerOnboarding/CustomerOnboarding';
 //import CustomerPostOnboarding from '../CustomerPostOnboarding/CustomerPostOnboarding';
 import CustomerSupport from '../CustomerSupport/CustomerSupport';
 
@@ -55,10 +55,10 @@ class App extends Component {
             <ProtectedRoute exact path="/AdminDashboard" component={AdminDashboard}/>
             <ProtectedRoute exact path="/AdminIndividualStore" component={AdminIndividualStore}/>
             <ProtectedRoute exact path="/AdminSupport" component={AdminSupport}/>
+            <ProtectedRoute exact path="/AdminCustomerOnboarding" component={AdminCustomerOnboarding}/>
 
         {/* CUSTOMER ROUTES */}
             <ProtectedRoute exact path="/CustomerDashboard" component={CustomerDashboard}/>
-            <ProtectedRoute exact path="/CustomerOnboarding" component={CustomerOnboarding}/>
             {/* <ProtectedRoute exact path="/CustomerPostOnboarding" component={CustomerPostOnboarding}/> */}
             <ProtectedRoute exact path="/CustomerSupport" component={CustomerSupport}/>
 
