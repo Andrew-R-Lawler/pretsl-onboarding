@@ -21,7 +21,7 @@ import AdminSupport from '../AdminSupport/AdminSupport';
 import CustomerDashboard from '../CustomerDashboard/CustomerDashboard';
 import CustomerNavigation from '../CustomerNavigation/CustomerNavigation';
 import CustomerOnboarding from '../CustomerOnboarding/CustomerOnboarding';
-import CustomerPostOnboarding from '../CustomerPostOnboarding/CustomerPostOnboarding';
+//import CustomerPostOnboarding from '../CustomerPostOnboarding/CustomerPostOnboarding';
 import CustomerSupport from '../CustomerSupport/CustomerSupport';
 
 
@@ -59,7 +59,7 @@ class App extends Component {
         {/* CUSTOMER ROUTES */}
             <ProtectedRoute exact path="/CustomerDashboard" component={CustomerDashboard}/>
             <ProtectedRoute exact path="/CustomerOnboarding" component={CustomerOnboarding}/>
-            <ProtectedRoute exact path="/CustomerPostOnboarding" component={CustomerPostOnboarding}/>
+            {/* <ProtectedRoute exact path="/CustomerPostOnboarding" component={CustomerPostOnboarding}/> */}
             <ProtectedRoute exact path="/CustomerSupport" component={CustomerSupport}/>
 
         {/* If none of the other routes matched, we will show a 404. */}
