@@ -4,7 +4,9 @@ import axios from 'axios';
 function* getTickets() {
     try {
         const ticketsResponse = yield axios.get('/api/support')
-        yield put({ type: 'SET_TICKETS', ticketsResponse })
+        yield put({ 
+            type: 'SET_TICKETS', 
+            payload: ticketsResponse.data })
     } catch (error) {
         console.log('Error with support GET:', error);
     }
