@@ -24,7 +24,8 @@ CREATE TABLE "store"
     "contract" BYTEA,
     "business_type" VARCHAR(250),
     "moonclerk_url" VARCHAR(250),
-    "customer_email" VARCHAR(250)
+    "customer_email" VARCHAR(250),
+    "active_customer" BOOL DEFAULT TRUE,
 );
 
 CREATE TABLE "location"
