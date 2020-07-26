@@ -12,8 +12,19 @@ function* getStores() {
     }
 }
 
+function* getIndividualStore(action) {
+    try{
+        const individualStoreResponse = yield axios.get(`/api/store/${action.payload}`)
+        console.log('individualStoreResponse', individualStoreResponse);
+        yield put({ type: 'SET_INDIVIDUAL_STORE', payload: individualStoreResponse.data })
+    } catch (error) {
+        console.log('Error with individual store GET:', error);
+    }
+}
+
 function* storesSaga() {
     yield takeEvery('GET_STORES', getStores)
+    yield takeEvery('GET_INDIVIDUAL_STORE', getIndividualStore)
 }
 
 export default storesSaga;
