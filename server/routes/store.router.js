@@ -16,6 +16,18 @@ router.get('/', (req, res) => {
         })
 });
 
+router.get('/:id', (req, res) => {
+    console.log('req.body', req.params.id);
+    pool.query('SELECT * FROM "store" WHERE "id" = $1', [req.params.id])
+        .then(result => {
+            console.log('result.rows', result.rows);
+            res.send(result.rows[0])
+        }).catch(error => {
+            console.log('Error GET /store failed,', error);
+            res.sendStatus(500)
+        })
+})
+
 /**
  * POST route for store
  */

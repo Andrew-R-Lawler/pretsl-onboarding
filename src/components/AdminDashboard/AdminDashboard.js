@@ -8,6 +8,12 @@ class AdminDashboard extends Component {
         this.props.dispatch ({ type: 'GET_STORES' })
       };
 
+    viewStore = (event) => {
+        const storeId = event.target.value
+        this.props.dispatch({ type: 'GET_INDIVIDUAL_STORE', payload: storeId });
+        this.props.history.push('/AdminIndividualStore');
+    }
+
     render(){
         return(
             <div>
@@ -30,8 +36,8 @@ class AdminDashboard extends Component {
                         <tbody>
                             {this.props.reduxState.storeReducer.map(store => {
                                 return(
-                                    <tr>
-                                        <td><button>View Profile</button></td>
+                                    <tr key={store.id}>
+                                        <td><button value={store.id} onClick={this.viewStore}>View Profile</button></td>
                                         <td>{store.store_name}</td>
                                         <td>{store.customer_email}</td>
                                         <td>{store.store_status}</td>
@@ -39,6 +45,11 @@ class AdminDashboard extends Component {
                                         <td>{store.notes}</td>
                                         <td>{store.contract}</td>
                                         <td>{store.business_type}</td>
+                                        {store.active_customer === true ?
+                                            <td>True</td>
+                                            :
+                                            <td>False</td>
+                                        }
                                     </tr>
                                 )
                             })}
