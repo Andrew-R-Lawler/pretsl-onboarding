@@ -9,6 +9,7 @@
     "cookie-session": "^2.0.0-beta.3",
     "dotenv": "^4.0.0",
     "express": "^4.16.4",
+    "node-sass": "^4.14.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "pg": "^8.2.1",
@@ -20,7 +21,9 @@
     "react-scripts": "^3.4.0",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
-    "redux-saga": "^1.0.2"
+    "redux-saga": "^1.0.2",
+    "semantic-ui-react": "^1.0.0",
+    "zcrmsdk": "0.0.20"
   },
   "scripts": {
     "start": "node server/server.js",

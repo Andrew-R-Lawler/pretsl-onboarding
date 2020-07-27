@@ -1,62 +1,67 @@
-import React, {Component} from 'react';
-import {
-  HashRouter as Router,
-  Route,
-  Redirect,
-  Switch,
-} from 'react-router-dom';
+import React, { Component } from 'react';
+import { HashRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-import {connect} from 'react-redux';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
+import './App.css';
 
+// REMOVE ?
+import AboutPage from '../AboutPage/AboutPage';
+import UserPage from '../UserPage/UserPage';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
+// ADMIN imports
+import AdminDashboard from '../AdminDashboard/AdminDashboard';
+import AdminIndividualStore from '../AdminIndividualStore/AdminIndividualStore';
+import AdminNavigation from '../AdminNavigation/AdminNavigation';
+import AdminSupport from '../AdminSupport/AdminSupport';
+import AdminCustomerOnboarding from '../AdminCustomerOnboarding/AdminCustomerOnboarding';
 
-import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
+// CUSTOMER imports
+import CustomerDashboard from '../CustomerDashboard/CustomerDashboard';
+import CustomerNavigation from '../CustomerNavigation/CustomerNavigation';
+//import CustomerPostOnboarding from '../CustomerPostOnboarding/CustomerPostOnboarding';
+import CustomerSupport from '../CustomerSupport/CustomerSupport';
+import Locations from '../Locations/Locations';
 
-import './App.css';
+
 
 class App extends Component {
   componentDidMount () {
     this.props.dispatch({type: 'FETCH_USER'})
+    // console.log('this.props.reduxStore', this.props.reduxStore);
+    
   }
 
   render() {
+    const isAdmin = this.props.reduxStore.user.administrator
     return (
       <Router>
         <div>
-          <Nav />
+          
+        {/* Navigation toggles between Admin or Customer view */}
+          {isAdmin ? <AdminNavigation/> : <CustomerNavigation/>}
+
           <Switch>
-            {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
-            {/* Visiting localhost:3000/about will show the about page.
-            This is a route anyone can see, no login necessary */}
-            <Route
-              exact
-              path="/about"
-              component={AboutPage}
-            />
-            {/* For protected routes, the view could show one of several things on the same route.
-            Visiting localhost:3000/home will show the UserPage if the user is logged in.
-            If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
-            Even though it seems like they are different pages, the user is always on localhost:3000/home */}
-            <ProtectedRoute
-              exact
-              path="/home"
-              component={UserPage}
-            />
-            {/* This works the same as the other protected route, except that if the user is logged in,
-            they will see the info page instead. */}
-            <ProtectedRoute
-              exact
-              path="/info"
-              component={InfoPage}
-            />
-            {/* If none of the other routes matched, we will show a 404. */}
+            <Route exact path="/about" component={AboutPage}/>
+            <ProtectedRoute exact path="/home" component={UserPage}/>
+            
+        {/* ADMIN ROUTES */}
+            <ProtectedRoute exact path="/AdminDashboard" component={AdminDashboard}/>
+            <ProtectedRoute exact path="/AdminIndividualStore" component={AdminIndividualStore}/>
+            <ProtectedRoute exact path="/AdminSupport" component={AdminSupport}/>
+            <ProtectedRoute exact path="/AdminCustomerOnboarding" component={AdminCustomerOnboarding}/>
+
+        {/* CUSTOMER ROUTES */}
+            <ProtectedRoute exact path="/CustomerDashboard" component={CustomerDashboard}/>
+            {/* <ProtectedRoute exact path="/CustomerPostOnboarding" component={CustomerPostOnboarding}/> */}
+            <ProtectedRoute exact path="/CustomerSupport" component={CustomerSupport}/>
+            <ProtectedRoute exact path="/CustomerLocations" component={Locations}/>
+        {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
+
           </Switch>
           <Footer />
         </div>
@@ -64,4 +69,13 @@ class App extends Component {
   )}
 }
 
-export default connect()(App);
+// export default connect()(App);
+
+// const store = reduxState => ({
+//   reduxState
+// })
+
+// export default connect(store)(App);
+
+const mapStateToProps = (reduxStore) => ({ reduxStore });
+export default connect(mapStateToProps)(App);
