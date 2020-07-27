@@ -22,9 +22,19 @@ function* getIndividualStore(action) {
     }
 }
 
+function* updateStore(action) {
+    try{
+        yield axios.put(`/api/store/${action.payload.id}`, action.payload)
+        yield put({ type: 'GET_INDIVIDUAL_STORE', payload: action.payload.id })
+    } catch (error) {
+        console.log('Error with store PUT:', error);
+    }
+}
+
 function* storesSaga() {
     yield takeEvery('GET_STORES', getStores)
     yield takeEvery('GET_INDIVIDUAL_STORE', getIndividualStore)
+    yield takeEvery('UPDATE_STORE', updateStore)
 }
 
 export default storesSaga;
