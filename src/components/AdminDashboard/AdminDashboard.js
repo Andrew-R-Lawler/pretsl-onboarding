@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Moment from 'react-moment';
 
 
 class AdminDashboard extends Component {
@@ -41,7 +42,7 @@ class AdminDashboard extends Component {
                                         <td>{store.store_name}</td>
                                         <td>{store.customer_email}</td>
                                         <td>{store.store_status}</td>
-                                        <td>{store.date_joined}</td>
+                                        <td><Moment format="YYYY/MM/DD">{store.date_joined}</Moment></td>
                                         <td>{store.notes}</td>
                                         <td>{store.contract}</td>
                                         <td>{store.business_type}</td>
