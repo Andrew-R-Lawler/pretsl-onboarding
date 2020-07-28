@@ -7,8 +7,9 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
  * GET route for support
  */
 router.get('/', rejectUnauthenticated, (req, res) => {
-    let sqlText = `SELECT * FROM "user"
-    JOIN support ON "user".id = support.store_id;`;
+    let sqlText = `SELECT * FROM "support"
+    FULL OUTER JOIN "store" ON "support"."store_id" = "store"."id"
+    FULL OUTER JOIN "user" ON "store"."user_id" = "user"."id"`;
     pool.query(sqlText)
     .then (result => {
         res.send(result.rows);
