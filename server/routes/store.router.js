@@ -24,7 +24,6 @@ router.get('/:id', (req, res) => {
     console.log('req.body', req.params.id);
     pool.query('SELECT * FROM "store" WHERE "id" = $1', [req.params.id])
         .then(result => {
-            console.log('result.rows', result.rows);
             res.send(result.rows[0])
         }).catch(error => {
             console.log('Error GET /store failed,', error);
@@ -42,13 +41,12 @@ router.post('/', (req, res) => {
 
 // PUT route for updating store in individual store admin view
 router.put('/:id', (req, res) => {
-    // console.log('req.body', req.body);
+
     console.log('req.params.id', req.params.id);
     pool.query(`UPDATE "store"
     SET "store_name" = $1, "store_status" = $2, "date_joined" = $3, "notes" = $4, "contract" = $5, "business_type" = $6, "moonclerk_url" = $7, "customer_email" = $8, "active_customer" = $9
     WHERE "id" = $10`, [req.body.store_name, req.body.store_status, req.body.date_joined, req.body.notes, req.body.contract, req.body.business_type, req.body.moonclerk_url, req.body.customer_email, req.body.active_customer, req.params.id])
         .then(result => {
-            console.log('result', result);
             res.sendStatus(200);
         }).catch(error => {
             console.log('error', error);

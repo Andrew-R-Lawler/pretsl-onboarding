@@ -4,18 +4,18 @@ import { connect } from 'react-redux';
 class CustomerSupport extends Component {
 
     state = {
+        storeId: '',
         requestType: '',
         requestBody: '',
         requestStatus: 'New Request'
     }
 
     handleChange = (event) => {
-        // console.log('event.target.value', event.target.value);
         this.setState({
             // ...this.state,
-            [event.target.name]: event.target.value
+            [event.target.name]: event.target.value,
+            storeId: this.props.reduxStore.user.id
         })
-        // console.log('this.state', this.state);
     }
 
     submit = () => {
