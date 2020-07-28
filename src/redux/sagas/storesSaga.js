@@ -22,6 +22,8 @@ function* getIndividualStore(action) {
     }
 }
 
+
+
 function* storesSaga() {
     yield takeEvery('GET_STORES', getStores)
     yield takeEvery('GET_INDIVIDUAL_STORE', getIndividualStore)
