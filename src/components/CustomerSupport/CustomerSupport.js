@@ -10,20 +10,12 @@ class CustomerSupport extends Component {
         requestStatus: 'New Request'
     }
 
-    componentDidMount = () => {
-        this.props.dispatch({ type: 'GET_LOCATIONS' })
-        console.log('reduxStore', this.props.reduxStore);
-        
-    }
-
     handleChange = (event) => {
-        // console.log('event.target.value', event.target.value);
         this.setState({
             // ...this.state,
             [event.target.name]: event.target.value,
-            storeId: this.props.reduxStore.user.store_id
+            storeId: this.props.reduxStore.user.id
         })
-        // console.log('this.state', this.state);
     }
 
     submit = () => {
