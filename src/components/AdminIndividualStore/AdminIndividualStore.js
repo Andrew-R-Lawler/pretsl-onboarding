@@ -6,6 +6,7 @@ class AdminIndividualStore extends Component {
     state = {
         edit: false,
         store_name: '',
+        customer_email: '',
         store_status: '',
         date_joined: '',
         notes: '',
@@ -25,6 +26,7 @@ class AdminIndividualStore extends Component {
             edit: !this.state.edit,
             id: this.props.store.id,
             store_name: this.props.store.store_name,
+            customer_email: this.props.store.customer_email,
             store_status: this.props.store.store_status,
             date_joined: this.props.store.date_joined,
             notes: this.props.store.notes,
@@ -60,6 +62,12 @@ class AdminIndividualStore extends Component {
                     <input name='store_name' value={this.state.store_name} onChange={this.handleChange}></input>
                 :
                     <p>{this.props.store.store_name}</p>
+                }
+                <h3>Customer Email</h3>
+                {this.state.edit ?
+                    <input name='customer_email' value={this.state.customer_email} onChange={this.handleChange}></input>
+                :
+                    <p>{this.props.store.customer_email}</p>
                 }
                 <h3>Store Status</h3>
                 {this.state.edit ?
