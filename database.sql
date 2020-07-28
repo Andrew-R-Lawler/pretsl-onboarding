@@ -49,5 +49,6 @@ CREATE TABLE "support"
     "request_type" VARCHAR(500),
     "request_body" TEXT,
     "date_joined" DATE DEFAULT now(),
-    "ticket_status" VARCHAR(250)
+    "ticket_status" VARCHAR(250),
+    "isArchived" BOOL DEFAULT FALSE
 )
