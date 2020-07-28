@@ -1,26 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import AdminSupportTicket from './AdminSupportTicket';
 
 class AdminSupport extends Component {
 
-    state = {
-        updateStatus: ''
-    }
     componentDidMount = () => { 
-        this.props.dispatch ({ type: 'GET_TICKETS' })
-      };
-
-      updateStatus = () => {
-          console.log('in updateStatus');
-          this.setState({
-            // updateStatus: event.target.value
-          })
-      }
-
-      archive = () => {
-          console.log('archive clicked');
-          
-      }
+        this.props.dispatch({ type: 'GET_TICKETS' })
+    };
+    
+    archive = () => {
+        console.log('archive clicked');
+    }
 
     render(){
         const supportTicket = this.props.reduxStore.supportReducer;
@@ -32,6 +22,7 @@ class AdminSupport extends Component {
                     <thead>
                         <tr>
                             <th>Store Name</th>
+                            <th>Store Email</th>
                             <th>Request Type</th>
                             <th>Description</th>
                             <th>Ticket Number</th>
@@ -41,32 +32,12 @@ class AdminSupport extends Component {
                         </tr>
                     </thead>
                         { supportTicket.map(item => 
-                            <tr key={item.id}>
-                                <td>{item.store_name}</td>
-                                <td>{item.request_type}</td>
-                                <td>{item.request_body}</td>
-                                <td>{item.id}</td>
-                                <td>{item.request_date}</td>
-                                <td>
-                                    <select name="updateStatus" default value={item.ticket_status} onChange={this.updateStatus}>
-                                        <option value="newRequest">New Request</option>
-                                        <option value="inProgress">In Progress</option>
-                                        <option value="resolved">Resolved</option>
-                                    </select>
-                                </td>
-                                <td><button onClick={this.archive}>ARCHIVE</button></td>
-                            </tr>) }
+                            <AdminSupportTicket item={item} />)}
                 </table>
         </div>
         )
     }
 }
-
-// const store = reduxState => ({
-//     reduxState
-// })
-
-// export default connect(store)(AdminSupport);
 
 const mapStateToProps = (reduxStore) => ({ reduxStore });
 export default connect(mapStateToProps)(AdminSupport);

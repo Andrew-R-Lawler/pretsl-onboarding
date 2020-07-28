@@ -7,11 +7,12 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
  * GET route for support
  */
 router.get('/', rejectUnauthenticated, (req, res) => {
-    let sqlText = `SELECT * FROM support
-    JOIN store ON support.store_id = store.id
-    ;`;
+    let sqlText = `SELECT * FROM store
+JOIN support ON store.id = support.store_id;`;
     pool.query(sqlText)
     .then (result => {
+        console.log('result.rows', result.rows);
+        
         res.send(result.rows);
     })
     .catch(error => {
@@ -35,5 +36,20 @@ router.post('/', rejectUnauthenticated, (req, res) => {
         res.sendStatus(500)
     })
 });
+
+
+// PUT route for support
+router.put('/:id', rejectUnauthenticated, (req, res) => {
+    let sqlText = `UPDATE support
+    SET ticket_status = $1
+    WHERE id = $2;`
+    pool.query(sqlText, [req.body.updateStatus, req.params.id])
+    .then(result => {
+        res.sendStatus(200);
+    }).catch(error => {
+        console.log('PUT error,', error);
+        res.sendStatus(500);
+    })
+})
 
 module.exports = router;
