@@ -45,6 +45,7 @@ class App extends Component {
 
           <Switch>
             <Redirect exact from="/" to="/home" />
+            {isAdmin ? <Redirect exact from="/home" to="/AdminDashboard" /> : <Redirect exact from="/home" to="/CustomerDashboard" />}
             <Route exact path="/about" component={AboutPage}/>
             <ProtectedRoute exact path="/home" component={UserPage}/>
             
