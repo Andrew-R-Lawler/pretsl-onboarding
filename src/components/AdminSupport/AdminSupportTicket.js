@@ -7,12 +7,14 @@ class AdminSupportTicket extends Component {
         ticket_status: '',
         updateStatus: '',
         ticketId: '',
+        isArchived: ''
     }
 
     componentDidMount(){
         this.setState({
             ticket_status: this.props.item.ticket_status,
             ticketId: this.props.item.id,
+            isArchived: this.props.item.isarchived,
         })
     }
 
@@ -25,8 +27,19 @@ class AdminSupportTicket extends Component {
                 type: 'UPDATE_TICKET_STATUS',
                 payload: this.state,
             })
-            window.location.reload(false);
         }, 1000);
+    }
+
+    archive = () => {
+        this.setState({
+            isArchived: !this.props.item.isarchived
+        })
+        setTimeout(() => {
+            this.props.dispatch({
+                type: 'UPDATE_TICKET_STATUS',
+                payload: this.state,
+            })
+        }, 500);
     }
 
     render(){
@@ -40,13 +53,13 @@ class AdminSupportTicket extends Component {
                 <td>{this.props.item.id}</td>
                 <td>{this.props.item.request_date}</td>
                 <td>
-                    <select name="updateStatus" value = {this.state.ticket_status} onChange={this.updateStatus}>
+                    <select name="updateStatus" value = {this.props.item.ticket_status} onChange={this.updateStatus}>
                         <option value="New Request">New Request</option>
                         <option value="In Progress">In Progress</option>
                         <option value="Resolved">Resolved</option>
                     </select>
                 </td>
-                <td><button onClick={this.archive}>ARCHIVE</button></td>
+                <td><button value = {this.props.item.id} onClick={this.archive}>ARCHIVE</button></td>
             </tr>
         )
     }

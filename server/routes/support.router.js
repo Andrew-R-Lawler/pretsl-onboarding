@@ -8,7 +8,8 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
  */
 router.get('/', rejectUnauthenticated, (req, res) => {
     let sqlText = `SELECT * FROM store
-JOIN support ON store.id = support.store_id;`;
+JOIN support ON store.id = support.store_id
+WHERE isArchived = FALSE;`;
     pool.query(sqlText)
     .then (result => {
         console.log('result.rows', result.rows);
@@ -41,9 +42,9 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 // PUT route for support
 router.put('/:id', rejectUnauthenticated, (req, res) => {
     let sqlText = `UPDATE support
-    SET ticket_status = $1
-    WHERE id = $2;`
-    pool.query(sqlText, [req.body.updateStatus, req.params.id])
+    SET ticket_status = $1, isarchived = $2
+    WHERE id = $3;`
+    pool.query(sqlText, [req.body.updateStatus, req.body.isArchived, req.params.id])
     .then(result => {
         res.sendStatus(200);
     }).catch(error => {

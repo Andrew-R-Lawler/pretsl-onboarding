@@ -7,10 +7,6 @@ class AdminSupport extends Component {
     componentDidMount = () => { 
         this.props.dispatch({ type: 'GET_TICKETS' })
     };
-    
-    archive = () => {
-        console.log('archive clicked');
-    }
 
     render(){
         const supportTicket = this.props.reduxStore.supportReducer;
