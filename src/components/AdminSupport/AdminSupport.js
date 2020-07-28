@@ -5,13 +5,12 @@ import AdminSupportTicket from './AdminSupportTicket';
 class AdminSupport extends Component {
 
     componentDidMount = () => { 
-        this.props.dispatch ({ type: 'GET_TICKETS' })
-      };
-
-      archive = () => {
-          console.log('archive clicked');
-          
-      }
+        this.props.dispatch({ type: 'GET_TICKETS' })
+    };
+    
+    archive = () => {
+        console.log('archive clicked');
+    }
 
     render(){
         const supportTicket = this.props.reduxStore.supportReducer;
@@ -39,12 +38,6 @@ class AdminSupport extends Component {
         )
     }
 }
-
-// const store = reduxState => ({
-//     reduxState
-// })
-
-// export default connect(store)(AdminSupport);
 
 const mapStateToProps = (reduxStore) => ({ reduxStore });
 export default connect(mapStateToProps)(AdminSupport);
