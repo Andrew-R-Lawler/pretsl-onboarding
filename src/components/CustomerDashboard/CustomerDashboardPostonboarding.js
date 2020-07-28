@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import Moment from 'react-moment';
+
 //this is a conditionally rendered component only seen on 
 //customerdashboard if customer status is active:
 //active_customer===true
@@ -36,7 +38,10 @@ class CustomerDashboardPostonboarding extends Component {
                         {this.props.store.store_name}
                     </div> */}
                     <div className="dateJoinedDiv">
-                        Date Onboarded: {this.props.store.date_joined}
+                    Date Onboarded:
+                        <Moment format="YYYY/MM/DD">
+                        {this.props.store.date_joined}
+                        </Moment>
                     </div>
                     <div className="emailDisplayDiv">
                         Email: {this.props.store.customer_email}
