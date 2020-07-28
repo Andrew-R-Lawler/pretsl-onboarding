@@ -18,6 +18,9 @@ class LoginPage extends Component {
           password: this.state.password,
         },
       });
+      setTimeout(() => {
+        this.props.history.push('/home')
+      }, 1000);
     } else {
       this.props.dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }
