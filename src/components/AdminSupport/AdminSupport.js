@@ -2,9 +2,25 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class AdminSupport extends Component {
+
+    state = {
+        updateStatus: ''
+    }
     componentDidMount = () => { 
         this.props.dispatch ({ type: 'GET_TICKETS' })
       };
+
+      updateStatus = () => {
+          console.log('in updateStatus');
+          this.setState({
+            // updateStatus: event.target.value
+          })
+      }
+
+      archive = () => {
+          console.log('archive clicked');
+          
+      }
 
     render(){
         const supportTicket = this.props.reduxStore.supportReducer;
@@ -26,11 +42,19 @@ class AdminSupport extends Component {
                     </thead>
                         { supportTicket.map(item => 
                             <tr key={item.id}>
-                                <td>{item.store_id}</td>
+                                <td>{item.username}</td>
                                 <td>{item.request_type}</td>
                                 <td>{item.request_body}</td>
-
-                                <td>{item.ticket_status}</td>
+                                <td>{item.id}</td>
+                                <td>{item.request_date}</td>
+                                <td>
+                                    <select name="updateStatus" default value={item.ticket_status} onChange={this.updateStatus}>
+                                        <option value="newRequest">New Request</option>
+                                        <option value="inProgress">In Progress</option>
+                                        <option value="resolved">Resolved</option>
+                                    </select>
+                                </td>
+                                <td><button onClick={this.archive}>ARCHIVE</button></td>
                             </tr>) }
                 </table>
         </div>
