@@ -10,28 +10,36 @@ class Locations extends Component {
         return (
           <div>
             <h1>Locations</h1>
-            <table>
+            <table className = 'customerInfo'>
               <thead>
                 <tr>
                   <th>Store Name</th>
-                  <th>Request Type</th>
-                  <th>Description</th>
-                  <th>Ticket Number</th>
-                  <th>Date Requested</th>
-                  <th>Status</th>
-                  <th>Actions</th>
+                  <th>Address</th>
+                  <th>Timezone</th>
+                  <th>Phone Number</th>
+                  <th>Email</th>
+                  <th>Point of Contact</th>
+                  <th>Tablets Quantity</th>
+                  <th>Printers Quantity</th>
+                  <th>Tablet Stands Quantity</th>
                 </tr>
               </thead>
               {location.map((item) => (
                 <tr key={item.id}>
-                  {/* <td>{item.store_id}</td> */}
-                  {/* <td>{item.request_type}</td> */}
-                  {/* <td>{item.request_body}</td> */}
-
+                  <td>{item.store_name}</td>
                   <td>{item.address}</td>
+                  <td>{item.timezone}</td>
+                  <td>{item.phone_number}</td>
+                  <td>{item.location_email}</td>
+                  <td>{item.point_of_contact}</td>
+                  <td>{item.tablets_quantity}</td>
+                  <td>{item.printers_quantity}</td>
+                  <td>{item.tablet_stands_quantity}</td>
                 </tr>
               ))}
             </table>
+            <input type='text'/>
+            <button onClick = {this.submit}>Submit</button>
           </div>
         );
     }

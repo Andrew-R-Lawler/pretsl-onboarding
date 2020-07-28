@@ -47,3 +47,26 @@ input {
     border-bottom:1px solid #444; 
     cursor: pointer;
 }
+.customerInfo {
+    margin:10px;
+    border-bottom: none;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0 15px;
+}
+
+th {
+  background-color: red;
+  color: white;
+}
+
+th,
+td {
+  width: 150px;
+  text-align: center;
+  border: 1px solid black;
+  padding: 5px;
+}
+
+
