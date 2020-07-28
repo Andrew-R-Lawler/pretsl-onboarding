@@ -26,6 +26,7 @@ class AdminSupportTicket extends Component {
             <tr key={this.props.item.id}>
                 {console.log('this.state', this.state)}
                 <td>{this.props.item.store_name}</td>
+                <td>{this.props.item.customer_email}</td>
                 <td>{this.props.item.request_type}</td>
                 <td>{this.props.item.request_body}</td>
                 <td>{this.props.item.id}</td>

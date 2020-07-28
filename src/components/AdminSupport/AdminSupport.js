@@ -23,6 +23,7 @@ class AdminSupport extends Component {
                     <thead>
                         <tr>
                             <th>Store Name</th>
+                            <th>Store Email</th>
                             <th>Request Type</th>
                             <th>Description</th>
                             <th>Ticket Number</th>

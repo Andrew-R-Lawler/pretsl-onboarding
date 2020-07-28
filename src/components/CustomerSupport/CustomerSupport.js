@@ -4,16 +4,24 @@ import { connect } from 'react-redux';
 class CustomerSupport extends Component {
 
     state = {
+        storeId: '',
         requestType: '',
         requestBody: '',
         requestStatus: 'New Request'
+    }
+
+    componentDidMount = () => {
+        this.props.dispatch({ type: 'GET_LOCATIONS' })
+        console.log('reduxStore', this.props.reduxStore);
+        
     }
 
     handleChange = (event) => {
         // console.log('event.target.value', event.target.value);
         this.setState({
             // ...this.state,
-            [event.target.name]: event.target.value
+            [event.target.name]: event.target.value,
+            storeId: this.props.reduxStore.user.store_id
         })
         // console.log('this.state', this.state);
     }
