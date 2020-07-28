@@ -42,7 +42,7 @@ class AdminSupport extends Component {
                     </thead>
                         { supportTicket.map(item => 
                             <tr key={item.id}>
-                                <td>{item.username}</td>
+                                <td>{item.store_name}</td>
                                 <td>{item.request_type}</td>
                                 <td>{item.request_body}</td>
                                 <td>{item.id}</td>
