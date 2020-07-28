@@ -48,5 +48,6 @@ CREATE TABLE "support"
     "store_id" INT REFERENCES "store",
     "request_type" VARCHAR(500),
     "request_body" TEXT,
+    "date_joined" DATE DEFAULT now(),
     "ticket_status" VARCHAR(250)
 )
