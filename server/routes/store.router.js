@@ -16,6 +16,9 @@ router.get('/', (req, res) => {
             res.sendStatus(500)
         })
 });
+
+
+
 // Get route for individual store admin view
 router.get('/:id', (req, res) => {
     console.log('req.body', req.params.id);
@@ -29,23 +32,6 @@ router.get('/:id', (req, res) => {
         })
 })
 
-//create a GET request that selects stores by customer ID for the customer dashboard.
-router.get('/', (req,res) =>{
-
-    const user_id = url.parse(req.url, true).query.user_id;
-    console.log("inside store.router get request for client dashboard: user_id,",user_id);
-
-    queryText = `SELECT * FROM "store"
-    WHERE user_id = ${user_id};`
-
-    pool.query(queryText)
-    .then((result) =>{
-        res.send(result.rows);
-    }).catch((error) => {
-        console.log("error in store GET for client dahsboard get", error)
-        res.sendStatus(500)
-    });
-})
 
 /**
  * POST route for store
@@ -56,7 +42,7 @@ router.post('/', (req, res) => {
 
 // PUT route for updating store in individual store admin view
 router.put('/:id', (req, res) => {
-    console.log('req.body', req.body);
+    // console.log('req.body', req.body);
     console.log('req.params.id', req.params.id);
     pool.query(`UPDATE "store"
     SET "store_name" = $1, "store_status" = $2, "date_joined" = $3, "notes" = $4, "contract" = $5, "business_type" = $6, "moonclerk_url" = $7, "customer_email" = $8, "active_customer" = $9

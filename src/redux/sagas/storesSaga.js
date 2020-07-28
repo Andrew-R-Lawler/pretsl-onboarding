@@ -26,9 +26,9 @@ function* getStoresForClientDashboard(action){
     const user_id= action.payload.user_id
 
     try {
-        const userStoresResponse = yield axios.get(`/api/store?user_id=${user_id}`);
+        const userStoresResponse = yield axios.get(`/api/clientstore?user_id=${user_id}`);
 
-        yield put({type: 'SET_STORES', payload: userStoresResponse.data})
+        yield put({type: 'SET_CLIENT_DASHBOARD_STORES', payload: userStoresResponse.data})
     }catch(error){
         console.log('Error with getStoreForClientDashboard get request', error);
     }
@@ -49,7 +49,7 @@ function* storesSaga() {
     yield takeEvery('GET_STORES', getStores)
     yield takeEvery('GET_INDIVIDUAL_STORE', getIndividualStore)
     yield takeEvery('UPDATE_STORE', updateStore)
-    yield takeEvery('GET_STORE_CLIENT_DASHBOARD')
+    yield takeEvery('GET_STORE_CLIENT_DASHBOARD', getStoresForClientDashboard)
 }
 
 export default storesSaga;
