@@ -10,7 +10,7 @@ function* getLocations() {
     }
 }
 
-function* postLocation(){
+function* postLocation(action){
     
     const config = {
         store_id: action.payload.store_id,
