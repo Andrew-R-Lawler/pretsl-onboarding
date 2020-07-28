@@ -22,11 +22,11 @@ class CustomerDashboardPreonboarding extends Component {
     render(){
         return(
             <div>
-                <h2>Customer Dashboard view pre-onboarding</h2>
+                <h2>{this.props.store.store_name}</h2>
                 <div className="customerPreonboardingDisplay">
                     {/* Render date joined, then email, then render view contract at the bottom of the page */}
                     {/* <div className="dateJoinedDiv">Date: {this.props.reduxState.clientStoreReducer.date_joined} </div> */}
-                    <div className="emailDisplayDiv">Email: {this.props.reduxState.clientStoreReducer.customer_email}</div>
+                    <div className="emailDisplayDiv">Email: {this.props.store.customer_email}</div>
                     <div className="contractViewButton">
                         <label htmlFor="contractViewButton">
                             Contract: 

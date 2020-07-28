@@ -13,27 +13,38 @@ import { connect } from 'react-redux';
 //view contract
 //create a button that opens up a modal for view contract
 
+//pass the store as a prop from compoent CustomerDashboard
+
 class CustomerDashboardPostonboarding extends Component {
+
+    componentDidMount(){
+        // console.log("inside CustomerDashboardPostonboarding, this.props.store:", this.props.store)
+        }   
 
     viewContractModal(){
         //display modal here, select contract from clientStoreReducer
         console.log("Contract Button Clicked");
     }
 
+
     render(){
         return(
             <div>
-                <h2>Customer Dashboard View Post Onboarding</h2>
+                <h2>{this.props.store.store_name}</h2>
                 <div className="customerPostonboardingDisplay">
-                    <div className="storeNameDisplay">
-                        {this.props.reduxState.clientStoreReducer.store_name}
-                    </div>
+                    {/* <div className="storeNameDisplay">
+                        {this.props.store.store_name}
+                    </div> */}
                     <div className="dateJoinedDiv">
-                        Date Onboarded: {this.props.reduxState.date_joined}
+                        Date Onboarded: {this.props.store.date_joined}
                     </div>
                     <div className="emailDisplayDiv">
-                        Email: {this.props.reduxState.clientStoreReducer.customer_email}
+                        Email: {this.props.store.customer_email}
                     </div>
+
+                    {/* {JSON.stringify(this.props.store)} */}
+                    
+
                     <div className="contractViewButton">
                         <label htmlFor="contractViewButton">
                             Contract: 
@@ -47,7 +58,7 @@ class CustomerDashboardPostonboarding extends Component {
                         
                     </div>
                 </div>
-            </div>
+             </div>
         )
     }
 }
