@@ -45,7 +45,6 @@ class AdminSupportTicket extends Component {
     render(){
         return(
             <tr key={this.props.item.id}>
-                {console.log('this.state', this.state)}
                 <td>{this.props.item.store_name}</td>
                 <td>{this.props.item.customer_email}</td>
                 <td>{this.props.item.request_type}</td>
