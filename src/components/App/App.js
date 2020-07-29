@@ -3,7 +3,7 @@ import { HashRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 import { connect } from 'react-redux';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
-import './App.css';
+import './App.scss';
 
 // REMOVE ?
 import AboutPage from '../AboutPage/AboutPage';
