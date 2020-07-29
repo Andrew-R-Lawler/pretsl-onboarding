@@ -22,7 +22,8 @@ function* postLocation(action){
     }
     
     try{
-        yield axios.post('/api/location', config);
+        yield axios.post('/api/location', action.payload);
+        yield put({type: 'GET_LOCATIONS'});
     }catch(error){
         console.log('error with location Post', error);
     }
