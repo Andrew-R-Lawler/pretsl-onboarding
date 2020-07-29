@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button } from 'semantic-ui-react';
+// import 'semantic-ui-css/semantic.min.css';
 
 class CustomerSupport extends Component {
 
@@ -44,18 +46,25 @@ class CustomerSupport extends Component {
                         Contact Info: {this.props.reduxStore.user.user_email}
                         <p>If there is a better name or contact info to address this request, please specify so in the details section below.</p>
                     </div>
-                    <label>Request type:</label>
-                    <select name="requestType" onChange={this.handleChange}>
-                        <option value="" disabled selected value>Choose</option>
-                        <option value="Change Contact Info">Change Contact Info</option>
-                        <option value="Change Payment Information">Change Payment Information</option>
-                        <option value="Change Plan">Change Plan</option>
-                        <option value="Cancel Pretsl Account">Cancel Pretsl Account</option>
-                    </select>
+
+                    <div class="ui form">
+                        <div class="field">
+                            <label>Request type:</label>
+                                <div class="ui selection dropdown">
+                                    <select name="requestType" onChange={this.handleChange}>
+                                        <option value="" disabled selected value>Choose</option>
+                                        <option value="Change Contact Info">Change Contact Info</option>
+                                        <option value="Change Payment Information">Change Payment Information</option>
+                                        <option value="Change Plan">Change Plan</option>
+                                        <option value="Cancel Pretsl Account">Cancel Pretsl Account</option>
+                                    </select>
+                                </div>
+                            </div>
+                    </div>
                     <br/>
                     <textarea name="requestBody" placeholder="How can we help you?" onChange={this.handleChange}></textarea>
                     <br/>
-                    <button onClick={this.submit}>Submit</button>
+                    <Button className='ui button' onClick={this.submit}>Submit</Button>
                 </form>
             </div>
         )
