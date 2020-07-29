@@ -10,11 +10,14 @@ class CustomerSupport extends Component {
         requestStatus: 'New Request'
     }
 
+    componentDidMount = () => {
+        this.props.dispatch({ type: 'GET_LOCATIONS' })
+    }
+
     handleChange = (event) => {
         this.setState({
-            // ...this.state,
             [event.target.name]: event.target.value,
-            storeId: this.props.reduxStore.user.id
+            storeId: this.props.reduxStore.locationsReducer[0].store_id,
         })
     }
 
@@ -29,6 +32,7 @@ class CustomerSupport extends Component {
         return (
             <div>
                 <div>
+                    {console.log('this.state', this.state, this.props.reduxStore.locationsReducer)}
                     <h1>Customer Support</h1>
                         <h2>Thank you for reaching out.</h2>
                             <p>From Purple Onion: 'We’re here to help make the planning of your event easier. Whether you’ve got questions about placing an order, creating a menu for your event or just need help getting started, we’re here to help. Fill out the form here and someone will be in touch with you soon.'</p>
