@@ -4,21 +4,8 @@ import { connect } from 'react-redux';
 class Locations extends Component {
   componentDidMount = () => {
     this.props.dispatch({ type: "GET_LOCATIONS" });
-    console.log('loook here',this.props.reduxState);
-    
-    // this.setState({
-    //     store_id: this.props.reduxState.locationsReducer[0].store_id
-    // })
   };
-  // handleChange = (event) => {
-  //     console.log('clicked');
-  //     this.setState ({
-  //         changeInfo: event.target.value
-  //     })
-  // }
-  // showInputs = () => {
 
-  // }
     state = {
       store_id: "",
       storeName: "",
@@ -32,6 +19,7 @@ class Locations extends Component {
       tablet_stands_quantity: "",
       mode: "view",
     };
+
   constructor(props) {
     super(props);
     // this.state = {
@@ -54,6 +42,7 @@ class Locations extends Component {
 
   handleInputChangeFor = (propertyName) => (event) => {
     this.setState({
+      store_id: this.props.reduxState.locationsReducer[0].store_id,
       [propertyName]: event.target.value,
     });
   };
@@ -72,7 +61,7 @@ class Locations extends Component {
 
 
   render() {
-    const location = this.props.reduxState.locationsReducer.data;
+    const location = this.props.reduxState.locationsReducer;
     const view = this.state.mode === "view";
     return (
       <div>
