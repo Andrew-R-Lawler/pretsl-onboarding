@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
+import { Divider } from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
 
 
 class AdminDashboard extends Component {
@@ -19,6 +21,7 @@ class AdminDashboard extends Component {
         return(
             <div>
                 <h1>Admin Dashboard</h1>
+                <Divider />
                 <div>
                     <table>
                         <thead>
