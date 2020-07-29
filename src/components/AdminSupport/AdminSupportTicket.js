@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Moment from 'react-moment';
 
 class AdminSupportTicket extends Component {
 
@@ -49,8 +50,12 @@ class AdminSupportTicket extends Component {
                 <td>{this.props.item.customer_email}</td>
                 <td>{this.props.item.request_type}</td>
                 <td>{this.props.item.request_body}</td>
-                <td>{this.props.item.id}</td>
-                <td>{this.props.item.request_date}</td>
+                <td>{this.props.item.id}</td> 
+                <td>
+                    <Moment format="YYYY/MM/DD">
+                        {this.props.item.request_date}
+                    </Moment>
+                </td>
                 <td>
                     <select name="updateStatus" value = {this.props.item.ticket_status} onChange={this.updateStatus}>
                         <option value="New Request">New Request</option>
