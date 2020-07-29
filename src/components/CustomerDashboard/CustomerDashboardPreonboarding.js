@@ -21,15 +21,13 @@ class CustomerDashboardPreonboarding extends Component {
         console.log("Contract Button Clicked");
     }
 
-    //     onDrop = (acceptedFiles) => {
-    //         console.log('x', acceptedFiles);
-    //       }
-    // }
-
     onDrop = (acceptedFiles) => {
         console.log('onDrop', acceptedFiles);
-        
+        this.props.dispatch({ 
+            type: 'SET_INVENTORY',
+            payload: acceptedFiles })
     }
+
     render(){
         return(
             <div>
@@ -50,16 +48,16 @@ class CustomerDashboardPreonboarding extends Component {
                         </label>
                 
                 <h2>DROP FILE BELOW</h2>
-                    <div className="text-center mt-5">
-                        <Dropzone onDrop={this.onDrop}>
-                            {({getRootProps, getInputProps}) => (
+                <Dropzone onDrop={this.onDrop}>
+                    {({getRootProps, getInputProps}) => (
+                        <section>
                             <div {...getRootProps()}>
                                 <input {...getInputProps()} />
-                                Click me to upload a file!
+                                <p>Drag 'n' drop some files here, or click to select files</p>
                             </div>
-                            )}
-                        </Dropzone>
-                    </div>
+                        </section>
+                    )}
+                </Dropzone>
                         
 
 

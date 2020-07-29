@@ -36,7 +36,17 @@ router.get('/:id', (req, res) => {
  * POST route for store
  */
 router.post('/', (req, res) => {
-
+    console.log('req.body', req.body);
+    let sqlText = `INSERT INTO store (store_inventory)
+    VALUES($1);`
+    pool.query(sqlText, [req.body])
+    .then((result) => {
+        res.sendStatus(201)
+    })
+    .catch((error) => {
+        console.log('Error posting inventory file', error);
+        res.sendStatus(500);
+    })
 });
 
 // PUT route for updating store in individual store admin view
