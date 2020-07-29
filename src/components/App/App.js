@@ -3,7 +3,7 @@ import { HashRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 import { connect } from 'react-redux';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
-import './App.css';
+import './App.scss';
 
 // REMOVE ?
 import AboutPage from '../AboutPage/AboutPage';
@@ -28,10 +28,9 @@ import Locations from '../Locations/Locations';
 
 
 class App extends Component {
+
   componentDidMount () {
     this.props.dispatch({type: 'FETCH_USER'})
-    // console.log('this.props.reduxStore', this.props.reduxStore);
-    
   }
 
   render() {
@@ -41,10 +40,9 @@ class App extends Component {
         <div>
           
         {/* Navigation toggles between Admin or Customer view */}
-          {isAdmin ? <AdminNavigation/> : <CustomerNavigation/>}
+          {isAdmin ? <AdminNavigation changeRoute={this.changeRoute}/> : <CustomerNavigation changeRoute = {this.changeRoute}/>}
 
           <Switch>
-            <Redirect exact from="/" to="/home" />
             {isAdmin ? <Redirect exact from="/home" to="/AdminDashboard" /> : <Redirect exact from="/home" to="/CustomerDashboard" />}
             <Route exact path="/about" component={AboutPage}/>
             <ProtectedRoute exact path="/home" component={UserPage}/>

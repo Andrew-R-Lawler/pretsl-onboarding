@@ -13,31 +13,17 @@ class CustomerDashboard extends Component {
     }
 
     componentDidMount(){
-        this.props.dispatch({ type: 'GET_LOCATIONS' })
-
-    //     const {store_status: store_statusVar} = this.props.reduxState.locationsReducer[0];
-
-    //     this.setState({
-    //         store_status: store_statusVar
-    //     })
-    // }
-
-    // componentDidUpdate(prevProps, prevState){
-    //     console.log("inside componentDidUpdate in Customer Dashboar, this.props.reduxState.locationReducer", this.props.reduxState.locationReducer);
+        this.props.dispatch({ type: 'GET_STORE_CLIENT_DASHBOARD', payload:{user_id: this.props.reduxState.user.id} });
         
     }
 
     render(){
-        //const  loactionsReducerDataObject = this.props.reduxState.locationsReducer[0];
+
         return(
             <div className="CustomerDashboardBaseDiv">
                 <h1>Customer Dashboard</h1>
                 <div className="customerDashboardActiveStatusConditionalRenderDiv">
-                    {/* {this.props.reduxState.locationsReducer.store_status==="Customer" ? <CustomerDashboardPostonboarding/>:<CustomerDashboardPreonboarding/>} */}
-
-                    {/* {JSON.stringify(loactionsReducerDataObject.store_status)} */}
-                    {/* {JSON.stringify(this.state.store_status)} */}
-                    {this.props.reduxState.locationsReducer.map(store =>{
+                    {this.props.reduxState.clientDashboardStoreReducer.map(store =>{
                         if (store.store_status ==='Customer'){
                             return(
                                 <CustomerDashboardPostonboarding store = {store}/>
