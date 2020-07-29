@@ -44,12 +44,22 @@ function* updateStore(action) {
     }
 }
 
+function* addNewStore(action) {
+    try{
+        yield axios.post('/api/store', action.payload)
+        yield put({ type: 'GET_STORES' })
+    } catch (error) {
+        console.log('Error with store POST:', action.payload);
+    }
+}
+
 
 function* storesSaga() {
     yield takeEvery('GET_STORES', getStores)
     yield takeEvery('GET_INDIVIDUAL_STORE', getIndividualStore)
     yield takeEvery('UPDATE_STORE', updateStore)
     yield takeEvery('GET_STORE_CLIENT_DASHBOARD', getStoresForClientDashboard)
+    yield takeEvery('ADD_NEW_STORE', addNewStore)
 }
 
 export default storesSaga;
