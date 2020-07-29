@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Moment from 'react-moment';
+import Dropzone from 'react-dropzone'
 
 //views on this page, create a button that navigates to view contract page
 //display date joined
@@ -20,6 +20,16 @@ class CustomerDashboardPreonboarding extends Component {
         //display modal here, select contract from clientStoreReducer
         console.log("Contract Button Clicked");
     }
+
+    //     onDrop = (acceptedFiles) => {
+    //         console.log('x', acceptedFiles);
+    //       }
+    // }
+
+    onDrop = (acceptedFiles) => {
+        console.log('onDrop', acceptedFiles);
+        
+    }
     render(){
         return(
             <div>
@@ -38,9 +48,24 @@ class CustomerDashboardPreonboarding extends Component {
                                     View Contract
                                 </button>
                         </label>
-                        
+                
+                <h2>DROP FILE BELOW</h2>
+                    <div className="text-center mt-5">
+                        <Dropzone onDrop={this.onDrop}>
+                            {({getRootProps, getInputProps}) => (
+                            <div {...getRootProps()}>
+                                <input {...getInputProps()} />
+                                Click me to upload a file!
+                            </div>
+                            )}
+                        </Dropzone>
                     </div>
+                        
 
+
+
+
+                    </div>
                 </div>
             </div>
         )
