@@ -15,12 +15,10 @@ class CustomerSupport extends Component {
     }
 
     handleChange = (event) => {
-        // console.log('event.target.value', event.target.value);
         this.setState({
             [event.target.name]: event.target.value,
             storeId: this.props.reduxStore.locationsReducer[0].store_id,
         })
-        // console.log('this.state', this.state);
     }
 
     submit = () => {
