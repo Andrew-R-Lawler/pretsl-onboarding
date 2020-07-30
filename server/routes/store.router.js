@@ -35,24 +35,12 @@ router.get('/:id', (req, res) => {
 /**
  * POST route for store
  */
-// router.post('/', (req, res) => {
-//     console.log('req.body', req.body);
-//     let sqlText = `INSERT INTO store (store_inventory)
-//     VALUES($1);`
-//     pool.query(sqlText, [req.body])
-//     .then((result) => {
-//         res.sendStatus(201)
-//     })
-//     .catch((error) => {
-//         console.log('Error posting inventory file', error);
-//         res.sendStatus(500);
-//     })
-// });
 
-// PUT route for updating store in individual store admin view
 router.put('/:id', (req, res) => {
 
     console.log('req.params.id', req.params.id);
+    console.log('store_inventory:', req.body.store_inventory);
+    
     pool.query(`UPDATE "store"
     SET "store_name" = $1, "store_status" = $2, "date_joined" = $3, "notes" = $4, "contract" = $5, "business_type" = $6, "moonclerk_url" = $7, "customer_email" = $8, "active_customer" = $9, "store_inventory" = $10
     WHERE "id" = $11`, [req.body.store_name, req.body.store_status, req.body.date_joined, req.body.notes, req.body.contract, req.body.business_type, req.body.moonclerk_url, req.body.customer_email, req.body.active_customer, req.body.store_inventory, req.params.id])

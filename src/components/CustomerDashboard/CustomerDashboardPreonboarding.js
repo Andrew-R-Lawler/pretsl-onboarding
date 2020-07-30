@@ -17,8 +17,17 @@ import Dropzone from 'react-dropzone'
 class CustomerDashboardPreonboarding extends Component {
 
     state = {
-        upload: '',
-        id: this.props.store.id
+        id: this.props.store.id,
+        store_name: this.props.store.store_name,
+        customer_email: this.props.store.customer_email,
+        store_status: this.props.store.store_status,
+        date_joined: this.props.store.date_joined,
+        notes: this.props.store.notes,
+        business_type: this.props.store.business_type,
+        contract: this.props.store.contract,
+        moonclerk_url: this.props.store.moonclerk_url,
+        active_customer: this.props.store.active_customer,
+        store_inventory: ''
     }
 
     viewContractModal(){
@@ -30,7 +39,7 @@ class CustomerDashboardPreonboarding extends Component {
         console.log('onDrop:', acceptedFiles);
         const upload = acceptedFiles[0];
         this.setState({
-            upload: acceptedFiles
+            store_inventory: acceptedFiles
         })
         this.props.dispatch({ 
             type: 'UPDATE_STORE',
