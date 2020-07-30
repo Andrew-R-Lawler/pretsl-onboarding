@@ -39,7 +39,6 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     console.log('req.body', req.body);
-    
     pool.query(`INSERT INTO "store" (store_name, store_status, notes, business_type, customer_email)
     VALUES ($1, $2, $3, $4, $5);`, [req.body.store_name, req.body.store_status, req.body.notes, req.body.business_type, req.body.customer_email])
     .then(result => {

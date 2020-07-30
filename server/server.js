@@ -14,6 +14,7 @@ const locationsRouter = require('./routes/locations.router');
 const storeRouter = require('./routes/store.router');
 const supportRouter = require('./routes/support.router');
 const clientStoreDashboardRouter = require('./routes/clientStoreDashboard.router');
+const userListRouter = require('./routes/admin.users.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -33,6 +34,7 @@ app.use('/api/location', locationsRouter);
 app.use('/api/store', storeRouter);
 app.use('/api/support', supportRouter);
 app.use('/api/clientstore', clientStoreDashboardRouter)
+app.use('/api/userlist', userListRouter)
 
 // Serve static files
 app.use(express.static('build'));

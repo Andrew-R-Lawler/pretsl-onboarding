@@ -5,6 +5,7 @@ class AdminIndividualStore extends Component {
 
     state = {
         edit: false,
+        user_id: '',
         store_name: '',
         customer_email: '',
         store_status: '',
@@ -25,6 +26,7 @@ class AdminIndividualStore extends Component {
         this.setState({
             edit: !this.state.edit,
             id: this.props.store.id,
+            user_id: this.props.store.user_id,
             store_name: this.props.store.store_name,
             customer_email: this.props.store.customer_email,
             store_status: this.props.store.store_status,
@@ -62,6 +64,16 @@ class AdminIndividualStore extends Component {
                     <input name='store_name' value={this.state.store_name} onChange={this.handleChange}></input>
                 :
                     <p>{this.props.store.store_name}</p>
+                }
+                <h3>User ID</h3>
+                {this.state.edit ?
+                    <select name='user_id' value={this.state.user_id} onChange={this.handleChange}>
+                        {this.props.userlist.map(user => {
+                            return(<option key = {user.id} value = {user.id}>{user.username}</option>)
+                        })}
+                    </select>
+                :
+                    <p>{this.props.store.user_id}</p>
                 }
                 <h3>Customer Email</h3>
                 {this.state.edit ?
@@ -135,7 +147,8 @@ class AdminIndividualStore extends Component {
 }
 
 const store = reduxState => ({
-    store: reduxState.individualStoreReducer
+    store: reduxState.individualStoreReducer,
+    userlist: reduxState.adminUserReducer
 })
 
 export default connect(store)(AdminIndividualStore);
