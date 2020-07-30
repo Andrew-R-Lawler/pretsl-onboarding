@@ -35,6 +35,7 @@ class CustomerOnboarding extends Component {
     render() {
         return (
             <div className="customer-onboarding-form">
+                <form>
                 {console.log('this.state', this.state)}
                 <h1>Customer Onboarding</h1>
                 <h3>Store Name</h3>
@@ -86,7 +87,7 @@ class CustomerOnboarding extends Component {
                 :
                     <Button onClick={this.addStore}>Submit</Button>
                 }
-                
+                </form>
             </div>
         )
     }
