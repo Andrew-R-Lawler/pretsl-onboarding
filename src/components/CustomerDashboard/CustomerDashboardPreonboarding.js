@@ -38,22 +38,26 @@ class CustomerDashboardPreonboarding extends Component {
     onDrop = (acceptedFiles) => {
         console.log('onDrop:', acceptedFiles);
         const upload = acceptedFiles[0];
+        console.log(upload);
 
-        const pdfBinaryUpload = this.getAsBinary(upload);
-        this.setState({
-            store_inventory: pdfBinaryUpload
-        })
-        this.props.dispatch({ 
-            type: 'UPDATE_STORE',
-            payload: this.state })
+        this.getAsBinary(upload);
+        //const pdfBinaryUpload = this.getAsBinary(upload);
+        // this.setState({
+        //     store_inventory: pdfBinaryUpload
+        // })
+        // this.props.dispatch({ 
+        //     type: 'UPDATE_STORE',
+        //     payload: this.state })
     }
 
     getAsBinary(File){
         const reader = new FileReader();
+        console.log("getAsBinary, File:",File);
         reader.readAsBinaryString(File);
-        const pdfBinaryUpload = reader.result;
-        console.log("pdfBinaryUpload", pdfBinaryUpload);
-        return pdfBinaryUpload;
+        console.log(reader.result);
+        //const pdfBinaryUpload = reader.result;
+        //console.log("pdfBinaryUpload", pdfBinaryUpload);
+        //return pdfBinaryUpload;
     }
 
     render(){

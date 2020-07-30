@@ -55,7 +55,7 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
 
     console.log('req.params.id', req.params.id);
-    console.log('store_inventory:', req.body.store_inventory);
+    console.log('store_inventory:', req.body);
     
     pool.query(`UPDATE "store"
     SET "store_name" = $1, "store_status" = $2, "date_joined" = $3, "notes" = $4, "contract" = $5, "business_type" = $6, "moonclerk_url" = $7, "customer_email" = $8, "active_customer" = $9, "store_inventory" = $10
