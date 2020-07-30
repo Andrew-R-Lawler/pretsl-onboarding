@@ -16,16 +16,25 @@ import Dropzone from 'react-dropzone'
 
 class CustomerDashboardPreonboarding extends Component {
 
+    state = {
+        upload: '',
+        id: this.props.store.id
+    }
+
     viewContractModal(){
         //display modal here, select contract from clientStoreReducer
         console.log("Contract Button Clicked");
     }
 
     onDrop = (acceptedFiles) => {
-        console.log('onDrop', acceptedFiles);
+        console.log('onDrop:', acceptedFiles);
+        const upload = acceptedFiles[0];
+        this.setState({
+            upload: acceptedFiles
+        })
         this.props.dispatch({ 
-            type: 'SET_INVENTORY',
-            payload: acceptedFiles })
+            type: 'UPDATE_STORE',
+            payload: this.state })
     }
 
     render(){

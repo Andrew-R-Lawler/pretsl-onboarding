@@ -43,21 +43,22 @@ function* updateStore(action) {
     }
 }
 
-function* setInventory(action) {
-    try {
-        yield axios.post(`/api/store/`, action.payload)
-    } catch (error) {
-        console.log('Error with setInventory from storeSaga', error);
+// function* setInventory(action) {
+//     try {
+//         yield axios.put(`/api/store/`, action.payload)
+//         yield put({ type: 'GET_INDIVIDUAL_STORE', payload: action.payload.id })
+//     } catch (error) {
+//         console.log('Error with setInventory from storeSaga', error);
         
-    }
-}
+//     }
+// }
 
 function* storesSaga() {
     yield takeEvery('GET_STORES', getStores)
     yield takeEvery('GET_INDIVIDUAL_STORE', getIndividualStore)
     yield takeEvery('UPDATE_STORE', updateStore)
     yield takeEvery('GET_STORE_CLIENT_DASHBOARD', getStoresForClientDashboard)
-    yield takeLatest('SET_INVENTORY', setInventory)
+    // yield takeLatest('SET_INVENTORY', setInventory)
 }
 
 export default storesSaga;
