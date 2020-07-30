@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
+import { Table } from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
+import './AdminSupport.css';
 
 class AdminSupportTicket extends Component {
 
@@ -45,26 +48,26 @@ class AdminSupportTicket extends Component {
 
     render(){
         return(
-            <tr key={this.props.item.id}>
-                <td>{this.props.item.store_name}</td>
-                <td>{this.props.item.customer_email}</td>
-                <td>{this.props.item.request_type}</td>
-                <td>{this.props.item.request_body}</td>
-                <td>{this.props.item.id}</td> 
-                <td>
+            <Table.Row key={this.props.item.id}>
+                <Table.Cell>{this.props.item.store_name}</Table.Cell>
+                <Table.Cell>{this.props.item.customer_email}</Table.Cell>
+                <Table.Cell>{this.props.item.request_type}</Table.Cell>
+                <Table.Cell>{this.props.item.request_body}</Table.Cell>
+                <Table.Cell>{this.props.item.id}</Table.Cell> 
+                <Table.Cell>
                     <Moment format="YYYY/MM/DD">
                         {this.props.item.request_date}
                     </Moment>
-                </td>
-                <td>
+                </Table.Cell>
+                <Table.Cell>
                     <select name="updateStatus" value = {this.props.item.ticket_status} onChange={this.updateStatus}>
                         <option value="New Request">New Request</option>
                         <option value="In Progress">In Progress</option>
                         <option value="Resolved">Resolved</option>
                     </select>
-                </td>
-                <td><button value = {this.props.item.id} onClick={this.archive}>ARCHIVE</button></td>
-            </tr>
+                </Table.Cell>
+                <Table.Cell><button value={this.props.item.id} onClick={this.archive}>ARCHIVE</button></Table.Cell>
+            </Table.Row>
         )
     }
 }
