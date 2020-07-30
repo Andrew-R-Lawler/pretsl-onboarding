@@ -11,26 +11,16 @@ function* getLocations() {
 }
 
 function* postLocation(action){
-    
-    const config = {
-        store_id: action.payload.store_id,
-        address: action.payload.address,
-        timezone: action.payload.timezone,
-        phone_number: action.payload.phone_number,
-        location_email: action.payload.location_email,
-        point_of_contact: action.payload.point_of_contact,
-    }
-    
     try{
-        yield axios.post('/api/location', config);
+        yield axios.post('/api/location', action.payload);
+        yield put({type: 'GET_LOCATIONS'});
     }catch(error){
         console.log('error with location Post', error);
     }
 
     try {
         const locationResponse = yield axios.get('/api/location');
-
-        yield put({type: 'SET_LOCATIONS', payload: locationResponse})
+        yield put({type: 'SET_LOCATIONS', payload: locationResponse.data})
     }catch(error){
         console.log('Error with exercise_events get request', error);
     }
