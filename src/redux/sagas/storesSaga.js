@@ -1,4 +1,4 @@
-import { put, takeEvery } from 'redux-saga/effects';
+import { put, takeEvery, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* getStores() {
@@ -32,7 +32,6 @@ function* getStoresForClientDashboard(action){
     }catch(error){
         console.log('Error with getStoreForClientDashboard get request', error);
     }
-
 }
 
 function* updateStore(action) {
@@ -43,6 +42,7 @@ function* updateStore(action) {
         console.log('Error with store PUT:', error);
     }
 }
+
 
 function* addNewStore(action) {
     try{
@@ -60,6 +60,7 @@ function* storesSaga() {
     yield takeEvery('UPDATE_STORE', updateStore)
     yield takeEvery('GET_STORE_CLIENT_DASHBOARD', getStoresForClientDashboard)
     yield takeEvery('ADD_NEW_STORE', addNewStore)
+
 }
 
 export default storesSaga;

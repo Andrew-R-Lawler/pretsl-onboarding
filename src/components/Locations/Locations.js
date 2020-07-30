@@ -81,24 +81,28 @@ class Locations extends Component {
               <th>Tablet Stands Quantity</th>
             </tr>
           </thead>
-          {location && location.map((item) => (
-            <tr key={item.id}>
-              <td>{item.store_name}</td>
-              <td>{item.address}</td>
-              <td>{item.timezone}</td>
-              <td>{item.phone_number}</td>
-              <td>{item.location_email}</td>
-              <td>{item.point_of_contact}</td>
-              <td>{item.tablets_quantity}</td>
-              <td>{item.printers_quantity}</td>
-              <td>{item.tablet_stands_quantity}</td>
-            </tr>
-          ))}
+          {location &&
+            location.map((item) => (
+              <tr key={item.id}>
+                <td>{item.store_name}</td>
+                <td>{item.address}</td>
+                <td>{item.timezone}</td>
+                <td>{item.phone_number}</td>
+                <td>{item.location_email}</td>
+                <td>{item.point_of_contact}</td>
+                <td>{item.tablets_quantity}</td>
+                <td>{item.printers_quantity}</td>
+                <td>{item.tablet_stands_quantity}</td>
+              </tr>
+            ))}
         </table>
         Add Location:
         {view ? null : (
           <p>
             <div>
+              <label htmlFor="storeName">
+                <b>Store Name: </b>
+              </label>
               <input
                 type="text"
                 name="storeName"
@@ -107,49 +111,81 @@ class Locations extends Component {
               />
             </div>
             <div>
+              <label htmlFor="address">
+                <b>Address: </b>
+              </label>
               <input
+                name="address"
                 onChange={this.handleInputChangeFor("address")}
                 value={this.state.address}
               />
             </div>
             <div>
+              <label htmlFor="timezone">
+                <b>Timezone: </b>
+              </label>
               <input
+                name="timezone"
                 onChange={this.handleInputChangeFor("timezone")}
                 value={this.state.timezone}
               />
             </div>
             <div>
+              <label htmlFor="phoneNumber">
+                <b>Phone Number: </b>
+              </label>
               <input
+                name="phoneNumber"
                 onChange={this.handleInputChangeFor("phoneNumber")}
                 value={this.state.phoneNumber}
               />
             </div>
             <div>
+              <label htmlFor="email">
+                <b>Email Address: </b>
+              </label>
               <input
+                name="email"
                 onChange={this.handleInputChangeFor("email")}
                 value={this.state.email}
               />
             </div>
             <div>
+              <label htmlFor="pointOfContact">
+                <b>Point of Contact: </b>
+              </label>
               <input
+                name="pointOfContact"
                 onChange={this.handleInputChangeFor("pointOfContact")}
                 value={this.state.pointOfContact}
               />
             </div>
             <div>
+              <label htmlFor="tablets_quantity">
+                <b>Tablets Quantity: </b>
+              </label>
               <input
+                name="tablets_quantity"
                 onChange={this.handleInputChangeFor("tablets_quantity")}
                 value={this.state.tablets_quantity}
               />
             </div>
             <div>
+              <label htmlFor="printers_quantity">
+                <b>Printers Quantity: </b>
+              </label>
               <input
+                name="printers_quantity"
                 onChange={this.handleInputChangeFor("printers_quantity")}
                 value={this.state.printers_quantity}
               />
             </div>
             <div>
+              <label htmlFor="tablet_stands_quantity">
+                <b>Tablet Stands Quantity: </b>
+              </label>
               <input
+                name="tablet_stands_quantity"
                 onChange={this.handleInputChangeFor("tablet_stands_quantity")}
                 value={this.state.tablet_stands_quantity}
               />
