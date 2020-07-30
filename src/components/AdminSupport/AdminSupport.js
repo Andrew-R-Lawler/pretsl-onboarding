@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import AdminSupportTicket from './AdminSupportTicket';
+import { Table, Header } from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
+import './AdminSupport.css';
 
 
 class AdminSupport extends Component {
@@ -14,23 +17,24 @@ class AdminSupport extends Component {
         console.log('supportTicket', supportTicket);
         return(
             <div>
-                <h1>Admin Support Tickets</h1>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Store Name</th>
-                            <th>Store Email</th>
-                            <th>Request Type</th>
-                            <th>Description</th>
-                            <th>Ticket Number</th>
-                            <th>Date Requested</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
+                
+                <Table className='adminSupport'>
+                    <Table.Header>
+                        <Header className='adminSupportHead' as='h1'>Admin Support Tickets</Header>
+                        <Table.Row>
+                            <Table.HeaderCell>Store Name</Table.HeaderCell>
+                            <Table.HeaderCell>Store Email</Table.HeaderCell>
+                            <Table.HeaderCell>Request Type</Table.HeaderCell>
+                            <Table.HeaderCell>Description</Table.HeaderCell>
+                            <Table.HeaderCell>Ticket Number</Table.HeaderCell>
+                            <Table.HeaderCell>Date Requested</Table.HeaderCell>
+                            <Table.HeaderCell width={2}>Status</Table.HeaderCell>
+                            <Table.HeaderCell>Actions</Table.HeaderCell>
+                        </Table.Row>
+                    </Table.Header>
                         { supportTicket.map(item => 
                             <AdminSupportTicket item={item} />)}
-                </table>
+                </Table>
         </div>
         )
     }
