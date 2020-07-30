@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
-import { Divider } from 'semantic-ui-react';
+import { Table, Button, Header } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
+import './AdminDashboard.css';
 
 
 class AdminDashboard extends Component {
 
     componentDidMount = () => { 
-        this.props.dispatch ({ type: 'GET_STORES' })
+        this.props.dispatch ({ type: 'GET_STORES' });
+        this.props.dispatch ({ type: 'GET_USER_LIST' })
       };
 
     viewStore = (event) => {
@@ -20,47 +22,45 @@ class AdminDashboard extends Component {
     render(){
         return(
             <div>
-                <h1>Admin Dashboard</h1>
-                <Divider />
-                <div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Actions</th>
-                                <th>Store Name</th>
-                                <th>Email</th>
-                                <th>Status</th>
-                                <th>Date Joined</th>
-                                <th>Notes</th>
-                                <th>Contract</th>
-                                <th>Business Type</th>
-                                <th>Customer Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.props.reduxState.storeReducer.map(store => {
-                                return(
-                                    <tr key={store.id}>
-                                        <td><button value={store.id} onClick={this.viewStore}>View Profile</button></td>
-                                        <td>{store.store_name}</td>
-                                        <td>{store.customer_email}</td>
-                                        <td>{store.store_status}</td>
-                                        <td><Moment format="YYYY/MM/DD">{store.date_joined}</Moment></td>
-                                        <td>{store.notes}</td>
-                                        <td>{store.contract}</td>
-                                        <td>{store.business_type}</td>
-                                        {store.active_customer === true ?
-                                            <td>True</td>
-                                            :
-                                            <td>False</td>
-                                        }
-                                    </tr>
-                                )
-                            })}
-                        </tbody>
-                    </table>
-                </div>
-
+                <Table className='adminDashboard'>
+                    <Table.Header>
+                        <Header as='h1' className='adminDashHead'>Admin Dashboard</Header>
+                        <Table.Row>
+                            <Table.HeaderCell>Actions</Table.HeaderCell>
+                            <Table.HeaderCell>Store Name</Table.HeaderCell>
+                            <Table.HeaderCell>User</Table.HeaderCell>
+                            <Table.HeaderCell>Email</Table.HeaderCell>
+                            <Table.HeaderCell>Status</Table.HeaderCell>
+                            <Table.HeaderCell>Date Joined</Table.HeaderCell>
+                            <Table.HeaderCell>Notes</Table.HeaderCell>
+                            <Table.HeaderCell>Contract</Table.HeaderCell>
+                            <Table.HeaderCell>Business Type</Table.HeaderCell>
+                            <Table.HeaderCell>Customer Active</Table.HeaderCell>
+                        </Table.Row>
+                    </Table.Header>
+                    <Table.Body>
+                        {this.props.reduxState.storeReducer.map(store => {
+                            return(
+                                <Table.Row key={store.id}>
+                                    <Table.Cell><Button value={store.id} onClick={this.viewStore}>View Profile</Button></Table.Cell>
+                                    <Table.Cell>{store.store_name}</Table.Cell>
+                                    <Table.Cell>{store.user_id}</Table.Cell>
+                                    <Table.Cell>{store.customer_email}</Table.Cell>
+                                    <Table.Cell>{store.store_status}</Table.Cell>
+                                    <Table.Cell><Moment format="YYYY/MM/DD">{store.date_joined}</Moment></Table.Cell>
+                                    <Table.Cell>{store.notes}</Table.Cell>
+                                    <Table.Cell>{store.contract}</Table.Cell>
+                                    <Table.Cell>{store.business_type}</Table.Cell>
+                                    {store.active_customer === true ?
+                                        <Table.Cell>True</Table.Cell>
+                                        :
+                                        <Table.Cell>False</Table.Cell>
+                                    }
+                                </Table.Row>
+                            )
+                        })}
+                    </Table.Body>
+                </Table>
             </div>
         )
     }
