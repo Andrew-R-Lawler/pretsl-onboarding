@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Header, Icon, Modal, Input, TextArea, Dropdown } from 'semantic-ui-react';
+import { Button, Header, Icon, Modal, Input, TextArea, } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import './AdminCustomerOnboarding.scss';
+
 
 class CustomerOnboarding extends Component {
 
@@ -35,26 +36,24 @@ class CustomerOnboarding extends Component {
         return (
             <div className="customer-onboarding-form">
                 {console.log('this.state', this.state)}
-                <h1 className="customer-onboarding-head">Customer Onboarding</h1>
+                <h1>Customer Onboarding</h1>
                 <h3>Store Name</h3>
-                <Input name = 'store_name' placeholder = 'Store Name' onChange={this.handleChange} value = {this.state.store_name}></Input>
+                <Input className="customer-onboarding-input" name = 'store_name' placeholder = 'Store Name' onChange={this.handleChange} value = {this.state.store_name}></Input>
                 <h3>Store Status</h3>
-                <Dropdown name='store_status' value={this.state.store_status} onChange={this.handleChange}>
-                    <Dropdown.Menu>
-                    <Dropdown.Item value=''/>
-                    <Dropdown.Item value='Lead'/>
-                    <Dropdown.Item value='Prospect'/>
-                    <Dropdown.Item value='Opportunity'/>
-                    <Dropdown.Item value='Customer'/>
-                    <Dropdown.Item value='Past Customer'/>
-                    <Dropdown.Item value='Junk Opportunity'/>
-                    <Dropdown.Item value='Junk Prospect'/>
-                    </Dropdown.Menu>
-                </Dropdown>
+                <select name='store_status' value={this.state.store_status} onChange={this.handleChange}>
+                    <option value=''>Select</option>
+                    <option value='Lead'>Lead</option>
+                    <option value='Prospect'>Prospect</option>
+                    <option value='Opportunity'>Opportunity</option>
+                    <option value='Customer'>Customer</option>
+                    <option value='Past Customer'>Past Customer</option>
+                    <option value='Junk Opportunity'>Junk Opportunity</option>
+                    <option value='Junk Prospect'>Junk Prospect</option>
+                </select>
                 <h3>Notes</h3>
-                <TextArea name = 'notes' placeholder = 'Notes' onChange = {this.handleChange} value = {this.state.notes}></TextArea>
+                <TextArea className="customer-text-area" name = 'notes' placeholder = 'Notes' onChange = {this.handleChange} value = {this.state.notes}></TextArea>
                 <h3>Business Type</h3>
-                {/* <Select name='business_type' value={this.state.business_type} onChange={this.handleChange}/>
+                <select name='business_type' value={this.state.business_type} onChange={this.handleChange}>
                     <option value=''>Select</option>
                     <option value='Ag Co-op'>Ag Co-op</option>
                     <option value='Food Co-op'>Food Co-op</option>
@@ -62,9 +61,9 @@ class CustomerOnboarding extends Component {
                     <option value='Ethnic Grocer'>Ethnic Grocer</option>
                     <option value='Organic/Health Foods'>Organic/Health Foods</option>
                     <option value='Caterer'>Caterer</option>
-                </select> */}
+                </select>
                 <h3>Customer Email</h3>
-                <Input name='customer_email' placeholder = 'Customer Email' onChange={this.handleChange} value={this.state.customer_email}></Input>
+                <Input className="customer-onboarding-input" name='customer_email' placeholder = 'Customer Email' onChange={this.handleChange} value={this.state.customer_email}></Input>
                 <br></br>
                 { this.state.store_name === '' || this.state.store_status === '' || this.state.notes === '' || this.state.business_type === '' || this.state.customer_email === '' ?
                     <Modal
