@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Header, Icon, Modal } from 'semantic-ui-react';
+import { Button, Header, Icon, Modal, Input, TextArea, Dropdown } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
+import './AdminCustomerOnboarding.scss';
 
 class CustomerOnboarding extends Component {
 
@@ -32,26 +33,28 @@ class CustomerOnboarding extends Component {
 
     render() {
         return (
-            <div>
+            <div className="customer-onboarding-form">
                 {console.log('this.state', this.state)}
-                <h1>Customer Onboarding</h1>
+                <h1 className="customer-onboarding-head">Customer Onboarding</h1>
                 <h3>Store Name</h3>
-                <input name = 'store_name' placeholder = 'Store Name' onChange={this.handleChange} value = {this.state.store_name}></input>
+                <Input name = 'store_name' placeholder = 'Store Name' onChange={this.handleChange} value = {this.state.store_name}></Input>
                 <h3>Store Status</h3>
-                <select name='store_status' value={this.state.store_status} onChange={this.handleChange}>
-                    <option value=''>Select</option>
-                    <option value='Lead'>Lead</option>
-                    <option value='Prospect'>Prospect</option>
-                    <option value='Opportunity'>Opportunity</option>
-                    <option value='Customer'>Customer</option>
-                    <option value='Past Customer'>Past Customer</option>
-                    <option value='Junk Opportunity'>Junk Opportunity</option>
-                    <option value='Junk Prospect'>Junk Prospect</option>
-                </select>
+                <Dropdown name='store_status' value={this.state.store_status} onChange={this.handleChange}>
+                    <Dropdown.Menu>
+                    <Dropdown.Item value=''/>
+                    <Dropdown.Item value='Lead'/>
+                    <Dropdown.Item value='Prospect'/>
+                    <Dropdown.Item value='Opportunity'/>
+                    <Dropdown.Item value='Customer'/>
+                    <Dropdown.Item value='Past Customer'/>
+                    <Dropdown.Item value='Junk Opportunity'/>
+                    <Dropdown.Item value='Junk Prospect'/>
+                    </Dropdown.Menu>
+                </Dropdown>
                 <h3>Notes</h3>
-                <textarea name = 'notes' placeholder = 'Notes' onChange = {this.handleChange} value = {this.state.notes}></textarea>
+                <TextArea name = 'notes' placeholder = 'Notes' onChange = {this.handleChange} value = {this.state.notes}></TextArea>
                 <h3>Business Type</h3>
-                <select name='business_type' value={this.state.business_type} onChange={this.handleChange}>
+                {/* <Select name='business_type' value={this.state.business_type} onChange={this.handleChange}/>
                     <option value=''>Select</option>
                     <option value='Ag Co-op'>Ag Co-op</option>
                     <option value='Food Co-op'>Food Co-op</option>
@@ -59,9 +62,9 @@ class CustomerOnboarding extends Component {
                     <option value='Ethnic Grocer'>Ethnic Grocer</option>
                     <option value='Organic/Health Foods'>Organic/Health Foods</option>
                     <option value='Caterer'>Caterer</option>
-                </select>
+                </select> */}
                 <h3>Customer Email</h3>
-                <input name='customer_email' placeholder = 'Customer Email' onChange={this.handleChange} value={this.state.customer_email}></input>
+                <Input name='customer_email' placeholder = 'Customer Email' onChange={this.handleChange} value={this.state.customer_email}></Input>
                 <br></br>
                 { this.state.store_name === '' || this.state.store_status === '' || this.state.notes === '' || this.state.business_type === '' || this.state.customer_email === '' ?
                     <Modal
