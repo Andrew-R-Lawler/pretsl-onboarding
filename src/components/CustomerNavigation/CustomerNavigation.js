@@ -7,7 +7,8 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 const CustomerNavigation = (props) => (
   <div className="nav">
     <Link to="/home">
-      <h2 className="nav-title">Customer Nav Bar</h2>
+      {/* <h2 className="nav-title">Customer Nav Bar</h2> */}
+      <img className="logo-nav" src="https://get.pretsl.com/wp-content/uploads/2020/06/Pretsl-New-Logo-1.11-White-Opt.png"></img>
     </Link>
     <div className="nav-right">
       {!props.user.id && <Link className="nav-link" to="/home">'Login / Register'</Link>}

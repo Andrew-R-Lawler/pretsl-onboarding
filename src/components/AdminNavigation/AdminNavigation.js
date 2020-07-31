@@ -6,8 +6,10 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 
 const AdminNavigation = (props) => (
   <div className="nav">
-    <Link to="/home"><h2 className="nav-title">Admin Nav Bar</h2>
+    <Link to="/home">
+      {/* <h2 className="nav-title">Admin Nav Bar</h2> */}
     </Link>
+    <img className="logo-nav" src="https://get.pretsl.com/wp-content/uploads/2020/06/Pretsl-New-Logo-1.11-White-Opt.png"></img>
     <div className="nav-right">
       
         {/* Show this link if they are logged in or not,

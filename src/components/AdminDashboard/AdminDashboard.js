@@ -22,6 +22,19 @@ class AdminDashboard extends Component {
     render(){
         return(
             <div>
+
+        <center>
+          <Button
+            type="button"
+            className="link-button"
+            onClick={() => {this.props.dispatch({type: 'SET_TO_REGISTER_MODE'})}}
+          >
+            Register
+          </Button>
+        </center>
+
+
+
                 <Table className='adminDashboard'>
                     <Table.Header>
                         <Header as='h1' className='adminDashHead'>Admin Dashboard</Header>
