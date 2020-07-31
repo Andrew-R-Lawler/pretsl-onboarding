@@ -10,8 +10,9 @@ select {
     width: 90%;
     height: 45px;
     border-radius: 4px;
-    opacity: 30%;
+    // opacity: 30%;
     padding-left: 10px;
+    color: $quaternary;
 }
 
 option {
@@ -19,6 +20,6 @@ option {
 }
 
 select:hover {
-    opacity: 100%;
+    color: $secondary;
     cursor: pointer;
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
-import { Table, Button } from 'semantic-ui-react';
+import { Button, Table } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import './AdminSupport.css';
 
@@ -66,7 +66,11 @@ class AdminSupportTicket extends Component {
                         <option value="Resolved">Resolved</option>
                     </select>
                 </Table.Cell>
+<<<<<<< HEAD
                 <Table.Cell><Button value={this.props.item.id} onClick={this.archive}>ARCHIVE</Button></Table.Cell>
+=======
+                <Table.Cell><Button basic color='red' value={this.props.item.id} onClick={this.archive}>ARCHIVE</Button></Table.Cell>
+>>>>>>> acc750ac571555527814ab9a57d3892750e841b6
             </Table.Row>
         )
     }
