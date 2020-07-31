@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CustomerDashboardPreonboarding from './CustomerDashboardPreonboarding';
 import CustomerDashboardPostonboarding from './CustomerDashboardPostonboarding';
+import './CustomerDashboard.scss'
 
 //conditionally render, preonboarding and post onboarding dashboard components based off
 //boolean value active_customer. active customer will be stored in store reducer, 
@@ -21,7 +22,7 @@ class CustomerDashboard extends Component {
 
         return(
             <div className="CustomerDashboardBaseDiv">
-                <h1>Customer Dashboard</h1>
+                <h1 className="customer-header-h1">Customer Dashboard</h1>
                 <div className="customerDashboardActiveStatusConditionalRenderDiv">
                     {this.props.reduxState.clientDashboardStoreReducer.map(store =>{
                         if (store.store_status ==='Customer'){

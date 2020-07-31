@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Dropzone from 'react-dropzone'
 
+import { Button, Header, Icon, Modal, Input, TextArea, Form , Label} from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
+
 //views on this page, create a button that navigates to view contract page
 //display date joined
 //customer email. 
@@ -49,38 +52,33 @@ class CustomerDashboardPreonboarding extends Component {
     render(){
         return(
             <div>
-                <h2>{this.props.store.store_name}</h2>
+                <h2 className="store-name">{this.props.store.store_name}</h2>
                 <div className="customerPreonboardingDisplay">
                     {/* Render date joined, then email, then render view contract at the bottom of the page */}
                     {/* <div className="dateJoinedDiv">Date: {this.props.reduxState.clientStoreReducer.date_joined} </div> */}
-                    <div className="emailDisplayDiv">Email: {this.props.store.customer_email}</div>
+                    <div className="emailDisplayDiv">
+                        <h3>Email:</h3>
+                         {this.props.store.customer_email}</div>
                     <div className="contractViewButton">
-                        <label htmlFor="contractViewButton">
-                            Contract: 
-                            <button
+                        <h3>Contract:</h3>
+                            <Button
                                 type='button'
                                 onClick={()=>this.viewContractModal()}
                                 >
                                     View Contract
-                                </button>
-                        </label>
+                            </Button>
                 
-                <h2>DROP FILE BELOW</h2>
+                <h3>Inventory:</h3>
                 <Dropzone onDrop={this.onDrop}>
                     {({getRootProps, getInputProps}) => (
-                        <section>
+                        <section className="dropzone-style">
                             <div {...getRootProps()}>
                                 <input {...getInputProps()} />
-                                <p>Drag 'n' drop some files here, or click to select files</p>
+                                <p>CLICK HERE, or DRAG AND DROP files to upload your inventory</p>
                             </div>
                         </section>
                     )}
                 </Dropzone>
-                        
-
-
-
-
                     </div>
                 </div>
             </div>

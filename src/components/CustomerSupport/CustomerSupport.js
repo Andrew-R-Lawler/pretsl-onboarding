@@ -29,6 +29,7 @@ class CustomerSupport extends Component {
             type: 'CREATE_NEW_TICKET',
             payload: this.state
         })
+        
     }
 
     render() {
@@ -61,7 +62,7 @@ class CustomerSupport extends Component {
                         <textarea name="requestBody" placeholder="How can we help you?" onChange={this.handleChange}></textarea>
                         <br/>
                         <br/>
-                        <Button color='red' onClick={this.submit}>Submit</Button>
+                        <Button color='red' onClick={this.submit} >Submit</Button>
                     </div>
                 </Form>
             </div>
