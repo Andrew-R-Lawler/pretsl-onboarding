@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Header, Icon, Modal, Input, TextArea, } from 'semantic-ui-react';
+import { Button, Header, Icon, Modal, Input, TextArea, Form } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import './AdminCustomerOnboarding.scss';
 
@@ -35,7 +35,7 @@ class CustomerOnboarding extends Component {
     render() {
         return (
             <div className="customer-onboarding-form">
-                <form>
+                <Form>
                 {console.log('this.state', this.state)}
                 <h1>Customer Onboarding</h1>
                 <h3>Store Name</h3>
@@ -65,7 +65,8 @@ class CustomerOnboarding extends Component {
                 </select>
                 <h3>Customer Email</h3>
                 <Input className="customer-onboarding-input" name='customer_email' placeholder = 'Customer Email' onChange={this.handleChange} value={this.state.customer_email}></Input>
-                <br></br>
+                <br/>
+                <br/>
                 { this.state.store_name === '' || this.state.store_status === '' || this.state.notes === '' || this.state.business_type === '' || this.state.customer_email === '' ?
                     <Modal
                         trigger={<Button onClick={this.handleOpen}>Submit</Button>}
@@ -87,7 +88,7 @@ class CustomerOnboarding extends Component {
                 :
                     <Button onClick={this.addStore}>Submit</Button>
                 }
-                </form>
+                </Form>
             </div>
         )
     }
