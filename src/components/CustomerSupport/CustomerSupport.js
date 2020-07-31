@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './CustomerSupport.scss'
+import { Button, Form } from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
 
 class CustomerSupport extends Component {
 
@@ -31,19 +33,20 @@ class CustomerSupport extends Component {
 
     render() {
         return (
-            <div>
+            <div className="customer-support-container">
                 <div>
-                    {console.log('this.state', this.state, this.props.reduxStore.locationsReducer)}
-                    <h1>Customer Support</h1>
-                        <h2>Thank you for reaching out.</h2>
-                            <p>From Purple Onion: 'We’re here to help make the planning of your event easier. Whether you’ve got questions about placing an order, creating a menu for your event or just need help getting started, we’re here to help. Fill out the form here and someone will be in touch with you soon.'</p>
+                    {/* {console.log('this.state', this.state, this.props.reduxStore.locationsReducer)} */}
+                    
                 </div>
-                <form>
+                <Form>
                     <div className="customer-support-instructions">
-                        Name: {this.props.reduxStore.user.username}
+                    <h1 className="customer-support-h1">Customer Support</h1>
+                        <h2>Thank you for reaching out!</h2>
+                            <p>Let us know how we can make your business.pretsl.com experience even better. Whether you’d like to change payment or contact information, update your subscriptions or plan, or cancel your Pretsl account, we’re here to help. Fill out the form here and someone will be in touch with you soon.</p>
+                        <h4>Name: {this.props.reduxStore.user.username}
                         <br/>
-                        Contact Info: {this.props.reduxStore.user.user_email}
-                        <p>If there is a better name or contact info to address this request, please specify so in the details section below.</p>
+                        Contact Info: {this.props.reduxStore.user.user_email}</h4>
+                        <p><em>* If there is a better name or contact info to address this request, please specify so in the details section to the right.</em></p>
                     </div>
                     <div className="customer-support-inputs">
                         <label>Request type:</label>
@@ -57,9 +60,10 @@ class CustomerSupport extends Component {
                         <br/>
                         <textarea name="requestBody" placeholder="How can we help you?" onChange={this.handleChange}></textarea>
                         <br/>
-                        <button onClick={this.submit}>Submit</button>
+                        <br/>
+                        <Button color='red' onClick={this.submit}>Submit</Button>
                     </div>
-                </form>
+                </Form>
             </div>
         )
     }
