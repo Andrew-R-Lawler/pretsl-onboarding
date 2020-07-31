@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { Button, Header, Icon, Modal, Input, TextArea, } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
+import './LoginPage.scss';
 
 class LoginPage extends Component {
   state = {
@@ -37,7 +38,7 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div>
+      <div className="login-form">
         {this.props.errors.loginMessage && (
           <h2
             className="alert"
@@ -47,11 +48,12 @@ class LoginPage extends Component {
           </h2>
         )}
         <form onSubmit={this.login}>
-          <h1>business.pretsl.com</h1>
+          <img className="logo-head"src="https://get.pretsl.com/wp-content/uploads/2020/06/Pretsl-New-Logo-1.10-opt.png"></img>
+          {/* <h1>business.pretsl.com</h1> */}
           <div>
             <label htmlFor="username">
-              Username:
-              <Input
+              Username:<br/>
+              <Input className="login-input"
                 type="text"
                 name="username"
                 value={this.state.username}
@@ -59,10 +61,11 @@ class LoginPage extends Component {
               />
             </label>
           </div>
+          <br/>
           <div>
             <label htmlFor="password">
-              Password:
-              <Input
+              Password:<br/> 
+              <Input className="login-input"
                 type="password"
                 name="password"
                 value={this.state.password}
