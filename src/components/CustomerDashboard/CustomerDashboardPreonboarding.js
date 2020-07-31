@@ -39,6 +39,7 @@ class CustomerDashboardPreonboarding extends Component {
         console.log('onDrop:', acceptedFiles);
         const upload = acceptedFiles[0];
         console.log(upload);
+        //letpdfBlob = new Blob
 
         this.getAsBinary(upload);
         //const pdfBinaryUpload = this.getAsBinary(upload);
