@@ -66,11 +66,7 @@ class AdminSupportTicket extends Component {
                         <option value="Resolved">Resolved</option>
                     </select>
                 </Table.Cell>
-<<<<<<< HEAD
-                <Table.Cell><Button value={this.props.item.id} onClick={this.archive}>ARCHIVE</Button></Table.Cell>
-=======
                 <Table.Cell><Button basic color='red' value={this.props.item.id} onClick={this.archive}>ARCHIVE</Button></Table.Cell>
->>>>>>> acc750ac571555527814ab9a57d3892750e841b6
             </Table.Row>
         )
     }
