@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Container, Header, Button, Input, TextArea, Form } from 'semantic-ui-react';
+import { Header, Button, Input, TextArea, Form } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import './AdminIndividualStore.css';
 
