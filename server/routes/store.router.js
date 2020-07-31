@@ -57,8 +57,8 @@ router.put('/:id', (req, res) => {
     console.log('store_inventory:', req.body);
     
     pool.query(`UPDATE "store"
-    SET "store_name" = $1, "store_status" = $2, "date_joined" = $3, "notes" = $4, "contract" = $5, "business_type" = $6, "moonclerk_url" = $7, "customer_email" = $8, "active_customer" = $9, "store_inventory" = $10
-    WHERE "id" = $11`, [req.body.store_name, req.body.store_status, req.body.date_joined, req.body.notes, req.body.contract, req.body.business_type, req.body.moonclerk_url, req.body.customer_email, req.body.active_customer, req.body.store_inventory, req.params.id])
+    SET "store_name" = $1, "user_id" = $2, "store_status" = $3, "date_joined" = $4, "notes" = $5, "contract" = $6, "business_type" = $7, "moonclerk_url" = $8, "customer_email" = $9, "active_customer" = $10, "store_inventory" = $11
+    WHERE "id" = $12`, [req.body.store_name, req.body.user_id, req.body.store_status, req.body.date_joined, req.body.notes, req.body.contract, req.body.business_type, req.body.moonclerk_url, req.body.customer_email, req.body.active_customer, req.body.store_inventory, req.params.id])
         .then(result => {
             res.sendStatus(200);
         }).catch(error => {

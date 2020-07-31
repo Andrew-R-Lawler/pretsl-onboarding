@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    pool.query(`SELECT id, username FROM "user";`)
+    pool.query(`SELECT id, username FROM "user" WHERE "administrator" = 'FALSE';`)
     .then(result => {
         res.send(result.rows);
     }).catch(error => {

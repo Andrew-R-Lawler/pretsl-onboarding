@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Header, Icon, Modal } from 'semantic-ui-react';
+import { Button, Header, Icon, Modal, Input, TextArea, } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
+import './AdminCustomerOnboarding.scss';
+
 
 class CustomerOnboarding extends Component {
 
@@ -32,11 +34,12 @@ class CustomerOnboarding extends Component {
 
     render() {
         return (
-            <div>
+            <div className="customer-onboarding-form">
+                <form>
                 {console.log('this.state', this.state)}
                 <h1>Customer Onboarding</h1>
                 <h3>Store Name</h3>
-                <input name = 'store_name' placeholder = 'Store Name' onChange={this.handleChange} value = {this.state.store_name}></input>
+                <Input className="customer-onboarding-input" name = 'store_name' placeholder = 'Store Name' onChange={this.handleChange} value = {this.state.store_name}></Input>
                 <h3>Store Status</h3>
                 <select name='store_status' value={this.state.store_status} onChange={this.handleChange}>
                     <option value=''>Select</option>
@@ -49,7 +52,7 @@ class CustomerOnboarding extends Component {
                     <option value='Junk Prospect'>Junk Prospect</option>
                 </select>
                 <h3>Notes</h3>
-                <textarea name = 'notes' placeholder = 'Notes' onChange = {this.handleChange} value = {this.state.notes}></textarea>
+                <TextArea className="customer-text-area" name = 'notes' placeholder = 'Notes' onChange = {this.handleChange} value = {this.state.notes}></TextArea>
                 <h3>Business Type</h3>
                 <select name='business_type' value={this.state.business_type} onChange={this.handleChange}>
                     <option value=''>Select</option>
@@ -61,7 +64,7 @@ class CustomerOnboarding extends Component {
                     <option value='Caterer'>Caterer</option>
                 </select>
                 <h3>Customer Email</h3>
-                <input name='customer_email' placeholder = 'Customer Email' onChange={this.handleChange} value={this.state.customer_email}></input>
+                <Input className="customer-onboarding-input" name='customer_email' placeholder = 'Customer Email' onChange={this.handleChange} value={this.state.customer_email}></Input>
                 <br></br>
                 { this.state.store_name === '' || this.state.store_status === '' || this.state.notes === '' || this.state.business_type === '' || this.state.customer_email === '' ?
                     <Modal
@@ -84,7 +87,7 @@ class CustomerOnboarding extends Component {
                 :
                     <Button onClick={this.addStore}>Submit</Button>
                 }
-                
+                </form>
             </div>
         )
     }

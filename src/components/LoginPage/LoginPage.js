@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { Button, Header, Icon, Modal, Input, TextArea, } from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
+
 class LoginPage extends Component {
   state = {
     username: '',
@@ -44,11 +47,11 @@ class LoginPage extends Component {
           </h2>
         )}
         <form onSubmit={this.login}>
-          <h1>Login</h1>
+          <h1>business.pretsl.com</h1>
           <div>
             <label htmlFor="username">
               Username:
-              <input
+              <Input
                 type="text"
                 name="username"
                 value={this.state.username}
@@ -59,7 +62,7 @@ class LoginPage extends Component {
           <div>
             <label htmlFor="password">
               Password:
-              <input
+              <Input
                 type="password"
                 name="password"
                 value={this.state.password}
@@ -77,13 +80,13 @@ class LoginPage extends Component {
           </div>
         </form>
         <center>
-          <button
+          <Button
             type="button"
             className="link-button"
             onClick={() => {this.props.dispatch({type: 'SET_TO_REGISTER_MODE'})}}
           >
             Register
-          </button>
+          </Button>
         </center>
       </div>
     );
