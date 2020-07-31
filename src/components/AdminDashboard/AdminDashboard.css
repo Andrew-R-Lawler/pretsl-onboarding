@@ -6,3 +6,12 @@
     padding-top: 20px;
     margin: 5%;
 }
+
+.adminDashButton {
+    float: right;
+    display: inline;
+}
+
+.adminDashContainer {
+    padding-top: 3%;
+}

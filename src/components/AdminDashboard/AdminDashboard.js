@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
-import { Table, Button, Header } from 'semantic-ui-react';
+import { Table, Button, Header, Container } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import './AdminDashboard.css';
 
@@ -22,22 +22,17 @@ class AdminDashboard extends Component {
     render(){
         return(
             <div>
-
-        <center>
-          <Button
-            type="button"
-            className="link-button"
-            onClick={() => {this.props.dispatch({type: 'SET_TO_REGISTER_MODE'})}}
-          >
-            Register
-          </Button>
-        </center>
-
-
-
-                <Table className='adminDashboard'>
+                <Container className='adminDashContainer'>
+                <Button
+                    type="button"
+                    className="adminDashButton"
+                    onClick={() => {this.props.dispatch({type: 'SET_TO_REGISTER_MODE'})}}
+                >
+                Register New Customer
+                </Button>
+                <Header as='h1' className='adminDashHead'>Admin Dashboard</Header>
+                <Table>
                     <Table.Header>
-                        <Header as='h1' className='adminDashHead'>Admin Dashboard</Header>
                         <Table.Row>
                             <Table.HeaderCell>Actions</Table.HeaderCell>
                             <Table.HeaderCell>Store Name</Table.HeaderCell>
@@ -74,6 +69,7 @@ class AdminDashboard extends Component {
                         })}
                     </Table.Body>
                 </Table>
+            </Container>    
             </div>
         )
     }

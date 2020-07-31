@@ -38,7 +38,19 @@ class Locations extends Component {
   };
 
   handleSave() {
-    this.setState({ mode: "view" });
+    this.setState({
+      store_id: "",
+      storeName: "",
+      address: "",
+      timezone: "",
+      phoneNumber: "",
+      email: "",
+      pointOfContact: "",
+      tablets_quantity: "",
+      printers_quantity: "",
+      tablet_stands_quantity: "",
+      modalOpen: false,
+    });
     this.props.dispatch({
       type: "POST_LOCATION",
       payload: this.state
