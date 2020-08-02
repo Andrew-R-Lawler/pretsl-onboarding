@@ -56,7 +56,12 @@ class AdminIndividualStore extends Component {
         })
     }
 
+    sendMail = () => {
+        this.props.dispatch({ type: 'SEND_EMAIL'})
+    }
+
     render() {
+
         return (
             <div>
                 <Form>
@@ -158,6 +163,7 @@ class AdminIndividualStore extends Component {
                     :
                     <Button onClick={this.toggleEdit}>Edit</Button>
                     }
+                    <Button onClick={this.sendMail}>Send Mail</Button>
                 </Form>
             </div>
         )
