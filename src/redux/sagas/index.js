@@ -6,6 +6,7 @@ import locationSaga from './locationSaga';
 import supportSaga from './supportSaga';
 import storesSaga from './storesSaga';
 import adminUserSaga from './adminUserSaga';
+import emailSaga from './emailSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -23,5 +24,6 @@ export default function* rootSaga() {
     supportSaga(),
     storesSaga(),
     adminUserSaga(),
+    emailSaga(),
   ]);
 }
