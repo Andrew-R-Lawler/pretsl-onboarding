@@ -1,0 +1,26 @@
+@import 'src/index.scss';
+
+.storeForm {
+    padding-top: 3%;
+}
+
+.admin-individual-store-container {
+    border: 1px solid $quinary;
+    border-radius: 10px;
+    margin: 50px;
+    padding: 20px;
+}
+
+.notes {
+    padding-left: 15px;
+}
+
+.field {
+    padding-bottom: 35px;
+}
+
+.buttons {
+    margin: auto;
+    width: 100%;
+    text-align: center;
+}
