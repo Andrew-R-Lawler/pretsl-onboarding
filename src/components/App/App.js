@@ -8,7 +8,7 @@ import './App.scss';
 // REMOVE ?
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
-import Nav from '../Nav/Nav';
+// import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
 // ADMIN imports
