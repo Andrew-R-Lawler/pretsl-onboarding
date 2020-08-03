@@ -3,6 +3,8 @@ const router = express.Router();
 var nodemailer = require('nodemailer');
 
 router.post('/', (req, res) => {
+    console.log('req.body', req.body);
+    
     var transport = nodemailer.createTransport({
         host: "email-smtp.us-east-1.amazonaws.com",
         port: 587,
@@ -14,10 +16,9 @@ router.post('/', (req, res) => {
 
     var mailOptions = {
         from: 'Andrew.R.Lawler@gmail.com',
-        to: 'ndrwlwlr@gmail.com',
-        subject: 'Welcome To Pretsl!',
-        text: 'Hey there, sent this badboi through our onboarding app, just to flex on em a bit.',
-        html: '<b>Hey there! </b><br> sent this badboi through our onboarding app, just to flex on em a bit.'
+        to: req.body.customer_email,
+        subject: req.body.subject,
+        text: req.body.email_body,
     };
 
 
