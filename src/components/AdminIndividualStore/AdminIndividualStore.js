@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Header, Button, Input, TextArea, Form, Modal, Icon, Label } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
-import './AdminIndividualStore.css';
+import './AdminIndividualStore.scss';
+import Moment from 'react-moment';
 
 class AdminIndividualStore extends Component {
 
@@ -80,83 +81,81 @@ class AdminIndividualStore extends Component {
     render() {
 
         return (
-            <div>
-                <Form>
-                    <Form.Field>
-                        <Button className='back' onClick={this.goBack}>Back</Button>
+            <div className="admin-individual-store-container">
+                <Grid>
+                    <Grid.Column width={6}>
+                        <Form.Field>
+                            <Header as='h3'>Store Name</Header>
+                                {this.state.edit ?
+                                    <Input name='store_name' value={this.state.store_name} onChange={this.handleChange}></Input>
+                                :
+                                    <p>{this.props.store.store_name}</p>
+                                }
+                        </Form.Field>
+                        <Form.Field>
+                            <Header as='h3'>Store Status</Header>
+                            {this.state.edit ?
+                                <select name='store_status' value={this.state.store_status} onChange={this.handleChange}>
+                                    <option value = 'Lead'>Lead</option>
+                                    <option value = 'Prospect'>Prospect</option>
+                                    <option value = 'Opportunity'>Opportunity</option>
+                                    <option value = 'Customer'>Customer</option>
+                                    <option value = 'Past Customer'>Past Customer</option>
+                                    <option value = 'Junk Opportunity'>Junk Opportunity</option>
+                                    <option value = 'Junk Prospect'>Junk Prospect</option>
+                                </select>
+                            :
+                                <p>{this.props.store.store_status}</p>
+                            }
+                        {/* <Form.Field>
+                            <Header as='h3'>User ID</Header>
+                            {this.state.edit ?
+                                <select name='user_id' value={this.state.user_id} onChange={this.handleChange}>
+                                    {this.props.userlist.map(user => {
+                                        return(<option key = {user.id} value = {user.id}>{user.username}</option>)
+                                    })}
+                                </select>
+                            :
+                                <p>{this.props.store.user_id}</p>
+                            }
+                        </Form.Field> */}
                     </Form.Field>
-                    <Form.Field>
-                        <Header as='h3'>Store Name</Header>
-                        {this.state.edit ?
-                            <Input name='store_name' value={this.state.store_name} onChange={this.handleChange}></Input>
-                        :
-                            <p>{this.props.store.store_name}</p>
-                        }
-                    </Form.Field>
-                    <Form.Field>
-                        <Header as='h3'>User ID</Header>
-                        {this.state.edit ?
-                        <   select name='user_id' value={this.state.user_id} onChange={this.handleChange}>
-                                {this.props.userlist.map(user => {
-                                    return(<option key = {user.id} value = {user.id}>{user.username}</option>)
-                                })}
-                            </select>
-                        :
-                            <p>{this.props.store.user_id}</p>
-                        }
-                    </Form.Field>
-                    <Form.Field>
-                        <Header as='h3'>Customer Email</Header>
-                        {this.state.edit ?
-                            <Input name='customer_email' value={this.state.customer_email} onChange={this.handleChange}></Input>
-                        :
-                            <p>{this.props.store.customer_email}</p>
-                        }
-                    </Form.Field>
-                    <Form.Field>
-                        <Header as='h3'>Store Status</Header>
-                        {this.state.edit ?
-                            <select name='store_status' value={this.state.store_status} onChange={this.handleChange}>
-                                <option value = 'Lead'>Lead</option>
-                                <option value = 'Prospect'>Prospect</option>
-                                <option value = 'Opportunity'>Opportunity</option>
-                                <option value = 'Customer'>Customer</option>
-                                <option value = 'Past Customer'>Past Customer</option>
-                                <option value = 'Junk Opportunity'>Junk Opportunity</option>
-                                <option value = 'Junk Prospect'>Junk Prospect</option>
-                            </select>
-                        :
-                            <p>{this.props.store.store_status}</p>
-                        }
-                    </Form.Field>
-                    <Form.Field>  
-                        <Header as='h3'>Date Joined</Header>
-                        {this.state.edit ?
-                            <Input name='date_joined' value={this.state.date_joined} onChange={this.handleChange}></Input>
-                        :
-                            <p>{this.props.store.date_joined}</p>
-                        }
-                    </Form.Field>  
-                    <Header as='h3'>Notes</Header>
-                    {this.state.edit ?
-                        <TextArea name='notes' value={this.state.notes} onChange={this.handleChange}></TextArea>
-                        :
-                        <p>{this.props.store.notes}</p>
-                    }
-                    <Header as='h3'>Business Type</Header>
-                    {this.state.edit ?
-                        <select name='business_type' value={this.state.business_type} onChange={this.handleChange}>
-                            <option valiue = 'Ag Co-op'>Ag Co-op</option>
-                            <option value = 'Food Co-op'>Food Co-op</option>
-                            <option value = 'Meat Market'>Meat Market</option>
-                            <option value = 'Ethnic Grocer'>Ethnic Grocer</option>
-                            <option value = 'Organic/Health Foods'>Organic/Health Foods</option>
-                            <option value = 'Caterer'>Caterer</option>
-                        </select>
-                        :
-                        <p>{this.props.store.business_type}</p>
-                    }
-                    <Header as='h3'>Contract</Header>
+                    </Grid.Column>
+                    <Grid.Column width={6}>
+                        <Form.Field>
+                            <Header as='h3'>Customer Email</Header>
+                            {this.state.edit ?
+                                <Input name='customer_email' value={this.state.customer_email} onChange={this.handleChange}></Input>
+                            :
+                                <p>{this.props.store.customer_email}</p>
+                            }
+                        </Form.Field>
+                        <Form.Field>  
+                            <Header as='h3'>Date Joined</Header>
+                            {this.state.edit ?
+                                <Input name='date_joined' value={this.state.date_joined} onChange={this.handleChange}></Input>
+                            :
+                                <Moment format="YYYY/MM/DD">{this.props.store.date_joined}</Moment>
+                            }
+                        </Form.Field>
+                        <Form.Field>
+                            <Header as='h3'>Business Type</Header>
+                            {this.state.edit ?
+                                <select name='business_type' value={this.state.business_type} onChange={this.handleChange}>
+                                    <option valiue = 'Ag Co-op'>Ag Co-op</option>
+                                    <option value = 'Food Co-op'>Food Co-op</option>
+                                    <option value = 'Meat Market'>Meat Market</option>
+                                    <option value = 'Ethnic Grocer'>Ethnic Grocer</option>
+                                    <option value = 'Organic/Health Foods'>Organic/Health Foods</option>
+                                    <option value = 'Caterer'>Caterer</option>
+                                </select>
+                                :
+                                <p>{this.props.store.business_type}</p>
+                            }
+                        </Form.Field>
+                    </Grid.Column>
+                    <Grid.Column width={4}>
+                        <Header as='h3'>Contract</Header>
                     <h3>MoonClerk URL</h3>
                     {this.state.edit ?
                         <Input name='moonclerk_url' value={this.state.moonclerk_url} onChange={this.handleChange}></Input>
@@ -172,11 +171,24 @@ class AdminIndividualStore extends Component {
                         :
                         <p>{String(this.props.store.active_customer)}</p>
                     }
-                    {this.state.edit ?
-                    <div>
-                        <br></br>
-                        <Button onClick={this.submitChanges}>Submit</Button>
+                    </Grid.Column>
+                    <Grid.Row>
+                    <div className="notes">
+                        <Form.Field>
+                            <Header as='h3'>Notes</Header>
+                                {this.state.edit ?
+                                    <TextArea name='notes' value={this.state.notes} onChange={this.handleChange}></TextArea>
+                                :
+                                    <p>{this.props.store.notes}</p>
+                                }
+                        </Form.Field>
                     </div>
+                    </Grid.Row>
+                </Grid>
+                <div className="buttons">
+                    <Button className='back' onClick={this.goBack}>Back</Button>
+                    {this.state.edit ?
+                    <Button onClick={this.submitChanges}>Submit</Button>
                     :
                     <Button onClick={this.toggleEdit}>Edit</Button>
                     }
