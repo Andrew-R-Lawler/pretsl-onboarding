@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Header, Button, Input, TextArea, Form, Modal, Icon, Label } from 'semantic-ui-react';
+import { Header, Button, Input, TextArea, Form, Modal, Icon, Grid } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import './AdminIndividualStore.scss';
 import Moment from 'react-moment';
@@ -216,7 +216,7 @@ class AdminIndividualStore extends Component {
                             </Button>
                         </Modal.Actions>
                     </Modal>
-                </Form>
+                </div>
             </div>
         )
     }
