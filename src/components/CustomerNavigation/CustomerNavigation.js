@@ -8,7 +8,7 @@ const CustomerNavigation = (props) => (
   <div className="nav">
     <Link to="/home">
       {/* <h2 className="nav-title">Customer Nav Bar</h2> */}
-      <img className="logo-nav" src="https://get.pretsl.com/wp-content/uploads/2020/06/Pretsl-New-Logo-1.11-White-Opt.png"></img>
+      <img className="logo-nav" src="https://get.pretsl.com/wp-content/uploads/2020/06/Pretsl-New-Logo-1.11-White-Opt.png" alt="pretsl logo"></img>
     </Link>
     <div className="nav-right">
       {!props.user.id && <Link className="nav-link" to="/home">'Login / Register'</Link>}

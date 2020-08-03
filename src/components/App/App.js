@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import './App.scss';
 
-// REMOVE ?
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import Nav from '../Nav/Nav';

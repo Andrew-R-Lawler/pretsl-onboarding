@@ -30,6 +30,7 @@ class AdminDashboard extends Component {
                 >
                 Register New Customer
                 </Button>
+
                 <Header as='h1' className='adminDashHead'>Admin Dashboard</Header>
                 <Table>
                     <Table.Header>
@@ -56,7 +57,7 @@ class AdminDashboard extends Component {
                                     <Table.Cell>{store.customer_email}</Table.Cell>
                                     <Table.Cell>{store.store_status}</Table.Cell>
                                     <Table.Cell><Moment format="YYYY/MM/DD">{store.date_joined}</Moment></Table.Cell>
-                                    <Table.Cell>{store.notes}</Table.Cell>
+                                    <Table.Cell className="notes-cell">{store.notes}</Table.Cell>
                                     <Table.Cell>{store.contract}</Table.Cell>
                                     <Table.Cell>{store.business_type}</Table.Cell>
                                     {store.active_customer === true ?

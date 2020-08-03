@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import Moment from 'react-moment';
 
-import { Button, Header, Icon, Modal, Input, TextArea, Form , Label, Grid} from 'semantic-ui-react';
+import { Button, Grid} from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 
 //this is a conditionally rendered component only seen on 
