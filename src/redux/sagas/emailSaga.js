@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { put, takeEvery } from 'redux-saga/effects';
 
-function* sendEmail() {
+function* sendEmail(action) {
     try {
-        axios.post('/api/email')
+        yield axios.post('/api/email', action.payload)
         yield put({ type: 'EMAIL_SENT' })
     } catch (error) {
         console.log('Error with Email POST:', error);

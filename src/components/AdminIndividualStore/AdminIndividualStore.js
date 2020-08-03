@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Header, Button, Input, TextArea, Form } from 'semantic-ui-react';
+import { Header, Button, Input, TextArea, Form, Modal, Icon, Label } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import './AdminIndividualStore.css';
 
 class AdminIndividualStore extends Component {
 
     state = {
+        modalOpen: false,
         edit: false,
         user_id: '',
         store_name: '',
@@ -18,6 +19,8 @@ class AdminIndividualStore extends Component {
         contract: '',
         moonclerk_url: '',
         active_customer: '',
+        subject: 'Welcome To Pretsl!',
+        email_body: '',
     }
 
     goBack = () => {
@@ -57,8 +60,22 @@ class AdminIndividualStore extends Component {
     }
 
     sendMail = () => {
-        this.props.dispatch({ type: 'SEND_EMAIL'})
+        let newEmail = {
+            customer_email: this.state.customer_email,
+            subject: this.state.subject,
+            email_body: this.state.email_body,
+        }
+        this.props.dispatch({ type: 'SEND_EMAIL', payload: newEmail })
     }
+
+    handleOpen = () => {
+        this.setState({
+            modalOpen: true,
+            customer_email: this.props.store.customer_email,
+        })
+    }
+
+    handleClose = () => this.setState({ modalOpen: false })
 
     render() {
 
@@ -163,7 +180,30 @@ class AdminIndividualStore extends Component {
                     :
                     <Button onClick={this.toggleEdit}>Edit</Button>
                     }
-                    <Button onClick={this.sendMail}>Send Mail</Button>
+                    <Modal
+                        trigger={<Button onClick={this.handleOpen}>Send Mail</Button>}
+                        open={this.state.modalOpen}
+                        onClose={this.handleClose}
+                        size='small'
+                    >
+                        <Header icon='browser' content='Draft an E-mail' />
+                        <Modal.Content>
+                            {console.log('this.state', this.state)}
+                            <Form>
+                                <Form.Field>
+                                    <Input label='Subject' name='subject' value={this.state.subject} onChange={this.handleChange} />
+                                </Form.Field>
+                                <Form.Field>
+                                    <Form.TextArea name='email_body' value={this.state.email_body} onChange={this.handleChange} />
+                                </Form.Field>
+                            </Form>
+                        </Modal.Content>
+                        <Modal.Actions>
+                            <Button color='green' onClick={this.sendMail}>
+                                <Icon name='checkmark' />Send Message
+                            </Button>
+                        </Modal.Actions>
+                    </Modal>
                 </Form>
             </div>
         )
