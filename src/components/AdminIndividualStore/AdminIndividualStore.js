@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Header, Button, Input, TextArea, Form, Modal, Icon, Grid } from 'semantic-ui-react';
+import { Container, Header, Button, Input, TextArea, Form, Modal, Icon, Grid } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import './AdminIndividualStore.scss';
 import Moment from 'react-moment';
@@ -21,7 +21,15 @@ class AdminIndividualStore extends Component {
         moonclerk_url: '',
         active_customer: '',
         subject: 'Welcome To Pretsl!',
-        email_body: '',
+        email_body: `We are happy to welcome you to Pretsl!
+        
+        Your login credentials are
+        Username:
+        Password:
+
+        Your contract for signing is attached to this email!
+        
+        Follow this link to complete payment so we can get you on the way to having goods in customer's hands:`,
     }
 
     goBack = () => {
@@ -67,6 +75,7 @@ class AdminIndividualStore extends Component {
             email_body: this.state.email_body,
         }
         this.props.dispatch({ type: 'SEND_EMAIL', payload: newEmail })
+        this.handleClose();
     }
 
     handleOpen = () => {
@@ -81,6 +90,35 @@ class AdminIndividualStore extends Component {
     render() {
 
         return (
+            <div>
+            <Container className='pageHeader'>
+                <Modal
+                    trigger={<Button className='emailButton' onClick={this.handleOpen}>Send Mail</Button>}
+                    open={this.state.modalOpen}
+                    onClose={this.handleClose}
+                    size='small'
+                >
+                    <Header icon='browser' content='Draft an E-mail' />
+                    <Modal.Content>
+                        {console.log('this.state', this.state)}
+                        <Form className='email-modal'>
+                            <Form.Field>
+                                <Header as='h4'>Subject</Header>
+                                <Input name='subject' value={this.state.subject} onChange={this.handleChange} />
+                            </Form.Field>
+                            <Form.Field>
+                                <Header as='h4'>E-mail Body</Header>
+                                <Form.TextArea name='email_body' value={this.state.email_body} onChange={this.handleChange} />
+                            </Form.Field>
+                        </Form>
+                    </Modal.Content>
+                    <Modal.Actions>
+                        <Button color='green' onClick={this.sendMail}>
+                            <Icon name='checkmark' />Send Message
+                            </Button>
+                    </Modal.Actions>
+                </Modal>
+            </Container>
             <div className="admin-individual-store-container">
                 <Grid>
                     <Grid.Column width={6}>
@@ -192,31 +230,8 @@ class AdminIndividualStore extends Component {
                     :
                     <Button onClick={this.toggleEdit}>Edit</Button>
                     }
-                    <Modal
-                        trigger={<Button onClick={this.handleOpen}>Send Mail</Button>}
-                        open={this.state.modalOpen}
-                        onClose={this.handleClose}
-                        size='small'
-                    >
-                        <Header icon='browser' content='Draft an E-mail' />
-                        <Modal.Content>
-                            {console.log('this.state', this.state)}
-                            <Form>
-                                <Form.Field>
-                                    <Input label='Subject' name='subject' value={this.state.subject} onChange={this.handleChange} />
-                                </Form.Field>
-                                <Form.Field>
-                                    <Form.TextArea name='email_body' value={this.state.email_body} onChange={this.handleChange} />
-                                </Form.Field>
-                            </Form>
-                        </Modal.Content>
-                        <Modal.Actions>
-                            <Button color='green' onClick={this.sendMail}>
-                                <Icon name='checkmark' />Send Message
-                            </Button>
-                        </Modal.Actions>
-                    </Modal>
                 </div>
+            </div>
             </div>
         )
     }
