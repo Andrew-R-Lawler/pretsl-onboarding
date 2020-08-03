@@ -107,7 +107,7 @@ class AdminIndividualStore extends Component {
                             :
                                 <p>{this.props.store.store_status}</p>
                             }
-                        {/* <Form.Field>
+                        <Form.Field>
                             <Header as='h3'>User ID</Header>
                             {this.state.edit ?
                                 <select name='user_id' value={this.state.user_id} onChange={this.handleChange}>
@@ -118,7 +118,7 @@ class AdminIndividualStore extends Component {
                             :
                                 <p>{this.props.store.user_id}</p>
                             }
-                        </Form.Field> */}
+                        </Form.Field>
                     </Form.Field>
                     </Grid.Column>
                     <Grid.Column width={6}>
