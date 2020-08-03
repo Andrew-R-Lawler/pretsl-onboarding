@@ -45,7 +45,7 @@ class CustomerDashboardPreonboarding extends Component {
             store_inventory: acceptedFiles
         })
         this.props.dispatch({ 
-            type: 'UPDATE_STORE',
+            type: 'UPDATE_AWS_BUCKET',
             payload: this.state })
     }
 
