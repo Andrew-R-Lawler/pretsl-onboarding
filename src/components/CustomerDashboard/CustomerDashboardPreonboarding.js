@@ -74,7 +74,7 @@ class CustomerDashboardPreonboarding extends Component {
                         <section className="dropzone-style">
                             <div {...getRootProps()}>
                                 <input {...getInputProps()} />
-                                <p>CLICK HERE, or DRAG AND DROP files to upload your inventory</p>
+                                <p>CLICK HERE or DRAG AND DROP <br/>files to upload your inventory</p>
                             </div>
                         </section>
                     )}
