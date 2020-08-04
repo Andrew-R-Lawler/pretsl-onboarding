@@ -137,7 +137,7 @@ class AdminIndividualStore extends Component {
                 <Modal
                     trigger={<Button className="registerCustomerButton"
                     onClick={this.openRegisterNewCustomer}>
-                    TEST REG NEW CUST</Button>}
+                    Register New Customer</Button>}
                     open={this.state.registerModalOpen}
                     onClose={this.handleCloseRegister}
                     size='small'
@@ -156,8 +156,8 @@ class AdminIndividualStore extends Component {
                             </Form.Field>
                     </Modal.Content>
                     <Modal.Actions>
-                        <Button color='green' onClick={this.submitRegisterNewCustomer}>
-                            <Icon name='checkmark' />Register New Customer
+                        <Button color='green' onClick={this.handleCloseRegister}>
+                            <Icon name='angle double left' />Back to Profile
                         </Button>
                     </Modal.Actions>
                 </Modal>
