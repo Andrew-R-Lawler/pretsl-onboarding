@@ -8,6 +8,7 @@ import './AdminCustomerOnboarding.scss';
 class CustomerOnboarding extends Component {
 
     state = {
+        successOpen: false,
         modalOpen: false,
         store_name: '',
         store_status: '',
@@ -26,11 +27,24 @@ class CustomerOnboarding extends Component {
     addStore = () => {
         console.log('in addStore!');
         this.props.dispatch({ type: 'ADD_NEW_STORE', payload: this.state })
+        this.setState({
+            modalOpen: false,
+            store_name: '',
+            store_status: '',
+            notes: '',
+            business_type: '',
+            customer_email: ''
+        })
+        this.successClose();
     }
 
     handleOpen = () => this.setState({ modalOpen: true })
 
     handleClose = () => this.setState({ modalOpen: false })
+
+    successOpen = () => this.setState({ successOpen: true })
+
+    successClose = () => this.setState({ successOpen: false })
 
     render() {
         return (
@@ -86,7 +100,23 @@ class CustomerOnboarding extends Component {
                         </Modal.Actions>
                     </Modal>
                 :
-                    <Button onClick={this.addStore}>Submit</Button>
+                    <Modal
+                        trigger={<Button onClick={this.successOpen}>Submit</Button>}
+                        open={this.state.successOpen}
+                        onClose={this.successClose}
+                        basic
+                        size='small'
+                    >
+                        <Header icon='browser' content='Success!' />
+                        <Modal.Content>
+                            <h3>A new lead has been added!</h3>
+                        </Modal.Content>
+                        <Modal.Actions>
+                            <Button color='green' onClick={this.addStore} inverted>
+                                <Icon name='checkmark' /> Got it
+                            </Button>
+                        </Modal.Actions>
+                    </Modal>
                 }
                 </Form>
             </div>

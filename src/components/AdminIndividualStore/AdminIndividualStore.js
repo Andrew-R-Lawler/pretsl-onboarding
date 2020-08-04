@@ -29,8 +29,6 @@ class AdminIndividualStore extends Component {
         Your login credentials are
         Username:
         Password:
-
-        Your contract for signing is attached to this email!
         
         Follow this link to complete payment so we can get you on the way to having goods in customer's hands:`,
     }
@@ -139,7 +137,7 @@ class AdminIndividualStore extends Component {
                 <Modal
                     trigger={<Button className="registerCustomerButton"
                     onClick={this.openRegisterNewCustomer}>
-                    TEST REG NEW CUST</Button>}
+                    Register New Customer</Button>}
                     open={this.state.registerModalOpen}
                     onClose={this.handleCloseRegister}
                     size='small'
@@ -158,8 +156,8 @@ class AdminIndividualStore extends Component {
                             </Form.Field>
                     </Modal.Content>
                     <Modal.Actions>
-                        <Button color='green' onClick={this.submitRegisterNewCustomer}>
-                            <Icon name='checkmark' />Register New Customer
+                        <Button color='green' onClick={this.handleCloseRegister}>
+                            <Icon name='angle double left' />Back to Profile
                         </Button>
                     </Modal.Actions>
                 </Modal>
@@ -200,7 +198,7 @@ class AdminIndividualStore extends Component {
                                     })}
                                 </select>
                             :
-                                <p>{this.props.store.user_id}</p>
+                                <p>{this.props.store.username}</p>
                             }
                         </Form.Field>
                     </Form.Field>

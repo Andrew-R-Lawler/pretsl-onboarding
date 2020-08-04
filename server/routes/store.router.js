@@ -22,7 +22,9 @@ router.get('/', (req, res) => {
 // Get route for individual store admin view
 router.get('/:id', (req, res) => {
     console.log('req.body', req.params.id);
-    pool.query('SELECT * FROM "store" WHERE "id" = $1', [req.params.id])
+    pool.query(`SELECT * FROM "store"
+JOIN "user" ON store.user_id = "user"."id"
+WHERE store.id = $1;`, [req.params.id])
         .then(result => {
             res.send(result.rows[0])
         }).catch(error => {
@@ -52,10 +54,6 @@ router.post('/', (req, res) => {
 // PUT route for updating store in individual store admin view
 
 router.put('/:id', (req, res) => {
-
-    console.log('req.params.id', req.params.id);
-    console.log('store_inventory:', req.body.store_inventory);
-    
     pool.query(`UPDATE "store"
     SET "store_name" = $1, "user_id" = $2, "store_status" = $3, "date_joined" = $4, "notes" = $5, "contract" = $6, "business_type" = $7, "moonclerk_url" = $8, "customer_email" = $9, "active_customer" = $10, "store_inventory" = $11
     WHERE "id" = $12`, [req.body.store_name, req.body.user_id, req.body.store_status, req.body.date_joined, req.body.notes, req.body.contract, req.body.business_type, req.body.moonclerk_url, req.body.customer_email, req.body.active_customer, req.body.store_inventory, req.params.id])
