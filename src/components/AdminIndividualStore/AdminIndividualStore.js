@@ -82,41 +82,55 @@ class AdminIndividualStore extends Component {
 
 
 
-
+    MyUploader = () =>{
     // specify upload params and url for your files
-    getUploadParams = async ({ meta }) => { 
-    const res = await axios.post('/upload-url');
-    console.log("POST /upload-url", res.data);
+        const getUploadParams = () => (
+            {
+            client_id: this.state.user_id,
+            url: '/upload'
+        });
+        // const getUploadParams = async ({ meta }) => { 
+        // const res = await axios.post('/upload');
+        // console.log("POST /upload", res.data);
 
-    const params = { 
-        fields: res.data.fields, 
-        meta: { 
-          fileUrl: `${res.data.url}/${res.data.fields.key}`
-        }, 
-        url: res.data.url 
-      };
-      console.log('params', params);
-  
-      // ENABLE CORS on your bucket
-      /**
-        <?xml version="1.0" encoding="UTF-8"?>
-        <CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
-        <CORSRule>
-            <AllowedOrigin>http://localhost:3000</AllowedOrigin>
-            <AllowedMethod>POST</AllowedMethod>
-            <AllowedHeader>*</AllowedHeader>
-        </CORSRule>
-        </CORSConfiguration>
-       */
-  
-      return params;
+        // const params = { 
+        //     fields: res.data.fields, 
+        //     meta: { 
+        //     fileUrl: `${res.data.url}/${res.data.fields.key}`
+        //     }, 
+        //     url: res.data.url 
+        // };
+        // console.log('params', params);
+    
+        // ENABLE CORS on your bucket
+        /**
+            <?xml version="1.0" encoding="UTF-8"?>
+            <CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+            <CORSRule>
+                <AllowedOrigin>http://localhost:3000</AllowedOrigin>
+                <AllowedMethod>POST</AllowedMethod>
+                <AllowedHeader>*</AllowedHeader>
+            </CORSRule>
+            </CORSConfiguration>
+        */
+    
+        // return params;
+        // }
+
+
+        // receives array of files that are done uploading when submit button is clicked
+        const handleSubmit = (files, allFiles) => {
+       
+        allFiles.forEach(f => f.remove());
     }
 
-     // receives array of files that are done uploading when submit button is clicked
-    handleSubmit = (files, allFiles) => {
-    console.log(files.map(f => f.meta))
-    allFiles.forEach(f => f.remove())
-  }
+    return (
+        <Dropzone
+            getUploadParams={getUploadParams}
+            onSubmit = {handleSubmit}
+            />
+    )
+    }
 
     handleClose = () => this.setState({ modalOpen: false })
 
@@ -250,10 +264,11 @@ class AdminIndividualStore extends Component {
                 </Form>
                 <div className="contractUploader">
                     <h3>Upload Client Contract</h3>
-                    <Dropzone
+                    {/* <Dropzone
                         getUploadParams={this.getUploadParams}
                         onSubmit={this.handleSubmit}
-                    />
+                    /> */}
+                    <this.MyUploader/>
                 </div>
 
             </div>
