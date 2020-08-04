@@ -47,3 +47,31 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
 });
+
+
+
+//aws bucket
+const aws = require('aws-sdk')
+
+const s3 = new aws.S3();
+
+app.post('/upload-url', async(req, res)=>{
+  let expires = 900
+  console.log("Inside AWS post call server side")
+
+  s3.createPresignedPost({
+    Bucket: 'pretslonboardingappbucket',
+    Expires: expires,
+    Fields:{
+      key: 'test-file.txt'
+    }
+  },(err,data) =>{
+    if(err){
+      console.error(err);
+      res.send(500);
+      return;
+    }
+    res.send(data);
+  })
+});
+
