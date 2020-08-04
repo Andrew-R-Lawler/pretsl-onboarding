@@ -23,14 +23,6 @@ class AdminDashboard extends Component {
         return(
             <div>
                 <Container className='adminDashContainer'>
-                <Button
-                    type="button"
-                    className="adminDashButton"
-                    onClick={() => {this.props.dispatch({type: 'SET_TO_REGISTER_MODE'})}}
-                >
-                Register New Customer
-                </Button>
-
                 <Header as='h1' className='adminDashHead'>Admin Dashboard</Header>
                 <Table>
                     <Table.Header>

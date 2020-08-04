@@ -5,6 +5,8 @@ import 'semantic-ui-css/semantic.min.css';
 import './AdminIndividualStore.scss';
 import Moment from 'react-moment';
 
+import RegisterPage from '../RegisterPage/RegisterPage'
+
 class AdminIndividualStore extends Component {
 
     state = {
@@ -86,12 +88,17 @@ class AdminIndividualStore extends Component {
         })
     }
 
-    handleRegisterNewCustomer = () => {
-        console.log('handleRegisterNewCustomer clicked');
+    openRegisterNewCustomer = () => {
+        console.log('registerNewCustomer clicked');
         
         this.setState({
             registerModalOpen: true
         })
+    }
+
+    submitRegisterNewCustomer = () => {
+        console.log('submitRegisterNewCustomer clicked');
+        
     }
 
     handleCloseEmail = () => this.setState({ emailModalOpen: false })
@@ -131,7 +138,7 @@ class AdminIndividualStore extends Component {
 
                 <Modal
                     trigger={<Button className="registerCustomerButton"
-                    onClick={this.handleRegisterNewCustomer}>
+                    onClick={this.openRegisterNewCustomer}>
                     TEST REG NEW CUST</Button>}
                     open={this.state.registerModalOpen}
                     onClose={this.handleCloseRegister}
@@ -142,17 +149,19 @@ class AdminIndividualStore extends Component {
                         <Header icon="attention" content="ATTENTION"/>
                             <p>Remember to note the username and password you generate!</p>
                             <p>You need to paste these in the email you send to the client to verify account has been created!</p>
-                        <Form className="register-modal">
+
+                            <RegisterPage/>
+                            
                             <Form.Field>
-                                <Header as="h4">Username:</Header>
-                                    <Input name="username"/>
-                            </Form.Field>
-                            <Form.Field>
-                                <Header as="h4">Password:</Header>
+                                <Header as="h4">Suggested password:</Header>
                                     <Input name="password" value={Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)}/>
                             </Form.Field>
-                        </Form>
                     </Modal.Content>
+                    <Modal.Actions>
+                        <Button color='green' onClick={this.submitRegisterNewCustomer}>
+                            <Icon name='checkmark' />Register New Customer
+                        </Button>
+                    </Modal.Actions>
                 </Modal>
 
             </Container>
