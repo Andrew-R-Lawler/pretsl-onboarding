@@ -198,7 +198,7 @@ class AdminIndividualStore extends Component {
                                     })}
                                 </select>
                             :
-                                <p>{this.props.store.user_id}</p>
+                                <p>{this.props.store.username}</p>
                             }
                         </Form.Field>
                     </Form.Field>
