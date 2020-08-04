@@ -24,7 +24,7 @@ class LoginPage extends Component {
       });
       setTimeout(() => {
         this.props.history.push('/home')
-      }, 400);
+      }, 500);
     } else {
       this.props.dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }

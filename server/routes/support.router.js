@@ -9,7 +9,8 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 router.get('/', rejectUnauthenticated, (req, res) => {
     let sqlText = `SELECT * FROM store
 JOIN support ON store.id = support.store_id
-WHERE isArchived = FALSE;`;
+WHERE isArchived = FALSE
+ORDER BY support.id ASC;`;
     pool.query(sqlText)
     .then (result => {
         console.log('result.rows', result.rows);
