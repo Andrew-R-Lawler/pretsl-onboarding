@@ -26,8 +26,6 @@ class AdminIndividualStore extends Component {
         Your login credentials are
         Username:
         Password:
-
-        Your contract for signing is attached to this email!
         
         Follow this link to complete payment so we can get you on the way to having goods in customer's hands:`,
     }
