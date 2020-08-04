@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
-import { Button, Table } from 'semantic-ui-react';
+import { Button, Table, Modal, Header, Icon } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import './AdminSupport.css';
 
 class AdminSupportTicket extends Component {
 
     state = {
+        modalOpen: false,
         ticket_status: '',
         updateStatus: '',
         ticketId: '',
@@ -34,6 +35,10 @@ class AdminSupportTicket extends Component {
         }, 1000);
     }
 
+    handleOpen = () => this.setState({ modalOpen: true })
+
+    handleClose = () => this.setState({ modalOpen: false })
+
     archive = () => {
         this.setState({
             isArchived: !this.props.item.isarchived
@@ -44,6 +49,7 @@ class AdminSupportTicket extends Component {
                 payload: this.state,
             })
         }, 500);
+        this.handleClose();
     }
 
     render(){
@@ -66,7 +72,29 @@ class AdminSupportTicket extends Component {
                         <option value="Resolved">Resolved</option>
                     </select>
                 </Table.Cell>
-                <Table.Cell><Button basic color='red' value={this.props.item.id} onClick={this.archive}>ARCHIVE</Button></Table.Cell>
+                <Table.Cell>
+                    <Modal
+                        trigger={<Button basic color='red' value={this.props.item.id} onClick={this.handleOpen}>ARCHIVE</Button>}
+                        open={this.state.modalOpen}
+                        onClose={this.handleClose}
+                        basic
+                        size='small'
+                    >
+                        <Header icon='browser' content='Are you sure?' />
+                        <Modal.Content>
+                            <h3>Do you want to archive this ticket?</h3>
+                        </Modal.Content>
+                        <Modal.Actions>
+                            <Button color='red' onClick={this.handleClose} inverted>
+                                <Icon name='x' />No
+                            </Button>
+                            <Button color='green' onClick={this.archive} inverted>
+                                <Icon name='checkmark' />Yes
+                            </Button>
+                        </Modal.Actions>
+                    </Modal>
+                    
+                </Table.Cell>
             </Table.Row>
         )
     }
