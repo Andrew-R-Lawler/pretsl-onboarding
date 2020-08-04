@@ -22,9 +22,7 @@ router.get('/', (req, res) => {
 // Get route for individual store admin view
 router.get('/:id', (req, res) => {
     console.log('req.body', req.params.id);
-    pool.query(`SELECT * FROM "user"
-JOIN "store" ON "user".id = store.user_id
-WHERE store.id = $1;`, [req.params.id])
+    pool.query(`SELECT * FROM "store" WHERE "id" = $1;`, [req.params.id])
         .then(result => {
             res.send(result.rows[0])
         }).catch(error => {
