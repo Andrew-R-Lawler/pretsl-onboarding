@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
+import { Input, Modal } from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
+import './RegisterPage.scss';
+
 class RegisterPage extends Component {
   state = {
     username: '',
@@ -29,6 +33,11 @@ class RegisterPage extends Component {
     });
   }
 
+  confirm = () => {
+    console.log('confirm??');
+    
+  }
+
   render() {
     return (
       <div>
@@ -41,11 +50,11 @@ class RegisterPage extends Component {
           </h2>
         )}
         <form onSubmit={this.registerUser}>
-          <h1>Register User</h1>
+          <h1>Create New Credentials</h1>
           <div>
             <label htmlFor="username">
               Username:
-              <input
+              <Input className="login-input"
                 type="text"
                 name="username"
                 value={this.state.username}
@@ -55,8 +64,8 @@ class RegisterPage extends Component {
           </div>
           <div>
             <label htmlFor="password">
-              Password:
-              <input
+              Password:<br/>
+              <Input className="login-input"
                 type="password"
                 name="password"
                 value={this.state.password}
@@ -65,22 +74,27 @@ class RegisterPage extends Component {
             </label>
           </div>
           <div>
-            <input
+          <Modal
+            trigger={<input
               className="register"
               type="submit"
               name="submit"
               value="Register"
-            />
+            />}
+            header='Reminder!'
+            content='Congrats! New customer created. Remember to email your new client the username and password created for them!'
+            actions={[{ key: 'done', content: 'Done', positive: true }]}
+          />
           </div>
         </form>
         <center>
-          <button
+          {/* <button
             type="button"
             className="link-button"
             onClick={() => {this.props.dispatch({type: 'SET_TO_LOGIN_MODE'})}}
           >
             Login
-          </button>
+          </button> */}
         </center>
       </div>
     );

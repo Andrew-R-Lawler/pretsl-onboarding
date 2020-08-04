@@ -5,10 +5,13 @@ import 'semantic-ui-css/semantic.min.css';
 import './AdminIndividualStore.scss';
 import Moment from 'react-moment';
 
+import RegisterPage from '../RegisterPage/RegisterPage'
+
 class AdminIndividualStore extends Component {
 
     state = {
-        modalOpen: false,
+        emailModalOpen: false,
+        registerModalOpen: false,
         edit: false,
         user_id: '',
         store_name: '',
@@ -73,17 +76,31 @@ class AdminIndividualStore extends Component {
             email_body: this.state.email_body,
         }
         this.props.dispatch({ type: 'SEND_EMAIL', payload: newEmail })
-        this.handleClose();
+        this.handleCloseEmail();
     }
 
-    handleOpen = () => {
+    handleOpenEmail = () => {
         this.setState({
-            modalOpen: true,
+            emailModalOpen: true,
             customer_email: this.props.store.customer_email,
         })
     }
 
-    handleClose = () => this.setState({ modalOpen: false })
+    openRegisterNewCustomer = () => {
+        console.log('registerNewCustomer clicked');
+        
+        this.setState({
+            registerModalOpen: true
+        })
+    }
+
+    submitRegisterNewCustomer = () => {
+        console.log('submitRegisterNewCustomer clicked');
+        
+    }
+
+    handleCloseEmail = () => this.setState({ emailModalOpen: false })
+    handleCloseRegister = () => this.setState({ registerModalOpen: false })
 
     render() {
 
@@ -91,9 +108,9 @@ class AdminIndividualStore extends Component {
             <div>
             <Container className='pageHeader'>
                 <Modal
-                    trigger={<Button className='emailButton' onClick={this.handleOpen}>Send Mail</Button>}
-                    open={this.state.modalOpen}
-                    onClose={this.handleClose}
+                    trigger={<Button className='emailButton' onClick={this.handleOpenEmail}>Send Mail</Button>}
+                    open={this.state.emailModalOpen}
+                    onClose={this.handleCloseEmail}
                     size='small'
                 >
                     <Header icon='browser' content='Draft an E-mail' />
@@ -116,6 +133,35 @@ class AdminIndividualStore extends Component {
                             </Button>
                     </Modal.Actions>
                 </Modal>
+
+                <Modal
+                    trigger={<Button className="registerCustomerButton"
+                    onClick={this.openRegisterNewCustomer}>
+                    Register New Customer</Button>}
+                    open={this.state.registerModalOpen}
+                    onClose={this.handleCloseRegister}
+                    size='small'
+                >
+                    <Header content="Register New Customer"/>
+                    <Modal.Content>
+                        <Header icon="attention" content="ATTENTION"/>
+                            <p>Remember to note the username and password you generate!</p>
+                            <p>You need to paste these in the email you send to the client to verify account has been created!</p>
+
+                            <RegisterPage/>
+                            
+                            <Form.Field>
+                                <Header as="h4">Suggested password:</Header>
+                                    <Input name="password" value={Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)}/>
+                            </Form.Field>
+                    </Modal.Content>
+                    <Modal.Actions>
+                        <Button color='green' onClick={this.handleCloseRegister}>
+                            <Icon name='angle double left' />Back to Profile
+                        </Button>
+                    </Modal.Actions>
+                </Modal>
+
             </Container>
             <div className="admin-individual-store-container">
                 <Grid>

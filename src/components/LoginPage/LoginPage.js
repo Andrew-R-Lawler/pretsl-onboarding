@@ -24,7 +24,7 @@ class LoginPage extends Component {
       });
       setTimeout(() => {
         this.props.history.push('/home')
-      }, 400);
+      }, 500);
     } else {
       this.props.dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }
@@ -81,7 +81,7 @@ class LoginPage extends Component {
             />
           </div>
         </form>
-        <center>
+        {/* <center>
           <Button
             type="button"
             className="link-button"
@@ -89,7 +89,7 @@ class LoginPage extends Component {
           >
             Register
           </Button>
-        </center>
+        </center> */}
       </div>
     );
   }
