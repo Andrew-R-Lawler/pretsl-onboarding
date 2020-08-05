@@ -108,27 +108,67 @@ app.post('/upload', upload.any(), async(req, res) =>{
   //multer loads everything to public/uploads
   //then creates a req.files array with infor about each file.
   //console.log(req.files);
+  try{
 
-  for (let file of req.files){
-    console.log(`Uploading ${file.path}...`);
-
-    await s3.upload({
-
-      Bucket: 'pretslonboardingappbucket',
-      Key: file.filename,
-      Body: fs.createReadStream(file.path)
-    }).promise();  //promise is required to use await keyword
-    console.log(`Uploading ${file.path}...done.`);
-
-    await pool.query(`
-    INSERT INTO contracts (client_id, s3_bucket, s3_key, hasContractBeenSigned)
-    ($1, $2, $3, false);
-    `, [
-      req.body.client_id,
-      'pretslonboardingappbucket',
-      file.path
-    ]).promise();
-   }
+    for (let file of req.files){
+      console.log(`Uploading ${file.path}...`);
+      //const file = req.files[0];
+      // try{
+    
+        console.log("inside Post try block for aws call");
+        await s3.upload({
+          Bucket: 'pretslonboardingappbucket',
+          Key: file.filename,
+          Body: fs.createReadStream(file.path)
+        }).promise()
+        //.promise()
+      // }
+      // catch(err){
+      //     console.log(err);
+      //   } 
+        //.promise();  //promise is required to use await keyword
+        console.log(`Uploading ${file.path}...done.`);
+        console.log(req.body);
+        // try{
+        await pool.query(
+          `
+        INSERT INTO contracts ("client_id", "s3_bucket", "s3_key", "hasContractBeenSigned")
+        VALUES ($1, $2, $3, false);`
+        // `INSERT INTO contracts (client_id, s3_bucket, s3_key)
+        // VALUES(22, placeholderstring, placeholderstring);`
+        , [
+          req.body.client_id,
+          'pretslonboardingappbucket',
+          file.path
+        ]
+        )
+      // }catch(error){
+      //     console.log(error)
+      //   }
+      }
+  }catch(error){
+    console.log("AWS failed, error:", error)
+    res.sendStatus(500);
+    return;
+  }
+  
+    //.promise();
+  //   .catch(err =>{
+  //     console.log(err);
+  //   })
+    //}
 
   res.sendStatus(201);
+})
+
+//write get request to GET pdf from amazon
+app.get('/clientContract', async (req,res) => {
+  try{
+    let results = await pool.query(
+      `SELECT * FROM contracts WHERE "client_id" = $1;`
+      [req.body.client_id]
+    )
+  }catch(error){
+
+  }
 })

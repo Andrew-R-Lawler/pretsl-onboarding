@@ -109,7 +109,11 @@ class AdminIndividualStore extends Component {
 
             {
                 url:'/upload',
-                client_id: this.state.user_id
+                "fields": {
+                    client_id: this.props.store.user_id,
+                    food: 'tacos'
+                }
+                
             }
         );
         // const getUploadParams = async ({ meta }) => { 
