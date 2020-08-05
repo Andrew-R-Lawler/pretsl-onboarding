@@ -3,8 +3,6 @@ const router = express.Router();
 var nodemailer = require('nodemailer');
 
 router.post('/', (req, res) => {
-    console.log('req.body', req.body);
-    
     var transport = nodemailer.createTransport({
         host: "email-smtp.us-east-1.amazonaws.com",
         port: 587,

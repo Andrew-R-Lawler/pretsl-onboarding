@@ -9,7 +9,7 @@ const AdminNavigation = (props) => (
     <Link to="/home">
       {/* <h2 className="nav-title">Admin Nav Bar</h2> */}
     </Link>
-    <img className="logo-nav" src="https://get.pretsl.com/wp-content/uploads/2020/06/Pretsl-New-Logo-1.11-White-Opt.png"></img>
+    <img className="logo-nav" src="https://get.pretsl.com/wp-content/uploads/2020/06/Pretsl-New-Logo-1.11-White-Opt.png" alt="pretsl logo"></img>
     <div className="nav-right">
       
         {/* Show this link if they are logged in or not,

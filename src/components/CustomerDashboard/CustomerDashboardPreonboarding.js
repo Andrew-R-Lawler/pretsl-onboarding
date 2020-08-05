@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Dropzone from 'react-dropzone'
 
-import { Button, Header, Icon, Modal, Input, TextArea, Form , Label} from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 
 //views on this page, create a button that navigates to view contract page
@@ -74,7 +74,7 @@ class CustomerDashboardPreonboarding extends Component {
                         <section className="dropzone-style">
                             <div {...getRootProps()}>
                                 <input {...getInputProps()} />
-                                <p>CLICK HERE, or DRAG AND DROP files to upload your inventory</p>
+                                <p>CLICK HERE or DRAG AND DROP <br/>files to upload your inventory</p>
                             </div>
                         </section>
                     )}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { Button, Header, Icon, Modal, Input, TextArea, } from 'semantic-ui-react';
+import { Button, Input } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import './LoginPage.scss';
 
@@ -24,7 +24,7 @@ class LoginPage extends Component {
       });
       setTimeout(() => {
         this.props.history.push('/home')
-      }, 400);
+      }, 500);
     } else {
       this.props.dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }
@@ -48,8 +48,7 @@ class LoginPage extends Component {
           </h2>
         )}
         <form onSubmit={this.login}>
-          <img className="logo-head"src="https://get.pretsl.com/wp-content/uploads/2020/06/Pretsl-New-Logo-1.10-opt.png"></img>
-          {/* <h1>business.pretsl.com</h1> */}
+          <img className="logo-head"src="https://get.pretsl.com/wp-content/uploads/2020/06/Pretsl-New-Logo-1.10-opt.png" alt="pretsl logo"></img>
           <div>
             <label htmlFor="username">
               Username:<br/>
@@ -82,7 +81,7 @@ class LoginPage extends Component {
             />
           </div>
         </form>
-        <center>
+        {/* <center>
           <Button
             type="button"
             className="link-button"
@@ -90,7 +89,7 @@ class LoginPage extends Component {
           >
             Register
           </Button>
-        </center>
+        </center> */}
       </div>
     );
   }
