@@ -38,6 +38,14 @@ class RegisterPage extends Component {
     
   }
 
+  getUsers = () => {
+    setTimeout(() => {
+      this.props.dispatch({
+        type: 'GET_USER_LIST',
+      })
+    }, 750);
+  }
+
   render() {
     return (
       <div>
@@ -80,6 +88,7 @@ class RegisterPage extends Component {
               type="submit"
               name="submit"
               value="Register"
+              onClick={this.getUsers}
             />}
             header='Reminder!'
             content='Congrats! New customer created. Remember to email your new client the username and password created for them!'
