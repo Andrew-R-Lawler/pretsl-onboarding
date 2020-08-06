@@ -6,6 +6,8 @@ import Moment from 'react-moment';
 import { Button, Grid} from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 
+import ViewContract from '../ViewContract/ViewContract'
+
 //this is a conditionally rendered component only seen on 
 //customerdashboard if customer status is active:
 //active_customer===true
@@ -61,9 +63,18 @@ class CustomerDashboardPostonboarding extends Component {
                                         <p>{this.props.store.moonclerk_url}</p>
                                     </div>
                                 <div className="contractViewButton">
+
+                                
+                                
                                 <h3>Contract</h3>
                                     <Button type='button' onClick={()=>this.viewContractModal()}>View Contract</Button>
+                                
+                                    <ViewContract/>
+                                
                                 </div>
+
+
+
                                 <h3>Active Customer?</h3>
                                 <div className="emailDisplayDiv">
                                     <p>{String(this.props.store.active_customer)}</p>
