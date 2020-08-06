@@ -167,8 +167,25 @@ app.get('/clientContract', async (req,res) => {
     let results = await pool.query(
       `SELECT * FROM contracts WHERE "client_id" = $1;`
       [req.body.client_id]
-    )
-  }catch(error){
+    );
+    if(!results.rows.length){
+      res.sendStatus(404);
+    }
 
+    let row = results.row[0];
+
+    let obj = await s3.getObject({
+      Bucket: 'pretslonboardingappbucket',
+      Key: row.s3_key
+    }).promise();
+
+    res.writeHead(200, {
+      'Content-Type': 'application/pdf',
+      'Content-Disposition':'attachment; filename=contract.pdf',
+      'Content-Length': obj.Body.length
+    });
+    res.end(obj.Body);
+  }catch(error){
+    console.log("error in AWS GET request,",error);
   }
 })
