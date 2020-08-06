@@ -5,6 +5,8 @@ import Dropzone from 'react-dropzone'
 import { Button } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 
+import ViewContract from '../ViewContract/ViewContract'
+
 //views on this page, create a button that navigates to view contract page
 //display date joined
 //customer email. 
@@ -50,6 +52,9 @@ class CustomerDashboardPreonboarding extends Component {
     }
 
     render(){
+        const file = '../../public/images/PRETSL Android Icon.png'
+        const type = 'png'
+
         return(
             <div>
                 <h2 className="store-name">{this.props.store.store_name}</h2>
@@ -60,14 +65,10 @@ class CustomerDashboardPreonboarding extends Component {
                         <h3>Email:</h3>
                          {this.props.store.customer_email}</div>
                     <div className="contractViewButton">
-                        <h3>Contract:</h3>
-                            <Button
-                                type='button'
-                                onClick={()=>this.viewContractModal()}
-                                >
-                                    View Contract
-                            </Button>
-                
+                        <h3>Contract</h3>
+                            <ViewContract
+                                file={file}
+                                type={type}/>
                 <h3>Inventory:</h3>
                 <Dropzone onDrop={this.onDrop}>
                     {({getRootProps, getInputProps}) => (

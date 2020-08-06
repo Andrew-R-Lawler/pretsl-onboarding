@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import Moment from 'react-moment';
 
-import { Button, Grid} from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 
 import ViewContract from '../ViewContract/ViewContract'
@@ -28,13 +28,16 @@ class CustomerDashboardPostonboarding extends Component {
         console.log("inside CustomerDashboardPostonboarding, this.props.store:", this.props.store)
         }   
 
-    viewContractModal(){
-        //display modal here, select contract from clientStoreReducer
-        console.log("Contract Button Clicked");
-    }
+    // viewContractModal(){
+    //     //display modal here, select contract from clientStoreReducer
+    //     console.log("Contract Button Clicked");
+    // }
 
 
     render(){
+        const file = '../../public/images/PRETSL Android Icon.png'
+        const type = 'png'
+
         return(
             <div>
                 <h2 className="store-name">{this.props.store.store_name}</h2>
@@ -59,26 +62,13 @@ class CustomerDashboardPostonboarding extends Component {
                             </Grid.Column>
                             <Grid.Column width={8}>
                                 <h3>MoonClerk URL</h3>
-                                    <div className="emailDisplayDiv">
-                                        <p>{this.props.store.moonclerk_url}</p>
-                                    </div>
-                                <div className="contractViewButton">
-
-                                
-                                
+                                    <p>{this.props.store.moonclerk_url}</p>
                                 <h3>Contract</h3>
-                                    <Button type='button' onClick={()=>this.viewContractModal()}>View Contract</Button>
-                                
-                                    <ViewContract/>
-                                
-                                </div>
-
-
-
+                                    <ViewContract
+                                        file={file}
+                                        type={type}/>
                                 <h3>Active Customer?</h3>
-                                <div className="emailDisplayDiv">
                                     <p>{String(this.props.store.active_customer)}</p>
-                                </div>
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>

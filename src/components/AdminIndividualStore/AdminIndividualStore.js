@@ -11,6 +11,8 @@ import 'react-dropzone-uploader/dist/styles.css'
 import Dropzone from 'react-dropzone-uploader'
 import axios from 'axios';
 
+import ViewContract from '../ViewContract/ViewContract'
+
 class AdminIndividualStore extends Component {
 
     state = {
@@ -175,6 +177,10 @@ class AdminIndividualStore extends Component {
 
     render() {
         const currentUser = this.props.userlist.find(user => user.id === this.props.store.user_id)
+
+        const file = '../../public/images/PRETSL Android Icon.png'
+        const type = 'png'
+        
         return (
             <div>
             <Container className='pageHeader'>
@@ -313,7 +319,11 @@ class AdminIndividualStore extends Component {
                     <Grid.Column width={5}>
                         <Form>
                             <Form.Field>
-                                <Header as='h3'>Contract</Header>
+                                {/* <Header as='h3'>Contract</Header> */}
+                                <h3>Contract</h3>
+                                    <ViewContract
+                                        file={file}
+                                        type={type}/>
                             </Form.Field>
                             <Form.Field>
                                 <h3>MoonClerk URL</h3>
