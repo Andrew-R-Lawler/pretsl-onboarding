@@ -325,9 +325,13 @@ class AdminIndividualStore extends Component {
                             <Form.Field>
                                 {/* <Header as='h3'>Contract</Header> */}
                                 <h3>Contract</h3>
-                                    <ViewContract
-                                        file={file}
-                                        type={type}/>
+                                {this.state.edit ?
+                                        <this.MyUploader />
+                                    :
+                                        <ViewContract
+                                            file={file}
+                                            type={type} />
+                                }
                             </Form.Field>
                             <Form.Field>
                                 <h3>MoonClerk URL</h3>
@@ -373,9 +377,7 @@ class AdminIndividualStore extends Component {
                         </Container>
                     </Grid.Row>
                 </Grid>
-            </div>
-            <h3>Upload Client Contract</h3>
-            <this.MyUploader/>
+            </div> 
             </div>
         )
     }
