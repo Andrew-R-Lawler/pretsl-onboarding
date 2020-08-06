@@ -8,6 +8,7 @@ import 'semantic-ui-css/semantic.min.css';
 
 import ViewContract from '../ViewContract/ViewContract'
 
+
 //this is a conditionally rendered component only seen on 
 //customerdashboard if customer status is active:
 //active_customer===true
@@ -35,8 +36,6 @@ class CustomerDashboardPostonboarding extends Component {
 
 
     render(){
-        const file = '../../public/images/PRETSL Android Icon.png'
-        const type = 'png'
 
         return(
             <div>
@@ -64,9 +63,8 @@ class CustomerDashboardPostonboarding extends Component {
                                 <h3>MoonClerk URL</h3>
                                     <p>{this.props.store.moonclerk_url}</p>
                                 <h3>Contract</h3>
-                                    <ViewContract
-                                        file={file}
-                                        type={type}/>
+                                    
+                                    <ViewContract />
                                 <h3>Active Customer?</h3>
                                     <p>{String(this.props.store.active_customer)}</p>
                             </Grid.Column>
