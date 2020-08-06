@@ -17,6 +17,7 @@ class AdminIndividualStore extends Component {
         emailModalOpen: false,
         registerModalOpen: false,
         edit: false,
+        currentUser: '',
         user_id: '',
         store_name: '',
         customer_email: '',
@@ -177,7 +178,7 @@ class AdminIndividualStore extends Component {
     handleCloseRegister = () => this.setState({ registerModalOpen: false })
 
     render() {
-
+        const currentUser = this.props.userlist.find(user => user.id === this.props.store.user_id)
         return (
             <div>
             <Container className='pageHeader'>
@@ -189,7 +190,6 @@ class AdminIndividualStore extends Component {
                 >
                     <Header icon='browser' content='Draft an E-mail' />
                     <Modal.Content>
-                        {console.log('this.state', this.state)}
                         <Form className='email-modal'>
                             <Form.Field>
                                 <Header as='h4'>Subject</Header>
@@ -274,7 +274,7 @@ class AdminIndividualStore extends Component {
                                         })}
                                     </select>
                                 :
-                                    <p className='user-id'>{this.props.store.username}</p>
+                                    <p>{this.props.store.user_id}</p>
                                 }
                             </Form.Field>
                         </Form>
