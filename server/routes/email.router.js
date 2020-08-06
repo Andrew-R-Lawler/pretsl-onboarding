@@ -7,8 +7,8 @@ router.post('/', (req, res) => {
         host: "email-smtp.us-east-1.amazonaws.com",
         port: 587,
         auth: {
-            user: "AKIATY7BHZ52R4QBNB6E",
-            pass: "BMb8cW+e/gEm+en7LvSUN6EcvJqrcTa+iKEsAhzCQR2C"
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS
         }
     });
 

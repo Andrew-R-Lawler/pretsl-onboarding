@@ -11,12 +11,15 @@ import 'react-dropzone-uploader/dist/styles.css'
 import Dropzone from 'react-dropzone-uploader'
 import axios from 'axios';
 
+import ViewContract from '../ViewContract/ViewContract'
+
 class AdminIndividualStore extends Component {
 
     state = {
         emailModalOpen: false,
         registerModalOpen: false,
         edit: false,
+        currentUser: '',
         user_id: '',
         store_name: '',
         customer_email: '',
@@ -109,7 +112,11 @@ class AdminIndividualStore extends Component {
 
             {
                 url:'/upload',
-                client_id: this.state.user_id
+                "fields": {
+                    client_id: this.props.store.user_id,
+                    food: 'tacos'
+                }
+                
             }
         );
         // const getUploadParams = async ({ meta }) => { 
@@ -173,7 +180,11 @@ class AdminIndividualStore extends Component {
     handleCloseRegister = () => this.setState({ registerModalOpen: false })
 
     render() {
+        const currentUser = this.props.userlist.find(user => user.id === this.props.store.user_id)
 
+        const file = '../../public/images/PRETSL Android Icon.png'
+        const type = 'png'
+        
         return (
             <div>
             <Container className='pageHeader'>
@@ -185,7 +196,6 @@ class AdminIndividualStore extends Component {
                 >
                     <Header icon='browser' content='Draft an E-mail' />
                     <Modal.Content>
-                        {console.log('this.state', this.state)}
                         <Form className='email-modal'>
                             <Form.Field>
                                 <Header as='h4'>Subject</Header>
@@ -270,7 +280,7 @@ class AdminIndividualStore extends Component {
                                         })}
                                     </select>
                                 :
-                                    <p className='user-id'>{this.props.store.username}</p>
+                                    <p>{this.props.store.user_id}</p>
                                 }
                             </Form.Field>
                         </Form>
@@ -313,7 +323,11 @@ class AdminIndividualStore extends Component {
                     <Grid.Column width={5}>
                         <Form>
                             <Form.Field>
-                                <Header as='h3'>Contract</Header>
+                                {/* <Header as='h3'>Contract</Header> */}
+                                <h3>Contract</h3>
+                                    <ViewContract
+                                        file={file}
+                                        type={type}/>
                             </Form.Field>
                             <Form.Field>
                                 <h3>MoonClerk URL</h3>
