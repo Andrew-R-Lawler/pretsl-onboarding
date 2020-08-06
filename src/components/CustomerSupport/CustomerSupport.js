@@ -36,7 +36,12 @@ class CustomerSupport extends Component {
             payload: this.state
         })
         this.props.dispatch({ type: 'SEND_EMAIL', payload: supportEmail})
-        console.log('this.state', this.state);
+        this.setState({
+            storeId: '',
+            requestType: '',
+            requestBody: '',
+            requestStatus: 'New Request',
+        })
         
     }
 
@@ -59,7 +64,7 @@ class CustomerSupport extends Component {
                     </div>
                     <div className="customer-support-inputs">
                         <label>Request type:</label>
-                        <select name="requestType" onChange={this.handleChange}>
+                        <select name="requestType" value = {this.state.requestStatus} onChange={this.handleChange}>
                             <option value="" disabled selected value>Choose</option>
                             <option value="Change Contact Info">Change Contact Info</option>
                             <option value="Change Payment Information">Change Payment Information</option>
@@ -67,7 +72,7 @@ class CustomerSupport extends Component {
                             <option value="Cancel Pretsl Account">Cancel Pretsl Account</option>
                         </select>
                         <br/>
-                        <textarea name="requestBody" placeholder="How can we help you?" onChange={this.handleChange}></textarea>
+                        <textarea name="requestBody" value = {this.state.requestBody} placeholder="How can we help you?" onChange={this.handleChange}></textarea>
                         <br/>
                         <br/>
                         <Modal
