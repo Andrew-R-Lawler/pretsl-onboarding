@@ -71,6 +71,7 @@ class Locations extends Component {
     const view = this.state.mode === "view";
     return (
       <div>
+        {console.log(this.props.reduxState.locationsReducer, 'this.state')}
         <Container>
           <Modal
             closeIcon
