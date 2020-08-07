@@ -6,7 +6,7 @@ import Moment from 'react-moment';
 import { Grid } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 
-import ViewContract from '../ViewContract/ViewContract'
+import ViewContract from '../ViewContract/ViewContract';
 
 //this is a conditionally rendered component only seen on 
 //customerdashboard if customer status is active:
@@ -35,8 +35,11 @@ class CustomerDashboardPostonboarding extends Component {
 
 
     render(){
-        const file = '../../public/images/PRETSL Android Icon.png'
+        const file = 'public/PRETSL Android Icon.png'
         const type = 'png'
+
+        console.log('this.props.store', this.props.store);
+        
 
         return(
             <div>
