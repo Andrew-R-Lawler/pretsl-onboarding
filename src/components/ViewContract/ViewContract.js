@@ -16,7 +16,7 @@ class ViewContract extends Component {
                         <Modal.Content>
                             <div className="contract-container">
 <p className="contract-page">Page 1: Software
-Your software subscription costs
+Your software subscription costs:
 Software Subscription(1) see details
 (Gets data from Paddle)
 Software Billing Method
