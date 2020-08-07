@@ -27,7 +27,7 @@ class CustomerSupport extends Component {
 
     submit = () => {
         let supportEmail = {
-            customer_email: 'Andrew.R.Lawler@gmail.com',
+            customer_email: 'babysmsh@gmail.com',
             subject: 'New Support Ticket!',
             email_body: 'An account has submitted a new support ticket! More information can be viewed on the admin support page!'
         }
