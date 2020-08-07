@@ -5,7 +5,6 @@ import { Button, Modal, Header} from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import './ViewContract.scss'
 import FileViewer from 'react-file-viewer';
-import PretslContract from '/Users/andrewlawler/Documents/prime/tier3/pretsl/src/components/ViewContract/pretsl_merchant_contract_agreement.pdf'
 
 class ViewContract extends Component {
 
@@ -17,7 +16,7 @@ class ViewContract extends Component {
                         <Modal.Content>
                             <div className="contract-container">
 <p className="contract-page">Page 1: Software
-Your software subscription costs
+Your software subscription costs:
 Software Subscription(1) see details
 (Gets data from Paddle)
 Software Billing Method
