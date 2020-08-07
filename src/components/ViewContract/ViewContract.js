@@ -3,10 +3,9 @@ import { connect } from 'react-redux';
 
 import { Button, Modal, Header} from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
-
 import './ViewContract.scss'
-
 import FileViewer from 'react-file-viewer';
+import PretslContract from '/Users/andrewlawler/Documents/prime/tier3/pretsl/src/components/ViewContract/pretsl_merchant_contract_agreement.pdf'
 
 class ViewContract extends Component {
 
@@ -98,9 +97,6 @@ In order to provide merchants with payment processing services, Pretsl must ente
 </p>
                             </div>
                             
-                                {/* <FileViewer
-                                    filePath={this.props.file}
-                                    fileType={this.props.type}/> */}
                         </Modal.Content>
                 </Modal>
             </div>
