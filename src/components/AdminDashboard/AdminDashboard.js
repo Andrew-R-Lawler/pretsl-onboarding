@@ -34,7 +34,6 @@ class AdminDashboard extends Component {
                             <Table.HeaderCell>Status</Table.HeaderCell>
                             <Table.HeaderCell>Date Joined</Table.HeaderCell>
                             <Table.HeaderCell>Notes</Table.HeaderCell>
-                            <Table.HeaderCell>Contract</Table.HeaderCell>
                             <Table.HeaderCell>Business Type</Table.HeaderCell>
                             <Table.HeaderCell>Customer Active</Table.HeaderCell>
                         </Table.Row>
@@ -50,7 +49,6 @@ class AdminDashboard extends Component {
                                     <Table.Cell>{store.store_status}</Table.Cell>
                                     <Table.Cell><Moment format="YYYY/MM/DD">{store.date_joined}</Moment></Table.Cell>
                                     <Table.Cell className="notes-cell">{store.notes}</Table.Cell>
-                                    <Table.Cell>{store.contract}</Table.Cell>
                                     <Table.Cell>{store.business_type}</Table.Cell>
                                     {store.active_customer === true ?
                                         <Table.Cell>True</Table.Cell>
