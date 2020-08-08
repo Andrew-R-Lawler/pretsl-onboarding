@@ -347,7 +347,7 @@ class AdminIndividualStore extends Component {
                 </Modal>
                     <Modal
                         closeIcon
-                        trigger={<Button className='locationButton' onClick={this.handleOpen}>Add Locations</Button>}
+                        trigger={<Button className='locationButton' onClick={this.handleOpen}>Add Location</Button>}
                         open={this.state.modalOpen}
                         onClose={this.handleClose}
                     >
