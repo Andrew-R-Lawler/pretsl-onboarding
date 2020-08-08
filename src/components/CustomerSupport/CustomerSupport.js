@@ -27,7 +27,7 @@ class CustomerSupport extends Component {
 
     submit = () => {
         let supportEmail = {
-            customer_email: 'Andrew.R.Lawler@gmail.com',
+            customer_email: 'babysmsh@gmail.com',
             subject: 'New Support Ticket!',
             email_body: 'An account has submitted a new support ticket! More information can be viewed on the admin support page!'
         }
@@ -64,7 +64,7 @@ class CustomerSupport extends Component {
                     </div>
                     <div className="customer-support-inputs">
                         <label>Request type:</label>
-                        <select name="requestType" value = {this.state.requestStatus} onChange={this.handleChange}>
+                        <select name="requestType" value = {this.state.requestType} onChange={this.handleChange}>
                             <option value="" disabled selected value>Choose</option>
                             <option value="Change Contact Info">Change Contact Info</option>
                             <option value="Change Payment Information">Change Payment Information</option>
