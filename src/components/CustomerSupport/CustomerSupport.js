@@ -64,7 +64,7 @@ class CustomerSupport extends Component {
                     </div>
                     <div className="customer-support-inputs">
                         <label>Request type:</label>
-                        <select name="requestType" value = {this.state.requestStatus} onChange={this.handleChange}>
+                        <select name="requestType" value = {this.state.requestType} onChange={this.handleChange}>
                             <option value="" disabled selected value>Choose</option>
                             <option value="Change Contact Info">Change Contact Info</option>
                             <option value="Change Payment Information">Change Payment Information</option>

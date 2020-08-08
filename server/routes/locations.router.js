@@ -6,8 +6,8 @@ const router = express.Router();
  * GET route for locations
  */
 router.get('/', (req, res) => {
-    let queryText = `SELECT * FROM "store"
-    FULL OUTER JOIN "location" ON "store"."id" = "location"."store_id"
+    let queryText = `SELECT * FROM "location"
+    FULL OUTER JOIN "store" ON "location"."store_id" = "store"."id"
     WHERE "user_id" = $1;`
     pool.query(queryText, [req.user.id])
         .then(result => {
@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
  * POST route for locations
  */
 router.post('/', (req, res) => {
-    console.log(req.body)
+    console.log(req.body, 'req.body')
     const store_id = req.body.store_id;
     const address = req.body.address;
     const timezone = req.body.timezone;
