@@ -184,7 +184,9 @@ class AdminIndividualStore extends Component {
         })
     }
 
-
+    secretClick = () => {
+        this.setState({})
+    }
 
 
     MyUploader = () =>{
