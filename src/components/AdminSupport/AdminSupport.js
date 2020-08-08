@@ -35,7 +35,7 @@ class AdminSupport extends Component {
                             </Table.Row>
                         </Table.Header>
                         <Table.Body>
-                            { supportTicket.map(item => 
+                            { supportTicket && supportTicket.map(item => 
                                 <AdminSupportTicket item={item} />)}
                         </Table.Body>
                     </Table>
