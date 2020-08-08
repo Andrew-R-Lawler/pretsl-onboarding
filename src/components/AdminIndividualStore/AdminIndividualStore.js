@@ -48,12 +48,9 @@ class AdminIndividualStore extends Component {
         tablet_stands_quantity: "",
         emailModalOpen: false,
         registerModalOpen: false,
-<<<<<<< HEAD
         randomPassword: ( Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) ),
         isCopied: 'false',
-=======
         modalOpen: false,
->>>>>>> master
         edit: false,
         currentUser: '',
         user_id: '',
@@ -350,7 +347,7 @@ class AdminIndividualStore extends Component {
                 </Modal>
                     <Modal
                         closeIcon
-                        trigger={<Button className='locationButton' onClick={this.handleOpen}>Add Locations</Button>}
+                        trigger={<Button className='locationButton' onClick={this.handleOpen}>Add Location</Button>}
                         open={this.state.modalOpen}
                         onClose={this.handleClose}
                     >
