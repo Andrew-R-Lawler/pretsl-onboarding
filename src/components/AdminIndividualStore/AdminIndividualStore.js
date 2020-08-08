@@ -184,7 +184,9 @@ class AdminIndividualStore extends Component {
         })
     }
 
-
+    secretClick = () => {
+        this.setState({})
+    }
 
 
     MyUploader = () =>{
@@ -273,9 +275,8 @@ class AdminIndividualStore extends Component {
     }
 
     autoPopulateForm = () => {
-        console.log('autoPopulateForm clicked', this.props.reduxState.user.id);
+        console.log('autoPopulateForm clicked', this.props.reduxState.individualStoreReducer.id);
         this.setState({
-            store_id: this.props.reduxState.user.id,
             storeName: `Lindsey's Patisserie on Grand`,
             address: "542 Grand Ave, St. Paul, MN; 55104",
             timezone: "Central",
