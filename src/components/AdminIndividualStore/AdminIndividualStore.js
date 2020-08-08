@@ -36,10 +36,24 @@ class AdminIndividualStore extends Component {
     } // End Delete onDrop after presentation.
 
     state = {
+        store_id: "",
+        storeName: "",
+        address: "",
+        timezone: "",
+        phoneNumber: "",
+        email: "",
+        pointOfContact: "",
+        tablets_quantity: "",
+        printers_quantity: "",
+        tablet_stands_quantity: "",
         emailModalOpen: false,
         registerModalOpen: false,
+<<<<<<< HEAD
         randomPassword: ( Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) ),
         isCopied: 'false',
+=======
+        modalOpen: false,
+>>>>>>> master
         edit: false,
         currentUser: '',
         user_id: '',
@@ -61,6 +75,64 @@ class AdminIndividualStore extends Component {
         
         Follow this link to complete payment so we can get you on the way to having goods in customer's hands:`,
     }
+
+    constructor(props) {
+        super(props);
+        this.handleSave = this.handleSave.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
+    }
+
+    handleInputChangeFor = (propertyName) => (event) => {
+        this.setState({
+            // store_id: this.props.reduxState.locationsReducer[0].store_id,
+            [propertyName]: event.target.value,
+        });
+    };
+
+    handleSave() {
+
+        const locationObj = {
+            store_id: this.props.reduxState.individualStoreReducer.id,
+            address: this.state.address,
+            timezone: this.state.timezone,
+            phoneNumber: this.state.phoneNumber,
+            email: this.state.email,
+            pointOfContact: this.state.pointOfContact,
+            tablets_quantity: this.state.tablets_quantity,
+            printers_quantity: this.state.printers_quantity,
+            tablet_stands_quantity: this.state.tablet_stands_quantity,
+        }
+        console.log('locationObj', locationObj);
+        
+
+        this.props.dispatch({
+            type: "POST_LOCATION",
+            payload: locationObj,
+        });
+
+        this.setState({
+            store_id: "",
+            storeName: "",
+            address: "",
+            timezone: "",
+            phoneNumber: "",
+            email: "",
+            pointOfContact: "",
+            tablets_quantity: "",
+            printers_quantity: "",
+            tablet_stands_quantity: "",
+            modalOpen: false,
+        });
+        this.handleClose();
+    }
+
+    handleEdit() {
+        this.setState({ mode: "edit" });
+    }
+
+    handleOpen = () => this.setState({ modalOpen: true })
+
+    handleClose = () => this.setState({ modalOpen: false })
 
     goBack = () => {
         this.props.history.push('/AdminDashboard')
@@ -214,6 +286,7 @@ class AdminIndividualStore extends Component {
         
         return (
             <div>
+                {console.log(this.state, 'this.state')}
             <Container className='pageHeader'>
                 <Modal
                     trigger={<Button className='emailButton' onClick={this.handleOpenEmail}>Send Mail</Button>}
@@ -275,7 +348,96 @@ class AdminIndividualStore extends Component {
                         </Button>
                     </Modal.Actions>
                 </Modal>
-
+                    <Modal
+                        closeIcon
+                        trigger={<Button className='locationButton' onClick={this.handleOpen}>Add Locations</Button>}
+                        open={this.state.modalOpen}
+                        onClose={this.handleClose}
+                    >
+                        <Header as='h1' content='Add New Location' />
+                        <Modal.Content>
+                            <Form>
+                                <Form.Field>
+                                    <Input
+                                        label='Store Name'
+                                        type="text"
+                                        name="storeName"
+                                        onChange={this.handleInputChangeFor("storeName")}
+                                        value={this.state.storeName}
+                                    />
+                                </Form.Field>
+                                <Form.Field>
+                                    <Input
+                                        label='Address'
+                                        name="address"
+                                        onChange={this.handleInputChangeFor("address")}
+                                        value={this.state.address}
+                                    />
+                                </Form.Field>
+                                <Form.Field>
+                                    <Input
+                                        label='Timezone'
+                                        name="timezone"
+                                        onChange={this.handleInputChangeFor("timezone")}
+                                        value={this.state.timezone}
+                                    />
+                                </Form.Field>
+                                <Form.Field>
+                                    <Input
+                                        label='Phone Number'
+                                        name="phoneNumber"
+                                        onChange={this.handleInputChangeFor("phoneNumber")}
+                                        value={this.state.phoneNumber}
+                                    />
+                                </Form.Field>
+                                <Form.Field>
+                                    <Input
+                                        label='E-mail'
+                                        name="email"
+                                        onChange={this.handleInputChangeFor("email")}
+                                        value={this.state.email}
+                                    />
+                                </Form.Field>
+                                <Form.Field>
+                                    <Input
+                                        label='Point Of Contact'
+                                        name="pointOfContact"
+                                        onChange={this.handleInputChangeFor("pointOfContact")}
+                                        value={this.state.pointOfContact}
+                                    />
+                                </Form.Field>
+                                <Form.Field>
+                                    <Input
+                                        label='Tablet Quantity'
+                                        name="tablets_quantity"
+                                        onChange={this.handleInputChangeFor("tablets_quantity")}
+                                        value={this.state.tablets_quantity}
+                                    />
+                                </Form.Field>
+                                <Form.Field>
+                                    <Input
+                                        label='Printer Quantity'
+                                        name="printers_quantity"
+                                        onChange={this.handleInputChangeFor("printers_quantity")}
+                                        value={this.state.printers_quantity}
+                                    />
+                                </Form.Field>
+                                <Form.Field>
+                                    <Input
+                                        label='Tablet Stand Quantity'
+                                        name="tablet_stands_quantity"
+                                        onChange={this.handleInputChangeFor("tablet_stands_quantity")}
+                                        value={this.state.tablet_stands_quantity}
+                                    />
+                                </Form.Field>
+                            </Form>
+                        </Modal.Content>
+                        <Modal.Actions>
+                            <Button onClick={this.handleSave}>
+                                <Icon name='checkmark' />Add Location
+                            </Button>
+                        </Modal.Actions>
+                    </Modal>
             </Container>
             <div className="admin-individual-store-container">
                 <Grid>
@@ -434,7 +596,8 @@ class AdminIndividualStore extends Component {
 
 const store = reduxState => ({
     store: reduxState.individualStoreReducer,
-    userlist: reduxState.adminUserReducer
+    userlist: reduxState.adminUserReducer,
+    reduxState
 })
 
 export default connect(store)(AdminIndividualStore);
