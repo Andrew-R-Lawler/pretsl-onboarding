@@ -10,8 +10,13 @@ class AdminDashboard extends Component {
 
     componentDidMount = () => { 
         this.props.dispatch ({ type: 'GET_STORES' });
+<<<<<<< HEAD
+        this.props.dispatch ({ type: 'GET_USER_LIST' })
+        this.props.dispatch({ type: 'GET_TICKETS' })
+=======
         this.props.dispatch ({ type: 'GET_USER_LIST' });
         this.props.dispatch ({ type: 'GET_TICKETS' })
+>>>>>>> master
       };
 
     viewStore = (event) => {

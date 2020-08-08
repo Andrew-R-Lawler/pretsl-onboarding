@@ -1,19 +1,39 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Container, Header, Button, Input, TextArea, Form, Modal, Icon, Grid } from 'semantic-ui-react';
-import 'semantic-ui-css/semantic.min.css';
-import './AdminIndividualStore.scss';
+import { Container, Header, Button, Input, TextArea, Form, Modal, Icon, Grid, Label } from 'semantic-ui-react';
 import Moment from 'react-moment';
-
-import RegisterPage from '../RegisterPage/RegisterPage'
-
-import 'react-dropzone-uploader/dist/styles.css'
-import Dropzone from 'react-dropzone-uploader'
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import axios from 'axios';
 
+// Uncomment out after presentation.
+// import Dropzone from 'react-dropzone-uploader'
+
+// Delete 'import Dropzone from 'react-dropzone' after presentation.
+import Dropzone from 'react-dropzone'
+// End Delete 'import Dropzone from 'react-dropzone' after presentation.
+
+import RegisterPage from '../RegisterPage/RegisterPage'
 import ViewContract from '../ViewContract/ViewContract'
 
+import 'react-dropzone-uploader/dist/styles.css'
+import 'semantic-ui-css/semantic.min.css';
+import './AdminIndividualStore.scss';
+
+
+
 class AdminIndividualStore extends Component {
+
+// Delete onDrop after presentation.
+    onDrop = (acceptedFiles) => {
+        console.log('onDrop:', acceptedFiles);
+        const upload = acceptedFiles[0];
+        this.setState({
+            store_inventory: acceptedFiles
+        })
+        this.props.dispatch({ 
+            type: 'UPDATE_AWS_BUCKET',
+            payload: this.state })
+    } // End Delete onDrop after presentation.
 
     state = {
         store_id: "",
@@ -28,7 +48,12 @@ class AdminIndividualStore extends Component {
         tablet_stands_quantity: "",
         emailModalOpen: false,
         registerModalOpen: false,
+<<<<<<< HEAD
+        randomPassword: ( Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) ),
+        isCopied: 'false',
+=======
         modalOpen: false,
+>>>>>>> master
         edit: false,
         currentUser: '',
         user_id: '',
@@ -245,6 +270,11 @@ class AdminIndividualStore extends Component {
         
     }
 
+    copyToClipboard = () => {
+        console.log('copyToClipboard clicked');
+
+    }
+
     handleCloseEmail = () => this.setState({ emailModalOpen: false })
     handleCloseRegister = () => this.setState({ registerModalOpen: false })
 
@@ -302,7 +332,14 @@ class AdminIndividualStore extends Component {
                             
                             <Form.Field>
                                 <Header as="h4">Suggested password:</Header>
-                                    <Input name="password" value={Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)}/>
+                                    <Input name="password" value={this.state.randomPassword}/> 
+                                    <div className="copyButton">
+                                        <CopyToClipboard 
+                                            text={this.state.randomPassword}
+                                            onCopy={() => this.setState({isCopied: true})}>
+                                            <Button icon='copy' inverted color='violet'></Button>
+                                        </CopyToClipboard>
+                                    </div>
                             </Form.Field>
                     </Modal.Content>
                     <Modal.Actions>
@@ -485,7 +522,22 @@ class AdminIndividualStore extends Component {
                                 {/* <Header as='h3'>Contract</Header> */}
                                 <h3>Contract</h3>
                                 {this.state.edit ?
-                                        <this.MyUploader />
+
+                                // After presentation, uncomment the below line. 
+                                    // <this.MyUploader />
+
+                                // After presentation, delete Dropzone.
+                                    <Dropzone onDrop={this.onDrop}>
+                                        {({getRootProps, getInputProps}) => (
+                                            <section className="dropzone-style">
+                                                <div {...getRootProps()}>
+                                                    <input {...getInputProps()} />
+                                                    <p>Upload Contract</p>
+                                                </div>
+                                            </section>
+                                        )}
+                                    </Dropzone>
+                                // End after presentation, delete Dropzone.
                                     :
                                         <ViewContract
                                             file={file}
