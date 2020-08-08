@@ -69,7 +69,7 @@ class Locations extends Component {
   autoPopulateForm = () => {
     console.log('autoPopulateForm clicked', this.props);
     this.setState({
-        store_id: this.props.reduxState.user.id,
+        store_id: this.props.reduxState.locationsReducer[0].store_id,
         storeName: `Lindsey's Patisserie on Grand`,
         address: "542 Grand Ave, St. Paul, MN; 55104",
         timezone: "Central",
