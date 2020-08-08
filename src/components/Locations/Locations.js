@@ -66,6 +66,22 @@ class Locations extends Component {
 
   handleClose = () => this.setState({ modalOpen: false })
 
+  autoPopulateForm = () => {
+    console.log('autoPopulateForm clicked', this.props);
+    this.setState({
+        store_id: this.props.reduxState.user.id,
+        storeName: `Lindsey's Patisserie on Grand`,
+        address: "542 Grand Ave, St. Paul, MN; 55104",
+        timezone: "Central",
+        phoneNumber: "651-233-4525",
+        email: "patisserieongrand@gmail.com",
+        pointOfContact: "Lindsey",
+        tablets_quantity: 2,
+        printers_quantity: 2,
+        tablet_stands_quantity: 2,
+    })
+}
+
   render() {
     const location = this.props.reduxState.locationsReducer;
     const view = this.state.mode === "view";
@@ -79,7 +95,7 @@ class Locations extends Component {
             open={this.state.modalOpen}
             onClose={this.handleClose}
           >
-            <Header as='h1' content='Add New Location' />
+            <Header as='h1' content='Add New Location' onClick={this.autoPopulateForm} />
             <Modal.Content>
               <Form>
                 <Form.Field>
