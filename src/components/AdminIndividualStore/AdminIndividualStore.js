@@ -61,7 +61,7 @@ class AdminIndividualStore extends Component {
         notes: '',
         business_type: '',
         contract: '',
-        moonclerk_url: '',
+        moonclerk_url: 'https://www.moonclerk.com/s1gty542re',
         active_customer: '',
         subject: 'Welcome To Pretsl!',
         email_body: `We are happy to welcome you to Pretsl!
@@ -69,8 +69,10 @@ class AdminIndividualStore extends Component {
         Your login credentials are
         Username:
         Password:
+
+        When you log in, please upload your store's inventory for use in our merchant center.
         
-        Follow this link to complete payment so we can get you on the way to having goods in customer's hands: https://moonclerk.com/s1gty542re`,
+        Afterwards, follow this link to complete payment so we can get you on the way to having goods in customer's hands: https://moonclerk.com/s1gty542re`,
     }
 
     constructor(props) {
@@ -566,7 +568,7 @@ class AdminIndividualStore extends Component {
                                 }
                             </Form.Field>
                             <Form.Field>
-                                <h3 onClick={this.autoPopulateForm}>MoonClerk URL</h3>
+                                <h3>MoonClerk URL</h3>
                                 {this.state.edit ?
                                     <Input name='moonclerk_url' value={this.state.moonclerk_url} onChange={this.handleChange}></Input>
                                     :
