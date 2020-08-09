@@ -38,6 +38,19 @@ class CustomerOnboarding extends Component {
         this.successClose();
     }
 
+
+    autoPopulateForm = () => {
+        console.log('autoPopulateForm clicked', this.props.reduxState.individualStoreReducer.id);
+        this.setState({
+            store_name: 'Pastel Patissere',
+            store_status: 'Lead',
+            notes: 'Lindsey is expanding her business into her first brick and mortar location, and is looking for a way to expand online presence.',
+            business_type: 'Caterer',
+            customer_email: 'pastelpatissere@gmail.com',
+        })
+    }
+
+
     handleOpen = () => this.setState({ modalOpen: true })
 
     handleClose = () => this.setState({ modalOpen: false })
@@ -50,8 +63,7 @@ class CustomerOnboarding extends Component {
         return (
             <div className="customer-onboarding-form">
                 <Form>
-                {console.log('this.state', this.state)}
-                <h1>Customer Onboarding</h1>
+                <h1 onClick={this.autoPopulateForm}>Customer Onboarding</h1>
                 <h3>Store Name</h3>
                 <Input className="customer-onboarding-input" name = 'store_name' placeholder = 'Store Name' onChange={this.handleChange} value = {this.state.store_name}></Input>
                 <h3>Store Status</h3>
