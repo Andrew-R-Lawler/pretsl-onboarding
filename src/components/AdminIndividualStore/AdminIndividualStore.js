@@ -6,10 +6,10 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import axios from 'axios';
 
 // Uncomment out after presentation.
-import Dropzone from 'react-dropzone-uploader'
+// import Dropzone from 'react-dropzone-uploader'
 
 // Delete 'import Dropzone from 'react-dropzone' after presentation.
-// import Dropzone from 'react-dropzone'
+import Dropzone from 'react-dropzone'
 // End Delete 'import Dropzone from 'react-dropzone' after presentation.
 
 import RegisterPage from '../RegisterPage/RegisterPage'
@@ -24,16 +24,16 @@ import './AdminIndividualStore.scss';
 class AdminIndividualStore extends Component {
 
 // Delete onDrop after presentation.
-    // onDrop = (acceptedFiles) => {
-    //     console.log('onDrop:', acceptedFiles);
-    //     const upload = acceptedFiles[0];
-    //     this.setState({
-    //         store_inventory: acceptedFiles
-    //     })
-    //     this.props.dispatch({ 
-    //         type: 'UPDATE_AWS_BUCKET',
-    //         payload: this.state })
-    // } 
+    onDrop = (acceptedFiles) => {
+        console.log('onDrop:', acceptedFiles);
+        const upload = acceptedFiles[0];
+        this.setState({
+            store_inventory: acceptedFiles
+        })
+        this.props.dispatch({ 
+            type: 'UPDATE_AWS_BUCKET',
+            payload: this.state })
+    } 
 
     state = {
         store_id: "",
@@ -547,19 +547,19 @@ class AdminIndividualStore extends Component {
                                 {this.state.edit ?
 
                                 // After presentation, uncomment the below line. 
-                                    <this.MyUploader />
+                                    // <this.MyUploader />
 
                                 // After presentation, delete Dropzone.
-                                    // <Dropzone onDrop={this.onDrop}>
-                                    //     {({getRootProps, getInputProps}) => (
-                                    //         <section className="dropzone-style">
-                                    //             <div {...getRootProps()}>
-                                    //                 <input {...getInputProps()} />
-                                    //                 <p>Upload Contract</p>
-                                    //             </div>
-                                    //         </section>
-                                    //     )}
-                                    // </Dropzone>
+                                    <Dropzone onDrop={this.onDrop}>
+                                        {({getRootProps, getInputProps}) => (
+                                            <section className="dropzone-style">
+                                                <div {...getRootProps()}>
+                                                    <input {...getInputProps()} />
+                                                    <p>Upload Contract</p>
+                                                </div>
+                                            </section>
+                                        )}
+                                    </Dropzone>
                                 // End after presentation, delete Dropzone.
                                     :
                                         <ViewContract
