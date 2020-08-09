@@ -69,8 +69,10 @@ class AdminIndividualStore extends Component {
         Your login credentials are
         Username:
         Password:
+
+        When you log in, please upload your store's inventory for use in our merchant center.
         
-        Follow this link to complete payment so we can get you on the way to having goods in customer's hands: https://moonclerk.com/s1gty542re`,
+        Afterwards, follow this link to complete payment so we can get you on the way to having goods in customer's hands: https://moonclerk.com/s1gty542re`,
     }
 
     constructor(props) {
