@@ -70,7 +70,7 @@ class AdminIndividualStore extends Component {
         Username:
         Password:
         
-        Follow this link to complete payment so we can get you on the way to having goods in customer's hands:`,
+        Follow this link to complete payment so we can get you on the way to having goods in customer's hands: https://moonclerk.com/s1gty542re`,
     }
 
     constructor(props) {
@@ -133,6 +133,13 @@ class AdminIndividualStore extends Component {
 
     goBack = () => {
         this.props.history.push('/AdminDashboard')
+    }
+    
+    autoPopulateForm = () => {
+        console.log('autoPopulateForm clicked', this.props.reduxState.individualStoreReducer.id);
+        this.setState({
+            moonclerk_url: 'https://www.moonclerk.com/s1gty542re'
+        })
     }
 
     toggleEdit = () => {
@@ -559,7 +566,7 @@ class AdminIndividualStore extends Component {
                                 }
                             </Form.Field>
                             <Form.Field>
-                                <h3>MoonClerk URL</h3>
+                                <h3 onClick={this.autoPopulateForm}>MoonClerk URL</h3>
                                 {this.state.edit ?
                                     <Input name='moonclerk_url' value={this.state.moonclerk_url} onChange={this.handleChange}></Input>
                                     :
