@@ -61,7 +61,7 @@ class AdminIndividualStore extends Component {
         notes: '',
         business_type: '',
         contract: '',
-        moonclerk_url: '',
+        moonclerk_url: 'https://www.moonclerk.com/s1gty542re',
         active_customer: '',
         subject: 'Welcome To Pretsl!',
         email_body: `We are happy to welcome you to Pretsl!
@@ -566,7 +566,7 @@ class AdminIndividualStore extends Component {
                                 }
                             </Form.Field>
                             <Form.Field>
-                                <h3 onClick={this.autoPopulateForm}>MoonClerk URL</h3>
+                                <h3>MoonClerk URL</h3>
                                 {this.state.edit ?
                                     <Input name='moonclerk_url' value={this.state.moonclerk_url} onChange={this.handleChange}></Input>
                                     :
