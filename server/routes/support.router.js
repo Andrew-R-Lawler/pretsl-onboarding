@@ -10,7 +10,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     let sqlText = `SELECT * FROM store
 JOIN support ON store.id = support.store_id
 WHERE isArchived = FALSE
-ORDER BY support.id ASC;`;
+ORDER BY support.id DESC;`;
     pool.query(sqlText)
     .then (result => {
         console.log('result.rows', result.rows);
