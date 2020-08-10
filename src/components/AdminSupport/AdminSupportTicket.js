@@ -54,7 +54,7 @@ class AdminSupportTicket extends Component {
 
     render(){
         return(
-            <Table.Row key={this.props.item.id}>
+            <Table.Row key={this.props.item.id} className="row-hover">
                 <Table.Cell>{this.props.item.store_name}</Table.Cell>
                 <Table.Cell>{this.props.item.customer_email}</Table.Cell>
                 <Table.Cell>{this.props.item.request_type}</Table.Cell>

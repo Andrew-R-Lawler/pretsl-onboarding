@@ -91,7 +91,7 @@ class Locations extends Component {
         <Container>
           <Modal
             closeIcon
-            trigger={<Button className = 'locationButton' onClick={this.handleOpen}>Add Locations</Button>}
+            trigger={<Button className = 'locationButton' onClick={this.handleOpen}>Add Location</Button>}
             open={this.state.modalOpen}
             onClose={this.handleClose}
           >
@@ -197,7 +197,7 @@ class Locations extends Component {
           <Table.Body>
           {location &&
             location.map((item) => (
-              <Table.Row key={item.id}>
+              <Table.Row key={item.id} className="row-hover">
                 <Table.Cell>{item.store_name}</Table.Cell>
                 <Table.Cell>{item.address}</Table.Cell>
                 <Table.Cell>{item.timezone}</Table.Cell>
