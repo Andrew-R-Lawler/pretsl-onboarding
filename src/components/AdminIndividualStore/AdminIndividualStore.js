@@ -70,7 +70,7 @@ class AdminIndividualStore extends Component {
         Username:
         Password:
 
-        When you log in, please upload your store's inventory for use in our merchant center.
+        When you log in, please sign and return the contract, and upload your store's inventory for use in our merchant center.
         
         Afterwards, follow this link to complete payment so we can get you on the way to having goods in customer's hands: https://moonclerk.com/s1gty542re`,
     }
