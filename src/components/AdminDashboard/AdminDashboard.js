@@ -42,7 +42,7 @@ class AdminDashboard extends Component {
                     <Table.Body>
                         {this.props.reduxState.storeReducer.map(store => {
                             return(
-                                <Table.Row key={store.id}>
+                                <Table.Row key={store.id} className="row-hover">
                                     <Table.Cell><Button value={store.id} onClick={this.viewStore}>View Profile</Button></Table.Cell>
                                     <Table.Cell>{store.store_name}</Table.Cell>
                                     <Table.Cell>{store.user_id}</Table.Cell>
