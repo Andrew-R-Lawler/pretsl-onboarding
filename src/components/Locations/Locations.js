@@ -71,13 +71,13 @@ class Locations extends Component {
     this.setState({
         store_id: this.props.reduxState.locationsReducer[0].store_id,
         storeName: `Lindsey's Patisserie on Grand`,
-        address: "542 Grand Ave, St. Paul, MN; 55104",
+        address: "1355 Central Ave., Minneapolis, MN; 55418",
         timezone: "Central",
-        phoneNumber: "651-233-4525",
-        email: "patisserieongrand@gmail.com",
-        pointOfContact: "Lindsey",
+        phoneNumber: "651-554-3682",
+        email: "patisserieoncentral@gmail.com",
+        pointOfContact: "Jack",
         tablets_quantity: 2,
-        printers_quantity: 2,
+        printers_quantity: 1,
         tablet_stands_quantity: 2,
     })
 }
