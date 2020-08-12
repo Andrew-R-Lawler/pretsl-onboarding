@@ -20,7 +20,6 @@ import AdminCustomerOnboarding from '../AdminCustomerOnboarding/AdminCustomerOnb
 // CUSTOMER imports
 import CustomerDashboard from '../CustomerDashboard/CustomerDashboard';
 import CustomerNavigation from '../CustomerNavigation/CustomerNavigation';
-//import CustomerPostOnboarding from '../CustomerPostOnboarding/CustomerPostOnboarding';
 import CustomerSupport from '../CustomerSupport/CustomerSupport';
 import Locations from '../Locations/Locations';
 
@@ -28,6 +27,7 @@ import Locations from '../Locations/Locations';
 
 class App extends Component {
 
+  // retreives current user data
   componentDidMount () {
     this.props.dispatch({type: 'FETCH_USER'})
   }
@@ -66,14 +66,6 @@ class App extends Component {
       </Router>
   )}
 }
-
-// export default connect()(App);
-
-// const store = reduxState => ({
-//   reduxState
-// })
-
-// export default connect(store)(App);
 
 const mapStateToProps = (reduxStore) => ({ reduxStore });
 export default connect(mapStateToProps)(App);

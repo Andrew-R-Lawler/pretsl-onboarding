@@ -1,17 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Container, Header, Button, Input, TextArea, Form, Modal, Icon, Grid, Label } from 'semantic-ui-react';
+import { Container, Header, Button, Input, TextArea, Form, Modal, Icon, Grid } from 'semantic-ui-react';
 import Moment from 'react-moment';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import axios from 'axios';
-
-// Uncomment out after presentation.
-// import Dropzone from 'react-dropzone-uploader'
-
-// Delete 'import Dropzone from 'react-dropzone' after presentation.
-import Dropzone from 'react-dropzone'
-// End Delete 'import Dropzone from 'react-dropzone' after presentation.
-
 import RegisterPage from '../RegisterPage/RegisterPage'
 import ViewContract from '../ViewContract/ViewContract'
 
@@ -22,18 +13,6 @@ import './AdminIndividualStore.scss';
 
 
 class AdminIndividualStore extends Component {
-
-// Delete onDrop after presentation.
-    onDrop = (acceptedFiles) => {
-        console.log('onDrop:', acceptedFiles);
-        const upload = acceptedFiles[0];
-        this.setState({
-            store_inventory: acceptedFiles
-        })
-        this.props.dispatch({ 
-            type: 'UPDATE_AWS_BUCKET',
-            payload: this.state })
-    } 
 
     state = {
         store_id: "",
@@ -81,15 +60,16 @@ class AdminIndividualStore extends Component {
         this.handleEdit = this.handleEdit.bind(this);
     }
 
+    // updates state on input change
     handleInputChangeFor = (propertyName) => (event) => {
         this.setState({
-            // store_id: this.props.reduxState.locationsReducer[0].store_id,
             [propertyName]: event.target.value,
         });
     };
 
+    // dispatches post action with a new location object
     handleSave() {
-
+        // Location object to be send in a post request
         const locationObj = {
             store_id: this.props.reduxState.individualStoreReducer.id,
             address: this.state.address,
@@ -101,14 +81,14 @@ class AdminIndividualStore extends Component {
             printers_quantity: this.state.printers_quantity,
             tablet_stands_quantity: this.state.tablet_stands_quantity,
         }
-        console.log('locationObj', locationObj);
-        
 
+        // Post is dispatched here
         this.props.dispatch({
             type: "POST_LOCATION",
             payload: locationObj,
         });
 
+        // Clears state and corresponding inputs
         this.setState({
             store_id: "",
             storeName: "",
@@ -122,30 +102,22 @@ class AdminIndividualStore extends Component {
             tablet_stands_quantity: "",
             modalOpen: false,
         });
+
+        // closes add location modal
         this.handleClose();
     }
 
-    handleEdit() {
-        this.setState({ mode: "edit" });
-    }
-
+    // Modal open and close functions
     handleOpen = () => this.setState({ modalOpen: true })
-
     handleClose = () => this.setState({ modalOpen: false })
 
+    // brings Administrator back to the dashboard
     goBack = () => {
         this.props.history.push('/AdminDashboard')
     }
-    
-    autoPopulateForm = () => {
-        console.log('autoPopulateForm clicked', this.props.reduxState.individualStoreReducer.id);
-        this.setState({
-            moonclerk_url: 'https://www.moonclerk.com/s1gty542re'
-        })
-    }
 
+    // Toggles edit state of the Admin individual store view
     toggleEdit = () => {
-        console.log('in toggleEdit');
         this.setState({
             edit: !this.state.edit,
             id: this.props.store.id,
@@ -162,6 +134,7 @@ class AdminIndividualStore extends Component {
         })
     }
 
+    // Sets new state on input change
     handleChange = (event) => {
         this.setState({
             ...this.state,
@@ -169,6 +142,7 @@ class AdminIndividualStore extends Component {
         })
     }
 
+    // dispatches action to update a store's information
     submitChanges = () => {
         this.props.dispatch({ type: 'UPDATE_STORE', payload: this.state })
         this.setState({
@@ -176,6 +150,7 @@ class AdminIndividualStore extends Component {
         })
     }
 
+    // dispatches an email object to the Amazon SES
     sendMail = () => {
         let newEmail = {
             customer_email: this.state.customer_email,
@@ -186,6 +161,7 @@ class AdminIndividualStore extends Component {
         this.handleCloseEmail();
     }
 
+    // opens modal for integrated email service
     handleOpenEmail = () => {
         this.setState({
             emailModalOpen: true,
@@ -193,25 +169,9 @@ class AdminIndividualStore extends Component {
         })
     }
 
-    secretClick = () => {
-        this.setState({})
-    }
-
-
+    // PDF uploader and dropzone
     MyUploader = () =>{
-    // specify upload params and url for your files
         const getUploadParams = () => (
-            // try{{
-            //     url: '/upload'
-            // }
-            // }catch(err);
-            // try{{
-
-            //     url: '/upload',
-            //     client_id: this.state.user_id
-                
-            // }
-
             {
                 url:'/upload',
                 "fields": {
@@ -221,38 +181,8 @@ class AdminIndividualStore extends Component {
                 
             }
         );
-        // const getUploadParams = async ({ meta }) => { 
-        // const res = await axios.post('/upload');
-        // console.log("POST /upload", res.data);
 
-        // const params = { 
-        //     fields: res.data.fields, 
-        //     meta: { 
-        //     fileUrl: `${res.data.url}/${res.data.fields.key}`
-        //     }, 
-        //     url: res.data.url 
-        // };
-        // console.log('params', params);
-    
-        // ENABLE CORS on your bucket
-        /**
-            <?xml version="1.0" encoding="UTF-8"?>
-            <CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
-            <CORSRule>
-                <AllowedOrigin>http://localhost:3000</AllowedOrigin>
-                <AllowedMethod>POST</AllowedMethod>
-                <AllowedHeader>*</AllowedHeader>
-            </CORSRule>
-            </CORSConfiguration>
-        */
-    
-        // return params;
-        // }
-
-
-        // receives array of files that are done uploading when submit button is clicked
         const handleSubmit = (files, allFiles) => {
-       
         allFiles.forEach(f => f.remove());
     }
 
@@ -264,52 +194,20 @@ class AdminIndividualStore extends Component {
     )
     }
 
-    handleClose = () => this.setState({ modalOpen: false })
+    // Opens new account registration modal
     openRegisterNewCustomer = () => {
-        console.log('registerNewCustomer clicked');
-        
         this.setState({
             registerModalOpen: true
         })
     }
 
-    submitRegisterNewCustomer = () => {
-        console.log('submitRegisterNewCustomer clicked');
-        
-    }
-
-    copyToClipboard = () => {
-        console.log('copyToClipboard clicked');
-
-    }
-
-    autoPopulateForm = () => {
-        console.log('autoPopulateForm clicked', this.props.reduxState.individualStoreReducer.id);
-        this.setState({
-            storeName: `Lindsey's Patisserie on Grand`,
-            address: "542 Grand Ave, St. Paul, MN; 55104",
-            timezone: "Central",
-            phoneNumber: "651-233-4525",
-            email: "patisserieongrand@gmail.com",
-            pointOfContact: "Lindsey",
-            tablets_quantity: "2",
-            printers_quantity: "2",
-            tablet_stands_quantity: "2",
-        })
-    }
-
+    // Handles email and registration modal opening
     handleCloseEmail = () => this.setState({ emailModalOpen: false })
     handleCloseRegister = () => this.setState({ registerModalOpen: false })
 
     render() {
-        const currentUser = this.props.userlist.find(user => user.id === this.props.store.user_id)
-
-        const file = '../../public/images/PRETSL Android Icon.png'
-        const type = 'png'
-        
         return (
             <div>
-                {console.log(this.state, 'this.state')}
             <Container className='pageHeader'>
                 <Modal
                     trigger={<Button className='emailButton' onClick={this.handleOpenEmail}>Send Mail</Button>}
@@ -542,29 +440,13 @@ class AdminIndividualStore extends Component {
                     <Grid.Column width={5}>
                         <Form>
                             <Form.Field>
-                                {/* <Header as='h3'>Contract</Header> */}
                                 <h3>Contract</h3>
                                 {this.state.edit ?
-
-                                // After presentation, uncomment the below line. 
-                                    // <this.MyUploader />
-
-                                // After presentation, delete Dropzone.
-                                    <Dropzone onDrop={this.onDrop}>
-                                        {({getRootProps, getInputProps}) => (
-                                            <section className="dropzone-style">
-                                                <div {...getRootProps()}>
-                                                    <input {...getInputProps()} />
-                                                    <p>Upload Contract</p>
-                                                </div>
-                                            </section>
-                                        )}
-                                    </Dropzone>
-                                // End after presentation, delete Dropzone.
+                                    <this.MyUploader />
                                     :
-                                        <ViewContract
-                                            file={file}
-                                            type={type} />
+                                    <ViewContract
+                                        file={file}
+                                        type={type} />
                                 }
                             </Form.Field>
                             <Form.Field>
