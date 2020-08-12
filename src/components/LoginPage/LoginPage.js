@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { Button, Input } from 'semantic-ui-react';
+import { Input } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import './LoginPage.scss';
 
+// This component handles the initial Login page. 
 class LoginPage extends Component {
   state = {
     username: '',
@@ -81,15 +82,6 @@ class LoginPage extends Component {
             />
           </div>
         </form>
-        {/* <center>
-          <Button
-            type="button"
-            className="link-button"
-            onClick={() => {this.props.dispatch({type: 'SET_TO_REGISTER_MODE'})}}
-          >
-            Register
-          </Button>
-        </center> */}
       </div>
     );
   }

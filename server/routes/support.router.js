@@ -3,9 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
-/**
- * GET route for support
- */
+// GET route for support
 router.get('/', rejectUnauthenticated, (req, res) => {
     let sqlText = `SELECT * FROM store
 JOIN support ON store.id = support.store_id
@@ -23,9 +21,7 @@ ORDER BY support.id DESC;`;
     })
 });
 
-/**
- * POST route for support
- */
+// POST route for support
 router.post('/', rejectUnauthenticated, (req, res) => {
     console.log('req.body', req.body);
     let sqlText = 'INSERT INTO support (store_id, request_type, request_body, ticket_status) VALUES ($1, $2, $3, $4);';
@@ -38,7 +34,6 @@ router.post('/', rejectUnauthenticated, (req, res) => {
         res.sendStatus(500)
     })
 });
-
 
 // PUT route for support
 router.put('/:id', rejectUnauthenticated, (req, res) => {
