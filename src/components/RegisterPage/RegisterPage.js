@@ -97,13 +97,7 @@ class RegisterPage extends Component {
           </div>
         </form>
         <center>
-          {/* <button
-            type="button"
-            className="link-button"
-            onClick={() => {this.props.dispatch({type: 'SET_TO_LOGIN_MODE'})}}
-          >
-            Login
-          </button> */}
+          
         </center>
       </div>
     );
@@ -111,8 +105,6 @@ class RegisterPage extends Component {
 }
 
 // Instead of taking everything from state, we just want the error messages.
-// if you wanted you could write this code like this:
-// const mapStateToProps = ({errors}) => ({ errors });
 const mapStateToProps = state => ({
   errors: state.errors,
 });
