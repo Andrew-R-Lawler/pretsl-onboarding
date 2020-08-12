@@ -8,12 +8,14 @@ import './AdminDashboard.css';
 
 class AdminDashboard extends Component {
 
+    // on mount component populates global store
     componentDidMount = () => { 
         this.props.dispatch ({ type: 'GET_STORES' });
         this.props.dispatch ({ type: 'GET_USER_LIST' });
         this.props.dispatch ({ type: 'GET_TICKETS' })
       };
-
+    
+    // updates individual store reducer to contain intended store and routes to individual store view
     viewStore = (event) => {
         const storeId = event.target.value
         this.props.dispatch({ type: 'GET_INDIVIDUAL_STORE', payload: storeId });

@@ -1,23 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Dropzone from 'react-dropzone'
-
 import { Button } from 'semantic-ui-react';
+
+// imports semantic UI styling theme
 import 'semantic-ui-css/semantic.min.css';
 
+// imports ViewContract component
 import ViewContract from '../ViewContract/ViewContract'
-
-//views on this page, create a button that navigates to view contract page
-//display date joined
-//customer email. 
-
-//for email, accesses store email through, clientStoreReducer
-//for date joined display date joined from store table, found in clientStoreReducer
-//for contract, grab contract from clientStoreReducer
-//create button that routes to contract page.
-
-//build in a semantic UI modal into the page that is displayed on the contract
-//view button click.
 
 class CustomerDashboardPreonboarding extends Component {
 
@@ -35,11 +25,7 @@ class CustomerDashboardPreonboarding extends Component {
         store_inventory: ''
     }
 
-    viewContractModal(){
-        //display modal here, select contract from clientStoreReducer
-        console.log("Contract Button Clicked");
-    }
-
+    // sends uploaded files to AWS S3 Bucket
     onDrop = (acceptedFiles) => {
         console.log('onDrop:', acceptedFiles);
         const upload = acceptedFiles[0];
@@ -54,7 +40,6 @@ class CustomerDashboardPreonboarding extends Component {
     render(){
         const file = '../../public/images/PRETSL Android Icon.png'
         const type = 'png'
-
         return(
             <div>
                 <h2 className="store-name">{this.props.store.store_name}</h2>

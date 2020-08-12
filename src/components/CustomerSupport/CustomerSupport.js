@@ -14,10 +14,12 @@ class CustomerSupport extends Component {
         // modalOpen: false
     }
 
+    // on component mount retreives locations for the global store
     componentDidMount = () => {
         this.props.dispatch({ type: 'GET_LOCATIONS' })
     }
 
+    // sets component's state on input change
     handleChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value,
@@ -25,17 +27,26 @@ class CustomerSupport extends Component {
         })
     }
 
+    // sends email notification of new support ticket to admin, creates new support ticket, clears input values
     submit = () => {
+        // email object to send to admin
         let supportEmail = {
-            customer_email: 'babysmsh@gmail.com',
+            customer_email: 'babysmsh@gmail.com', 
+            // update this email to your desired email
             subject: 'New Support Ticket!',
             email_body: 'An account has submitted a new support ticket! More information can be viewed on the admin support page!'
         }
+
+        // dispatches new support ticket to database
         this.props.dispatch({
             type: 'CREATE_NEW_TICKET',
             payload: this.state
         })
+
+        // sends email object to admin
         this.props.dispatch({ type: 'SEND_EMAIL', payload: supportEmail})
+
+        // clears state to empty inputs
         this.setState({
             storeId: '',
             requestType: '',
@@ -48,9 +59,7 @@ class CustomerSupport extends Component {
     render() {
         return (
             <div className="customer-support-container">
-                <div>
-                    {/* {console.log('this.state', this.state, this.props.reduxStore.locationsReducer)} */}
-                    
+                <div>                    
                 </div>
                 <Form>
                     <div className="customer-support-instructions">
