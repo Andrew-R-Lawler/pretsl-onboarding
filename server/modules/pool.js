@@ -3,7 +3,9 @@ const url = require('url');
 
 let config = {};
 
+
 // This configuration connects to the database in AWS called ' pretslonboardingapptest '
+
     config = {
       user: 'PretslMaster',
       password: 'pretslpassword',

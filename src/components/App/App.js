@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import './App.scss';
 
+
 import UserPage from '../UserPage/UserPage';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
@@ -19,7 +20,6 @@ import AdminCustomerOnboarding from '../AdminCustomerOnboarding/AdminCustomerOnb
 // CUSTOMER imports
 import CustomerDashboard from '../CustomerDashboard/CustomerDashboard';
 import CustomerNavigation from '../CustomerNavigation/CustomerNavigation';
-//import CustomerPostOnboarding from '../CustomerPostOnboarding/CustomerPostOnboarding';
 import CustomerSupport from '../CustomerSupport/CustomerSupport';
 import Locations from '../Locations/Locations';
 
@@ -27,6 +27,7 @@ import Locations from '../Locations/Locations';
 
 class App extends Component {
 
+  // retreives current user data
   componentDidMount () {
     this.props.dispatch({type: 'FETCH_USER'})
   }
@@ -42,6 +43,7 @@ class App extends Component {
 
           <Switch>
             {isAdmin ? <Redirect exact from="/home" to="/AdminDashboard" /> : <Redirect exact from="/home" to="/CustomerDashboard" />}
+
             <ProtectedRoute exact path="/home" component={UserPage}/>
             
         {/* ADMIN ROUTES */}
@@ -64,14 +66,6 @@ class App extends Component {
       </Router>
   )}
 }
-
-// export default connect()(App);
-
-// const store = reduxState => ({
-//   reduxState
-// })
-
-// export default connect(store)(App);
 
 const mapStateToProps = (reduxStore) => ({ reduxStore });
 export default connect(mapStateToProps)(App);
