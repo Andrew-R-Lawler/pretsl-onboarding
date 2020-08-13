@@ -2,13 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
-// import './Nav.css';
 
 const AdminNavigation = (props) => (
   <div className="nav">
-    <Link to="/home">
-      {/* <h2 className="nav-title">Admin Nav Bar</h2> */}
-    </Link>
+    {/* Pretsl logos imported from get.pretsl.com - long term solution to use from S3 ? */}
     <img className="logo-nav" src="https://get.pretsl.com/wp-content/uploads/2020/06/Pretsl-New-Logo-1.11-White-Opt.png" alt="pretsl logo"></img>
     <div className="nav-right">
       
@@ -20,7 +17,6 @@ const AdminNavigation = (props) => (
       <Link className="nav-link" to="/AdminDashboard">Dashboard</Link>
       <Link className="nav-link" to="/AdminCustomerOnboarding">Onboarding</Link>
       <Link className="nav-link" to="/AdminSupport">Support</Link>
-      {/* <Link className="nav-link" to="/about">About</Link> */}
       <LogOutButton className="nav-link"/>
     </div>
   </div>

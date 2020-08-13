@@ -3,8 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const url = require('url');
 
-
-
+// Route for client side store dashboard, selected by user ID.
 router.get('/', (req,res) =>{
 
     const user_id = url.parse(req.url, true).query.user_id;

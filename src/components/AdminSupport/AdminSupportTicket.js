@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import Moment from 'react-moment';
 import { Button, Table, Modal, Header, Icon } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
-import './AdminSupport.css';
+import './AdminSupport.scss';
+
+// This component handles the ticket status and the archiving of tickets on /#/AdminSupport.
 
 class AdminSupportTicket extends Component {
 
@@ -35,6 +37,7 @@ class AdminSupportTicket extends Component {
         }, 1000);
     }
 
+    // Confirmation of archive modal.
     handleOpen = () => this.setState({ modalOpen: true })
 
     handleClose = () => this.setState({ modalOpen: false })
@@ -43,7 +46,7 @@ class AdminSupportTicket extends Component {
         this.setState({
             isArchived: !this.props.item.isarchived
         })
-        setTimeout(() => {
+        setTimeout(() => { // timeout needed for handling of asynch
             this.props.dispatch({
                 type: 'UPDATE_TICKET_STATUS',
                 payload: this.state,
@@ -93,7 +96,6 @@ class AdminSupportTicket extends Component {
                             </Button>
                         </Modal.Actions>
                     </Modal>
-                    
                 </Table.Cell>
             </Table.Row>
         )

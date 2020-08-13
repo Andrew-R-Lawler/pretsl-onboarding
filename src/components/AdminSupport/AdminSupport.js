@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import AdminSupportTicket from './AdminSupportTicket';
 import { Table, Header, Container } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
-import './AdminSupport.css';
+import './AdminSupport.scss';
 
-
+// This component handles the display of all tickets on /#/AdminSupport on page load.
 class AdminSupport extends Component {
 
     componentDidMount = () => { 
@@ -14,7 +14,6 @@ class AdminSupport extends Component {
 
     render(){
         const supportTicket = this.props.reduxStore.supportReducer;
-        console.log('supportTicket', supportTicket);
         return(
             <div>
                 <Container>

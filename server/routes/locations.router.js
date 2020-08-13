@@ -2,9 +2,8 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-/**
- * GET route for locations
- */
+
+// GET route for locations
 router.get('/', (req, res) => {
     let queryText = `SELECT * FROM "location"
     FULL OUTER JOIN "store" ON "location"."store_id" = "store"."id"
@@ -18,9 +17,7 @@ router.get('/', (req, res) => {
         })
 });
 
-/**
- * POST route for locations
- */
+// POST route for locations
 router.post('/', (req, res) => {
     console.log(req.body, 'req.body')
     const store_id = req.body.store_id;

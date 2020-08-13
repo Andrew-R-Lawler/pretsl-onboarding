@@ -3,9 +3,8 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const url = require('url');
 
-/**
- * GET route for all stores in Admin dashboard
- */
+
+// GET route for all stores in Admin dashboard
 router.get('/', (req, res) => {
     pool.query('SELECT * FROM "store";')
         .then(result => {
@@ -16,8 +15,6 @@ router.get('/', (req, res) => {
             res.sendStatus(500)
         })
 });
-
-
 
 // Get route for individual store admin view
 router.get('/:id', (req, res) => {
@@ -31,12 +28,7 @@ router.get('/:id', (req, res) => {
         })
 })
 
-
-/**
- * POST route for store
- */
-
-
+// POST route for store
 router.post('/', (req, res) => {
     console.log('req.body', req.body);
     pool.query(`INSERT INTO "store" (store_name, store_status, notes, business_type, customer_email)
@@ -50,7 +42,6 @@ router.post('/', (req, res) => {
 });
 
 // PUT route for updating store in individual store admin view
-
 router.put('/:id', (req, res) => {
     pool.query(`UPDATE "store"
     SET "store_name" = $1, "user_id" = $2, "store_status" = $3, "date_joined" = $4, "notes" = $5, "contract" = $6, "business_type" = $7, "moonclerk_url" = $8, "customer_email" = $9, "active_customer" = $10, "store_inventory" = $11

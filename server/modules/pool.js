@@ -3,13 +3,15 @@ const url = require('url');
 
 let config = {};
 
+
+// This configuration connects to the database in AWS called ' pretslonboardingapptest '
+
     config = {
       user: 'PretslMaster',
       password: 'pretslpassword',
       host: 'pretslonboardingapptest.cyechedd6xia.us-east-2.rds.amazonaws.com',
       port: 5432,
       database: 'postgres',
-      // ssl: { rejectUnauthorized: false },
       max: 10, // max number of clients in the pool
       idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
     };
