@@ -5,6 +5,7 @@ import Moment from 'react-moment';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import RegisterPage from '../RegisterPage/RegisterPage'
 import ViewContract from '../ViewContract/ViewContract'
+import Dropzone from 'react-dropzone-uploader'
 
 import 'react-dropzone-uploader/dist/styles.css'
 import 'semantic-ui-css/semantic.min.css';
@@ -54,11 +55,11 @@ class AdminIndividualStore extends Component {
         Afterwards, follow this link to complete payment so we can get you on the way to having goods in customer's hands: https://moonclerk.com/s1gty542re`,
     }
 
-    constructor(props) {
-        super(props);
-        this.handleSave = this.handleSave.bind(this);
-        this.handleEdit = this.handleEdit.bind(this);
-    }
+    // constructor(props) {
+    //     super(props);
+    //     this.handleSave = this.handleSave.bind(this);
+    //     this.handleEdit = this.handleEdit.bind(this);
+    // }
 
     // updates state on input change
     handleInputChangeFor = (propertyName) => (event) => {
@@ -444,9 +445,10 @@ class AdminIndividualStore extends Component {
                                 {this.state.edit ?
                                     <this.MyUploader />
                                     :
-                                    <ViewContract
-                                        file={file}
-                                        type={type} />
+                                    <h1>test</h1>
+                                    // <ViewContract
+                                    //     file={file}
+                                    //     type={type} />
                                 }
                             </Form.Field>
                             <Form.Field>
