@@ -3,7 +3,7 @@ import './Footer.scss'
 
 const Footer = () => (
   <footer>
-    &copy; Pretsl 2020
+    &copy; Pretsl 2020.
   </footer>
 );
 

@@ -5,7 +5,6 @@ import { Button, Table, Modal, Header, Icon } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import './AdminSupport.scss';
 
-
 // This component handles the ticket status and the archiving of tickets on /#/AdminSupport.
 
 class AdminSupportTicket extends Component {
@@ -97,7 +96,6 @@ class AdminSupportTicket extends Component {
                             </Button>
                         </Modal.Actions>
                     </Modal>
-                    
                 </Table.Cell>
             </Table.Row>
         )
