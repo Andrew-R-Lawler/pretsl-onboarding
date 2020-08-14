@@ -1,4 +1,4 @@
-# Prime Project
+# Pretsl Onboarding Application
 This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
 
 We **STRONGLY** recommend following these instructions carefully. It's a lot, and will take some time to set up, but your life will be much easier this way in the long run.
@@ -30,6 +30,8 @@ CREATE TABLE "user" (
 );
 ```
 
+Please also reference `database.sql` for building the rest of your database. SQL queries provided inside will give the table structure needed to run the application.
+
 ## Development Setup Instructions
 
 * Run `npm install`
@@ -41,7 +43,7 @@ CREATE TABLE "user" (
 * Start postgres if not running already by using `brew services start postgresql`
 * Run `npm run server`
 * Run `npm run client`
-* Navigate to `localhost:3000`
+* Navigate to `localhost:3000` on your favorite internet browser! Welcome to the Pretsl onboarding application!
 
 ## Debugging
 
@@ -89,26 +91,20 @@ This code is also heavily commented. We recommend reading through the comments, 
 
 * src/components
   * App/App
-  * Footer/Footer
+    - your app.js file is the root of all of the components in your react app. It contains everything that renders to your internet browser page.
   * Nav/Nav
-  * AboutPage/AboutPage
-  * InfoPage/InfoPage
-  * UserPage/UserPage
+    - Admin Navigation contains the nav-bar for users with Administrator permissions, here you will find routes to the admin dashboard, onboarding, and support pages.
+    - Customer Navigation contains the nav-bar for Non-Administrator priveleges, it contains routes to the customer dashboard, locations, and customer support ticket pages
   * LoginPage/LoginPage
+    -this page contains only inputs for logging in a new user
   * RegisterPage/RegisterPage
+    -this page contains inputs for creating new accounts, it exists only on the admin side.
   * LogOutButton/LogOutButton
+    - this button resides only in the navigation bars
   * ProtectedRoute/ProtectedRoute
+    - this ensures that only authorized users are able to access these pages on the application.
+  * AdminDashboard
+    - this dashboard holds all the of the information on all of the stores in the current system 
+  * AdminIndividualStore
+    - This component will present you more detailed information on a single store. It also allows sending mail from an integrated mail service.
 
-## Deployment
-
-1. Create a new Heroku project
-1. Link the Heroku project to the project GitHub Repo
-1. Create an Heroku Postgres database
-1. Connect to the Heroku Postgres database from Postico
-1. Create the necessary tables
-1. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security
-1. In the deploy section, select manual deploy
-
-## Update Documentation
-
-Customize this ReadMe and the code comments in this project to read less like a starter repo and more like a project. Here is an example: https://gist.github.com/PurpleBooth/109311bb0361f32d87a2
